@@ -39,8 +39,8 @@ export default defineConfig(({ mode }) => {
                     manualChunks: undefined,
                   },
                 },
-              },
-              
+            },
+        },
         server: {
             host: isLocal ? 'localhost' : '0.0.0.0',
             port: 5173,

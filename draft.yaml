@@ -1,0 +1,202 @@
+# draft.yaml  —  University Exploration Platform
+# Run: php artisan blueprint:build
+
+models:
+
+  # ─────────── Core auth ───────────
+  User:
+    name: string:100
+    email: string:150 unique
+    email_verified_at: timestamp nullable
+    password: string
+    role: enum:student,parent,admin,university_admin default:student
+    relationships:
+      hasOne: StudentProfile
+
+  StudentProfile:
+    user_id: id
+    date_of_birth: date nullable
+    school: string:120 nullable
+    hexad_type: string:4 nullable           # HEXAD player type
+    archetype_code: string:5 nullable       # e.g. DI-CD
+    xp: integer default:0
+    credits: integer default:0
+    consent_at: timestamp nullable
+    parent_contact_email: string:150 nullable
+    relationships:
+      belongsTo: User
+      belongsToMany: Programme:&Bookmark, Squad:&SquadMember
+      hasMany: Application, Bookmark, StudentSkillProgress, QuestProgress, XPLog, Document, EventBooking
+
+  # ─────────── University domain ───────────
+  University:
+    name: string:150
+    slug: string unique
+    city: string:100
+    description: text nullable
+    website: string nullable
+    logo: string nullable
+    relationships:
+      hasMany: Faculty, Event
+
+  Faculty:
+    university_id: id
+    name: string:150
+    slug: string unique
+    description: text nullable
+    relationships:
+      belongsTo: University
+      hasMany: Programme, Course
+
+  Programme:
+    faculty_id: id
+    name: string:150
+    slug: string unique
+    tuition: integer
+    ects: integer
+    duration: integer                       # years
+    scholarship_available: boolean default:false
+    open_for_application: boolean default:true
+    deadline: date nullable
+    description: text nullable
+    relationships:
+      belongsTo: Faculty
+      hasMany: Course, Scholarship, Application
+      belongsToMany: StudentProfile:&Bookmark
+
+  Course:
+    programme_id: id
+    name: string:150
+    ects: integer
+    semester: integer
+    summary: text nullable
+    relationships:
+      belongsTo: Programme
+
+  Scholarship:
+    programme_id: id
+    name: string:150
+    amount: integer
+    description: text nullable
+    deadline: date nullable
+    relationships:
+      belongsTo: Programme
+
+  Event:
+    university_id: id nullable
+    title: string:150
+    date: timestamp
+    location: string:150
+    capacity: integer
+    description: text nullable
+    relationships:
+      belongsTo: University
+      hasMany: EventBooking
+
+  EventBooking:
+    student_profile_id: id
+    event_id: id
+    booked_at: timestamp
+    relationships:
+      belongsTo: StudentProfile, Event
+
+  # ─────────── Application flow ───────────
+  Application:
+    student_profile_id: id
+    programme_id: id
+    status: enum:submitted,review,accepted,rejected default:submitted
+    submitted_at: timestamp
+    pdf_path: string nullable
+    relationships:
+      belongsTo: StudentProfile, Programme
+
+  Bookmark:                # pivot with model for extra columns (e.g., created_at)
+    student_profile_id: id
+    programme_id: id
+    relationships:
+      belongsTo: StudentProfile, Programme
+
+  Document:
+    student_profile_id: id
+    type: enum:transcript,cv,essay,english_score,portfolio
+    path: string
+    relationships:
+      belongsTo: StudentProfile
+
+  # ─────────── Gamification ───────────
+  SkillNode:
+    code: string unique
+    title: string
+    xp_required: integer
+    icon: string nullable
+    metadata: json nullable
+    relationships:
+      hasMany: StudentSkillProgress
+
+  StudentSkillProgress:
+    student_profile_id: id
+    skill_node_id: id
+    xp_earned: integer default:0
+    completed: boolean default:false
+    relationships:
+      belongsTo: StudentProfile, SkillNode
+
+  Quest:
+    title: string:150
+    description: text
+    json_steps: json
+    xp_reward: integer
+    season: string nullable                 # e.g., "Matura 2025"
+    is_active: boolean default:true
+    relationships:
+      hasMany: QuestProgress, Squad
+
+  QuestProgress:
+    quest_id: id
+    student_profile_id: id
+    current_step: integer default:0
+    completed: boolean default:false
+    started_at: timestamp
+    completed_at: timestamp nullable
+    relationships:
+      belongsTo: Quest, StudentProfile
+
+  Squad:
+    name: string:100
+    quest_id: id nullable
+    relationships:
+      belongsTo: Quest
+      hasMany: SquadMember
+      belongsToMany: StudentProfile:&SquadMember
+
+  SquadMember:
+    squad_id: id
+    student_profile_id: id
+    is_leader: boolean default:false
+    joined_at: timestamp
+    relationships:
+      belongsTo: Squad, StudentProfile
+
+  XPLog:
+    student_profile_id: id
+    source_type: string:50                 # e.g., quest, skill_node, manual
+    source_id: uuid nullable
+    xp: integer
+    relationships:
+      belongsTo: StudentProfile
+
+controllers:
+
+  # RESTful resources — adjust as needed
+  Programme:
+    resource
+  Application:
+    resource
+  SkillNode:
+    resource
+  Quest:
+    resource
+  Squad:
+    resource
+  Event:
+    resource

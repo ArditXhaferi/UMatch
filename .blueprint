@@ -1,0 +1,128 @@
+created:
+    - app/Http/Controllers/ProgrammeController.php
+    - app/Http/Controllers/ApplicationController.php
+    - app/Http/Controllers/SkillNodeController.php
+    - app/Http/Controllers/QuestController.php
+    - app/Http/Controllers/SquadController.php
+    - app/Http/Controllers/EventController.php
+    - database/factories/UserFactory.php
+    - database/factories/StudentProfileFactory.php
+    - database/factories/UniversityFactory.php
+    - database/factories/FacultyFactory.php
+    - database/factories/ProgrammeFactory.php
+    - database/factories/CourseFactory.php
+    - database/factories/ScholarshipFactory.php
+    - database/factories/EventFactory.php
+    - database/factories/EventBookingFactory.php
+    - database/factories/ApplicationFactory.php
+    - database/factories/BookmarkFactory.php
+    - database/factories/DocumentFactory.php
+    - database/factories/SkillNodeFactory.php
+    - database/factories/StudentSkillProgressFactory.php
+    - database/factories/QuestFactory.php
+    - database/factories/QuestProgressFactory.php
+    - database/factories/SquadFactory.php
+    - database/factories/SquadMemberFactory.php
+    - database/factories/XPLogFactory.php
+    - database/migrations/2025_05_02_171221_create_users_table.php
+    - database/migrations/2025_05_02_171222_create_student_profiles_table.php
+    - database/migrations/2025_05_02_171223_create_universities_table.php
+    - database/migrations/2025_05_02_171224_create_faculties_table.php
+    - database/migrations/2025_05_02_171225_create_programmes_table.php
+    - database/migrations/2025_05_02_171226_create_courses_table.php
+    - database/migrations/2025_05_02_171227_create_scholarships_table.php
+    - database/migrations/2025_05_02_171228_create_events_table.php
+    - database/migrations/2025_05_02_171229_create_event_bookings_table.php
+    - database/migrations/2025_05_02_171230_create_applications_table.php
+    - database/migrations/2025_05_02_171231_create_bookmarks_table.php
+    - database/migrations/2025_05_02_171232_create_documents_table.php
+    - database/migrations/2025_05_02_171233_create_skill_nodes_table.php
+    - database/migrations/2025_05_02_171234_create_student_skill_progress_table.php
+    - database/migrations/2025_05_02_171235_create_quests_table.php
+    - database/migrations/2025_05_02_171236_create_quest_progress_table.php
+    - database/migrations/2025_05_02_171237_create_squads_table.php
+    - database/migrations/2025_05_02_171238_create_squad_members_table.php
+    - database/migrations/2025_05_02_171239_create_x_p_logs_table.php
+    - app/Models/User.php
+    - app/Models/StudentProfile.php
+    - app/Models/University.php
+    - app/Models/Faculty.php
+    - app/Models/Programme.php
+    - app/Models/Course.php
+    - app/Models/Scholarship.php
+    - app/Models/Event.php
+    - app/Models/EventBooking.php
+    - app/Models/Application.php
+    - app/Models/Bookmark.php
+    - app/Models/Document.php
+    - app/Models/SkillNode.php
+    - app/Models/StudentSkillProgress.php
+    - app/Models/Quest.php
+    - app/Models/QuestProgress.php
+    - app/Models/Squad.php
+    - app/Models/SquadMember.php
+    - app/Models/XPLog.php
+    - tests/Feature/Http/Controllers/ProgrammeControllerTest.php
+    - tests/Feature/Http/Controllers/ApplicationControllerTest.php
+    - tests/Feature/Http/Controllers/SkillNodeControllerTest.php
+    - tests/Feature/Http/Controllers/QuestControllerTest.php
+    - tests/Feature/Http/Controllers/SquadControllerTest.php
+    - tests/Feature/Http/Controllers/EventControllerTest.php
+    - app/Http/Requests/ProgrammeStoreRequest.php
+    - app/Http/Requests/ProgrammeUpdateRequest.php
+    - app/Http/Requests/ApplicationStoreRequest.php
+    - app/Http/Requests/ApplicationUpdateRequest.php
+    - app/Http/Requests/SkillNodeStoreRequest.php
+    - app/Http/Requests/SkillNodeUpdateRequest.php
+    - app/Http/Requests/QuestStoreRequest.php
+    - app/Http/Requests/QuestUpdateRequest.php
+    - app/Http/Requests/SquadStoreRequest.php
+    - app/Http/Requests/SquadUpdateRequest.php
+    - app/Http/Requests/EventStoreRequest.php
+    - app/Http/Requests/EventUpdateRequest.php
+    - resources/views/programme/index.blade.php
+    - resources/views/programme/create.blade.php
+    - resources/views/programme/show.blade.php
+    - resources/views/programme/edit.blade.php
+    - resources/views/application/index.blade.php
+    - resources/views/application/create.blade.php
+    - resources/views/application/show.blade.php
+    - resources/views/application/edit.blade.php
+    - resources/views/skillNode/index.blade.php
+    - resources/views/skillNode/create.blade.php
+    - resources/views/skillNode/show.blade.php
+    - resources/views/skillNode/edit.blade.php
+    - resources/views/quest/index.blade.php
+    - resources/views/quest/create.blade.php
+    - resources/views/quest/show.blade.php
+    - resources/views/quest/edit.blade.php
+    - resources/views/squad/index.blade.php
+    - resources/views/squad/create.blade.php
+    - resources/views/squad/show.blade.php
+    - resources/views/squad/edit.blade.php
+    - resources/views/event/index.blade.php
+    - resources/views/event/create.blade.php
+    - resources/views/event/show.blade.php
+    - resources/views/event/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: 'string:100', email: 'string:150 unique', email_verified_at: 'timestamp nullable', password: string, role: 'enum:student,parent,admin,university_admin default:student', relationships: { hasOne: StudentProfile } }
+    StudentProfile: { user_id: id, date_of_birth: 'date nullable', school: 'string:120 nullable', hexad_type: 'string:4 nullable', archetype_code: 'string:5 nullable', xp: 'integer default:0', credits: 'integer default:0', consent_at: 'timestamp nullable', parent_contact_email: 'string:150 nullable', relationships: { belongsTo: User, belongsToMany: 'Programme:&Bookmark, Squad:&SquadMember', hasMany: 'Application, Bookmark, StudentSkillProgress, QuestProgress, XPLog, Document, EventBooking' } }
+    University: { name: 'string:150', slug: 'string unique', city: 'string:100', description: 'text nullable', website: 'string nullable', logo: 'string nullable', relationships: { hasMany: 'Faculty, Event' } }
+    Faculty: { university_id: id, name: 'string:150', slug: 'string unique', description: 'text nullable', relationships: { belongsTo: University, hasMany: 'Programme, Course' } }
+    Programme: { faculty_id: id, name: 'string:150', slug: 'string unique', tuition: integer, ects: integer, duration: integer, scholarship_available: 'boolean default:false', open_for_application: 'boolean default:true', deadline: 'date nullable', description: 'text nullable', relationships: { belongsTo: Faculty, hasMany: 'Course, Scholarship, Application', belongsToMany: 'StudentProfile:&Bookmark' } }
+    Course: { programme_id: id, name: 'string:150', ects: integer, semester: integer, summary: 'text nullable', relationships: { belongsTo: Programme } }
+    Scholarship: { programme_id: id, name: 'string:150', amount: integer, description: 'text nullable', deadline: 'date nullable', relationships: { belongsTo: Programme } }
+    Event: { university_id: 'id nullable', title: 'string:150', date: timestamp, location: 'string:150', capacity: integer, description: 'text nullable', relationships: { belongsTo: University, hasMany: EventBooking } }
+    EventBooking: { student_profile_id: id, event_id: id, booked_at: timestamp, relationships: { belongsTo: 'StudentProfile, Event' } }
+    Application: { student_profile_id: id, programme_id: id, status: 'enum:submitted,review,accepted,rejected default:submitted', submitted_at: timestamp, pdf_path: 'string nullable', relationships: { belongsTo: 'StudentProfile, Programme' } }
+    Bookmark: { student_profile_id: id, programme_id: id, relationships: { belongsTo: 'StudentProfile, Programme' } }
+    Document: { student_profile_id: id, type: 'enum:transcript,cv,essay,english_score,portfolio', path: string, relationships: { belongsTo: StudentProfile } }
+    SkillNode: { code: 'string unique', title: string, xp_required: integer, icon: 'string nullable', metadata: 'json nullable', relationships: { hasMany: StudentSkillProgress } }
+    StudentSkillProgress: { student_profile_id: id, skill_node_id: id, xp_earned: 'integer default:0', completed: 'boolean default:false', relationships: { belongsTo: 'StudentProfile, SkillNode' } }
+    Quest: { title: 'string:150', description: text, json_steps: json, xp_reward: integer, season: 'string nullable', is_active: 'boolean default:true', relationships: { hasMany: 'QuestProgress, Squad' } }
+    QuestProgress: { quest_id: id, student_profile_id: id, current_step: 'integer default:0', completed: 'boolean default:false', started_at: timestamp, completed_at: 'timestamp nullable', relationships: { belongsTo: 'Quest, StudentProfile' } }
+    Squad: { name: 'string:100', quest_id: 'id nullable', relationships: { belongsTo: Quest, hasMany: SquadMember, belongsToMany: 'StudentProfile:&SquadMember' } }
+    SquadMember: { squad_id: id, student_profile_id: id, is_leader: 'boolean default:false', joined_at: timestamp, relationships: { belongsTo: 'Squad, StudentProfile' } }
+    XPLog: { student_profile_id: id, source_type: 'string:50', source_id: 'uuid nullable', xp: integer, relationships: { belongsTo: StudentProfile } }

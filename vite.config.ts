@@ -12,22 +12,27 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [
             laravel({
-                input: ['resources/css/app.css', 'resources/js/app.tsx'],
+                input: [
+                    'resources/css/app.css',
+                    'resources/js/app.tsx',
+                ],
                 refresh: true,
             }),
             react(),
         ],
         resolve: {
             alias: {
-                'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
+                ziggy: resolve(__dirname, 'vendor/tightenco/ziggy'),
             },
         },
         build: {
-            outDir: 'public/build',
-            assetsDir: '',
             manifest: true,
+            outDir: 'public/build',
+            emptyOutDir: true,
             rollupOptions: {
-                input: 'resources/js/app.tsx',
+                input: {
+                    app: resolve(__dirname, 'resources/js/app.tsx'),
+                },
                 output: {
                     manualChunks: undefined,
                 },
@@ -36,8 +41,8 @@ export default defineConfig(({ mode }) => {
         server: {
             host: isLocal ? 'localhost' : '0.0.0.0',
             port: 5173,
-            cors: true,
             strictPort: true,
+            cors: true,
             hmr: isLocal ? { host: 'localhost' } : false,
         },
         base: isLocal ? undefined : '/build/',

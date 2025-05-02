@@ -31,17 +31,11 @@ export default defineConfig(({ mode }) => {
         server: {
             hmr: isLocal ? {
                 host: 'localhost',
-            } : {
-                host: 'umatch.dev',
-                protocol: 'https',
-            },
+            } : false,
             host: isLocal ? 'localhost' : '0.0.0.0',
             port: 5173,
             strictPort: true,
             cors: true,
-            https: !isLocal ? {
-                // You can add SSL certificate options here if needed
-            } : false,
         },
         build: {
             outDir: 'public/build',

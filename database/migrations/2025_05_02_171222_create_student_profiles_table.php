@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->date('date_of_birth')->nullable();
             $table->string('school', 120)->nullable();
-            $table->string('hexad_type', 4)->nullable();
+            $table->string('hexad_type', 20)->nullable();
             $table->string('archetype_code', 5)->nullable();
             $table->integer('xp')->default(0);
             $table->integer('credits')->default(0);

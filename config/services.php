@@ -46,4 +46,12 @@ return [
         'api_key' => env('OPENAI_API_KEY'),
     ],
 
+    'tesseract' => [
+        'path' => env('TESSERACT_PATH', '/opt/homebrew/bin/tesseract'),
+    ],
+
+    'ghostscript' => [
+        'path' => env('GHOSTSCRIPT_PATH', '/opt/homebrew/bin/gs'),
+    ],
+
 ];

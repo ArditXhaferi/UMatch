@@ -16,12 +16,14 @@ class University extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'slug',
+        'university_name',
         'city',
         'description',
         'website',
         'logo',
+        'branches_offered',
+        'qualities_sought',
+        'address'
     ];
 
     /**
@@ -33,6 +35,8 @@ class University extends Model
     {
         return [
             'id' => 'integer',
+            'branches_offered' => 'array',
+            'qualities_sought' => 'array'
         ];
     }
 

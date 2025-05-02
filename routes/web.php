@@ -33,3 +33,7 @@ Route::resource('skill-nodes', App\Http\Controllers\SkillNodeController::class);
 Route::resource('quests', App\Http\Controllers\QuestController::class);
 Route::resource('squads', App\Http\Controllers\SquadController::class);
 Route::resource('events', App\Http\Controllers\EventController::class);
+
+Route::get('/documentation', function () {
+    return view('documentation');
+})->name('documentation');

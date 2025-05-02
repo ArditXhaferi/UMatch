@@ -5,6 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
+        <!-- Primary Meta Tags -->
+        <title>{{ config('app.name', 'UMatch') }} — University Matchmaking & Exploration Platform</title>
+        <meta name="title" content="UMatch — University Matchmaking & Exploration Platform">
+        <meta name="description" content="UMatch is a playful, data-driven platform that helps students, parents, and universities connect, explore, and find the perfect academic match. Take our SparkTest, discover your archetype, and get personalized university recommendations powered by AI.">
+        <meta name="keywords" content="university matchmaking, student archetypes, university exploration, AI education platform, SparkTest, FitScore, student-parent portal, university recommendations, gamified education, Albanian universities, career guidance, MBTI, RIASEC, higher education, student community, university application, academic fit, university search, PeerNet, MyDeck, UniBot">
+        <meta name="author" content="UMatch Team">
+        <meta name="robots" content="index, follow">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="UMatch — University Matchmaking & Exploration Platform">
+        <meta property="og:description" content="UMatch is a playful, data-driven platform for students, parents, and universities to connect, explore, and find the perfect academic match. Discover your archetype and get personalized recommendations powered by AI.">
+        <meta property="og:image" content="{{ public_path('social_media.png') }}">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="{{ url()->current() }}">
+        <meta name="twitter:title" content="UMatch — University Matchmaking & Exploration Platform">
+        <meta name="twitter:description" content="UMatch is a playful, data-driven platform for students, parents, and universities to connect, explore, and find the perfect academic match. Discover your archetype and get personalized recommendations powered by AI.">
+        <meta name="twitter:image" content="{{ public_path('social_media.png') }}">
+
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
         <script>
             (function() {
@@ -31,9 +53,8 @@
             }
         </style>
 
-        <title>{{ config('app.name', 'UMatch') }}</title>
-
         <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="icon" href="/favicon.png" sizes="any" type="image/png">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 

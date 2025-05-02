@@ -26,18 +26,21 @@ export default defineConfig(({ mode }) => {
             },
         },
         build: {
-            manifest: true,
-            outDir: 'public/build',
-            emptyOutDir: true,
-            rollupOptions: {
-                input: {
+            build: {
+                manifest: true,
+                outDir: 'public/build',
+                emptyOutDir: true,
+                manifestFileName: 'manifest.json', // ✅ ADD THIS LINE
+                rollupOptions: {
+                  input: {
                     app: resolve(__dirname, 'resources/js/app.tsx'),
-                },
-                output: {
+                  },
+                  output: {
                     manualChunks: undefined,
+                  },
                 },
-            },
-        },
+              },
+              
         server: {
             host: isLocal ? 'localhost' : '0.0.0.0',
             port: 5173,

@@ -26,18 +26,16 @@ export default defineConfig(({ mode }) => {
             },
         },
         build: {
-            build: {
-                manifest: true,
-                outDir: 'public/build',
-                emptyOutDir: true,
-                manifestFileName: 'manifest.json', // ✅ ADD THIS LINE
-                rollupOptions: {
-                  input: {
-                    app: resolve(__dirname, 'resources/js/app.tsx'),
-                  },
-                  output: {
-                    manualChunks: undefined,
-                  },
+            manifest: true,
+            outDir: 'public/build',
+            emptyOutDir: true,
+            manifestFileName: 'manifest.json', // ✅ ADD THIS LINE
+            rollupOptions: {
+                input: {
+                app: resolve(__dirname, 'resources/js/app.tsx'),
+                },
+                output: {
+                manualChunks: undefined,
                 },
             },
         },

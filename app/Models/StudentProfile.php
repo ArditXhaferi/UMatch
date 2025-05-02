@@ -27,6 +27,7 @@ class StudentProfile extends Model
         'credits',
         'consent_at',
         'parent_contact_email',
+        'analysis',
     ];
 
     /**
@@ -41,6 +42,7 @@ class StudentProfile extends Model
             'user_id' => 'integer',
             'date_of_birth' => 'date',
             'consent_at' => 'timestamp',
+            'analysis' => 'array',
         ];
     }
 

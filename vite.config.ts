@@ -37,5 +37,16 @@ export default defineConfig(({ mode }) => {
             strictPort: true,
             cors: true,
         },
+        build: {
+            outDir: 'public/build',
+            assetsDir: '',
+            manifest: true,
+            rollupOptions: {
+                output: {
+                    manualChunks: undefined,
+                },
+            },
+        },
+        base: isLocal ? undefined : '/build/',
     };
 });

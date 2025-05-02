@@ -23,7 +23,19 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('university_id')
+                    ->relationship('university', 'name'),
+                Forms\Components\TextInput::make('title')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('date')
+                    ->required(),
+                Forms\Components\TextInput::make('location')
+                    ->required(),
+                Forms\Components\TextInput::make('capacity')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Textarea::make('description')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,14 +43,33 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('university.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('date')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('location')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('capacity')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +78,19 @@ class EventResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageEvents::route('/'),
+            'index' => Pages\ListEvents::route('/'),
+            'create' => Pages\CreateEvent::route('/create'),
+            'edit' => Pages\EditEvent::route('/{record}/edit'),
         ];
     }
 }

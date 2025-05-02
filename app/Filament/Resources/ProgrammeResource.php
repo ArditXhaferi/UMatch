@@ -23,7 +23,29 @@ class ProgrammeResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('faculty_id')
+                    ->relationship('faculty', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('name')
+                    ->required(),
+                Forms\Components\TextInput::make('slug')
+                    ->required(),
+                Forms\Components\TextInput::make('tuition')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('ects')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('duration')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Toggle::make('scholarship_available')
+                    ->required(),
+                Forms\Components\Toggle::make('open_for_application')
+                    ->required(),
+                Forms\Components\DatePicker::make('deadline'),
+                Forms\Components\Textarea::make('description')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,14 +53,43 @@ class ProgrammeResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('faculty.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tuition')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('ects')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('duration')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('scholarship_available')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('open_for_application')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('deadline')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +98,19 @@ class ProgrammeResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageProgrammes::route('/'),
+            'index' => Pages\ListProgrammes::route('/'),
+            'create' => Pages\CreateProgramme::route('/create'),
+            'edit' => Pages\EditProgramme::route('/{record}/edit'),
         ];
     }
 }

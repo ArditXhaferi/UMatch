@@ -23,7 +23,14 @@ class EventBookingResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('student_profile_id')
+                    ->relationship('studentProfile', 'id')
+                    ->required(),
+                Forms\Components\Select::make('event_id')
+                    ->relationship('event', 'title')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('booked_at')
+                    ->required(),
             ]);
     }
 
@@ -31,14 +38,29 @@ class EventBookingResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('studentProfile.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('event.title')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('booked_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +69,19 @@ class EventBookingResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageEventBookings::route('/'),
+            'index' => Pages\ListEventBookings::route('/'),
+            'create' => Pages\CreateEventBooking::route('/create'),
+            'edit' => Pages\EditEventBooking::route('/{record}/edit'),
         ];
     }
 }

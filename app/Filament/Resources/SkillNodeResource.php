@@ -23,7 +23,16 @@ class SkillNodeResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('code')
+                    ->required(),
+                Forms\Components\TextInput::make('title')
+                    ->required(),
+                Forms\Components\TextInput::make('xp_required')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('icon'),
+                Forms\Components\Textarea::make('metadata')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,14 +40,29 @@ class SkillNodeResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('code')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('xp_required')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('icon')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +71,19 @@ class SkillNodeResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageSkillNodes::route('/'),
+            'index' => Pages\ListSkillNodes::route('/'),
+            'create' => Pages\CreateSkillNode::route('/create'),
+            'edit' => Pages\EditSkillNode::route('/{record}/edit'),
         ];
     }
 }

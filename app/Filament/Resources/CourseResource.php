@@ -23,7 +23,19 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('programme_id')
+                    ->relationship('programme', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('name')
+                    ->required(),
+                Forms\Components\TextInput::make('ects')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('semester')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Textarea::make('summary')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,14 +43,31 @@ class CourseResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('programme.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('ects')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('semester')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +76,19 @@ class CourseResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCourses::route('/'),
+            'index' => Pages\ListCourses::route('/'),
+            'create' => Pages\CreateCourse::route('/create'),
+            'edit' => Pages\EditCourse::route('/{record}/edit'),
         ];
     }
 }

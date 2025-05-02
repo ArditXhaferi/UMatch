@@ -23,7 +23,20 @@ class QuestResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('title')
+                    ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('json_steps')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('xp_reward')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('season'),
+                Forms\Components\Toggle::make('is_active')
+                    ->required(),
             ]);
     }
 
@@ -31,14 +44,29 @@ class QuestResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('xp_reward')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('season')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +75,19 @@ class QuestResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageQuests::route('/'),
+            'index' => Pages\ListQuests::route('/'),
+            'create' => Pages\CreateQuest::route('/create'),
+            'edit' => Pages\EditQuest::route('/{record}/edit'),
         ];
     }
 }

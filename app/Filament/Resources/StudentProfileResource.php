@@ -23,7 +23,24 @@ class StudentProfileResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->required(),
+                Forms\Components\DatePicker::make('date_of_birth'),
+                Forms\Components\TextInput::make('school'),
+                Forms\Components\TextInput::make('hexad_type'),
+                Forms\Components\TextInput::make('archetype_code'),
+                Forms\Components\TextInput::make('xp')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\TextInput::make('credits')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\DateTimePicker::make('consent_at'),
+                Forms\Components\TextInput::make('parent_contact_email')
+                    ->email(),
             ]);
     }
 
@@ -31,14 +48,43 @@ class StudentProfileResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('user.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('date_of_birth')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('school')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('hexad_type')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('archetype_code')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('xp')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('credits')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('consent_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('parent_contact_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +93,19 @@ class StudentProfileResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageStudentProfiles::route('/'),
+            'index' => Pages\ListStudentProfiles::route('/'),
+            'create' => Pages\CreateStudentProfile::route('/create'),
+            'edit' => Pages\EditStudentProfile::route('/{record}/edit'),
         ];
     }
 }

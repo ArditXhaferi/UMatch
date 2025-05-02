@@ -23,7 +23,16 @@ class SquadMemberResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('squad_id')
+                    ->relationship('squad', 'name')
+                    ->required(),
+                Forms\Components\Select::make('student_profile_id')
+                    ->relationship('studentProfile', 'id')
+                    ->required(),
+                Forms\Components\Toggle::make('is_leader')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('joined_at')
+                    ->required(),
             ]);
     }
 
@@ -31,14 +40,31 @@ class SquadMemberResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('squad.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('studentProfile.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('is_leader')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('joined_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +73,19 @@ class SquadMemberResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageSquadMembers::route('/'),
+            'index' => Pages\ListSquadMembers::route('/'),
+            'create' => Pages\CreateSquadMember::route('/create'),
+            'edit' => Pages\EditSquadMember::route('/{record}/edit'),
         ];
     }
 }

@@ -23,7 +23,12 @@ class BookmarkResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('student_profile_id')
+                    ->relationship('studentProfile', 'id')
+                    ->required(),
+                Forms\Components\Select::make('programme_id')
+                    ->relationship('programme', 'name')
+                    ->required(),
             ]);
     }
 
@@ -31,14 +36,26 @@ class BookmarkResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('studentProfile.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('programme.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +64,19 @@ class BookmarkResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageBookmarks::route('/'),
+            'index' => Pages\ListBookmarks::route('/'),
+            'create' => Pages\CreateBookmark::route('/create'),
+            'edit' => Pages\EditBookmark::route('/{record}/edit'),
         ];
     }
 }

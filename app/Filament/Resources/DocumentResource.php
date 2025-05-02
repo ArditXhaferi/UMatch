@@ -23,7 +23,13 @@ class DocumentResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('student_profile_id')
+                    ->relationship('studentProfile', 'id')
+                    ->required(),
+                Forms\Components\TextInput::make('type')
+                    ->required(),
+                Forms\Components\TextInput::make('path')
+                    ->required(),
             ]);
     }
 
@@ -31,14 +37,27 @@ class DocumentResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('studentProfile.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('path')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +66,19 @@ class DocumentResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageDocuments::route('/'),
+            'index' => Pages\ListDocuments::route('/'),
+            'create' => Pages\CreateDocument::route('/create'),
+            'edit' => Pages\EditDocument::route('/{record}/edit'),
         ];
     }
 }

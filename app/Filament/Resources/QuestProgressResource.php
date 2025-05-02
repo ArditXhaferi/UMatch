@@ -23,7 +23,21 @@ class QuestProgressResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('quest_id')
+                    ->relationship('quest', 'title')
+                    ->required(),
+                Forms\Components\Select::make('student_profile_id')
+                    ->relationship('studentProfile', 'id')
+                    ->required(),
+                Forms\Components\TextInput::make('current_step')
+                    ->required()
+                    ->numeric()
+                    ->default(0),
+                Forms\Components\Toggle::make('completed')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('started_at')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('completed_at'),
             ]);
     }
 
@@ -31,14 +45,37 @@ class QuestProgressResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('quest.title')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('studentProfile.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('current_step')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('completed')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('started_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('completed_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +84,19 @@ class QuestProgressResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageQuestProgress::route('/'),
+            'index' => Pages\ListQuestProgress::route('/'),
+            'create' => Pages\CreateQuestProgress::route('/create'),
+            'edit' => Pages\EditQuestProgress::route('/{record}/edit'),
         ];
     }
 }

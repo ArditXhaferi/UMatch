@@ -23,7 +23,17 @@ class ScholarshipResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('programme_id')
+                    ->relationship('programme', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('name')
+                    ->required(),
+                Forms\Components\TextInput::make('amount')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Textarea::make('description')
+                    ->columnSpanFull(),
+                Forms\Components\DatePicker::make('deadline'),
             ]);
     }
 
@@ -31,14 +41,31 @@ class ScholarshipResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('programme.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('amount')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('deadline')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -47,10 +74,19 @@ class ScholarshipResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageScholarships::route('/'),
+            'index' => Pages\ListScholarships::route('/'),
+            'create' => Pages\CreateScholarship::route('/create'),
+            'edit' => Pages\EditScholarship::route('/{record}/edit'),
         ];
     }
 }

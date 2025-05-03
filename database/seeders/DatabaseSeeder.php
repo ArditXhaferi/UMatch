@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             SchoolSeeder::class,
             CareerSeeder::class,
             SkillTreeSeeder::class,
+            QuestSeeder::class,
         ]);
     }
 }

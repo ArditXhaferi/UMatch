@@ -245,7 +245,7 @@ export default function Careers({ auth, studentProfile, careers, skillTree }: Ca
             .style('pointer-events', 'none'); // Prevent text from interfering with clicks
         
         // Add initial zoom to fit content
-        svg.call(zoom.transform, d3.zoomIdentity.translate(500, 400).scale(0.8));
+        svg.call(zoom.transform, d3.zoomIdentity.translate(-1200, -1200).scale(3.5));
     };
     
     // Zoom control handlers

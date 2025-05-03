@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 150);
             $table->text('description');
-            $table->json('json_steps');
+            $table->json('json_steps')->nullable();
             $table->integer('xp_reward');
             $table->string('season')->nullable();
             $table->boolean('is_active')->default(true);

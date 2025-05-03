@@ -20,7 +20,8 @@ class Application extends Model
         'programme_id',
         'status',
         'submitted_at',
-        'pdf_path',
+        'note',
+        'university_id'
     ];
 
     /**

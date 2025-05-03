@@ -10,6 +10,8 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\UniversityDetailsPage;
+use App\Http\Controllers\ApplicationsController;
 use App\Models\University;
 use App\Http\Controllers\UniversityData;
 
@@ -20,7 +22,19 @@ use App\Http\Controllers\UniversityData;
 //     return Inertia::render('welcome');
 // })->name('welcome');
 
+Route::get('/welcome',function(){
+    if(Auth::check()) {
+        return redirect()->route("dashboard");
+    }
+
+    return Inertia::render("welcome");
+})->name("welcome");
+
 Route::get('/',[LandingPageController::class,'landing_page']);
+Route::get('/universityDetails',[UniversityDetailsPage::class,'university_details_page']);
+
+Route::get("/universityApplication",[UniversityDetailsPage::class,"university_application"]);
+
 
 Route::middleware(['auth'])->group(function () {
     // File Upload Routes
@@ -355,7 +369,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             $response = $universityData->matchUsersWithUniversity(request());
 
             $responseData = $response->getData();
-            
+
             \Illuminate\Support\Facades\Log::info('University matches response', [
                 'success' => $responseData->success,
                 'matches_count' => isset($responseData->matches) ? count($responseData->matches) : 0,
@@ -364,7 +378,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             if ($responseData->success && isset($responseData->matches)) {
                 $universityMatches = json_decode(json_encode($responseData->matches), true);
-                
+
                 \Illuminate\Support\Facades\Log::info('University matches data', [
                     'matches' => array_map(function($match) {
                         return [
@@ -404,6 +418,11 @@ Route::controller(UniversityController::class)->group(function () {
     Route::post('/applications/reject', 'reject_application');
     Route::post('/applications/review', 'set_application_to_review');
 });
+
+Route::controller(ApplicationsController::class)->group(function(){
+    Route::post("/make_application","make_application");
+});
+
 
 
 

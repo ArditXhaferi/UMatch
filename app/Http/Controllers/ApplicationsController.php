@@ -23,8 +23,10 @@ class ApplicationsController extends Controller
         $validated_data = Validator::make($request->all(),[
             "university_id" => "required",
             "programme_id" => "required",
-            "pdf_path" => "required"
+            "note" => "required"
         ]);
+
+
 
         if($validated_data->fails()) {
             return response()->json(['success'=>false,'details'=>'Enter Programm To Apply']);
@@ -35,10 +37,10 @@ class ApplicationsController extends Controller
 
             $the_new_application_instance = Application::create([
                 'student_profile_id' => $student_profile->id,
-                'university_id' => $request->university_id,
+                'university_id' => (int)$request->university_id,
                 'programme_id' => $request->programme_id,
                 'submitted_at' => Carbon::now(),
-                'pdf_path' => $request->pdf_path
+                'note' => $request->note
             ]);
 
             if($the_new_application_instance) {

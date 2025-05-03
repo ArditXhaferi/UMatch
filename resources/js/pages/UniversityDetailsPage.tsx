@@ -1,4 +1,5 @@
 interface UniversityDetailsPageProps  {
+    university_id:number,
     university_name:string,
     image:string,
     university_logo:string,
@@ -7,7 +8,7 @@ interface UniversityDetailsPageProps  {
     address:string,
     website:string
 }
-const UniversityDetailsPage = ({university_name,image,university_logo,university_description,branches_offered,address,website}:UniversityDetailsPageProps) => {
+const UniversityDetailsPage = ({university_id,university_name,image,university_logo,university_description,branches_offered,address,website}:UniversityDetailsPageProps) => {
   return (
     <>
         <div className="w-full h-64 bg-[#9A2D2D] flex justify-center relative">
@@ -29,7 +30,7 @@ const UniversityDetailsPage = ({university_name,image,university_logo,university
                 </div>
 
                 <div className="mt-3 sm:mt-0 sm:absolute sm:top-[50%] sm:right-0 sm:transform sm:translate-y-[-50%]">
-                <button className="bg-[#9A2D2D] text-white font-etna font-bold py-2 px-4 sm:py-3 sm:px-5 rounded-md cursor-pointer text-sm sm:text-base">Apply Now</button>
+                    <button onClick={(e) => {window.location.href = `/universityApplication?university_id=${university_id}`}} className="bg-[#9A2D2D] text-white font-etna font-bold py-2 px-4 sm:py-3 sm:px-5 rounded-md cursor-pointer text-sm sm:text-base">Apply Now</button>
                 </div>
             </div>
         </div>

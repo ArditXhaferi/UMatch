@@ -21,6 +21,7 @@ class UniversityDetailsPage extends Controller
             $the_university_instance = University::find($request->query("university_id"));
 
             $the_university_data = [
+                'university_id' => $the_university_instance->id,
                 'university_name' => $the_university_instance->university_name,
                 'image' => $the_university_instance->image,
                 'university_logo' => $the_university_instance->logo,
@@ -34,5 +35,20 @@ class UniversityDetailsPage extends Controller
         } catch(Exception $e) {
             return response()->json(['success'=>false,'details'=>$e->getMessage()]);
         }
+    }
+
+    public function university_application(Request $request) {
+        try{
+            $the_university_id = $request->query("university_id");
+            $the_university_instance = University::find((int)$the_university_id);
+
+            return Inertia::render("UniversityApplication",[
+                'university_id' => $the_university_id,
+                'branches_offered' => $the_university_instance->branches_offered
+            ]);
+        } catch(Exception $e) {
+            return response()->json(['success'=>false,'details'=>$e->getMessage()]);
+        }
+
     }
 }

@@ -27,8 +27,23 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            // For API requests that need tokens
+            if ($request->wantsJson() || $request->expectsJson()) {
+                // Regenerate session if available
+                if ($request->hasSession()) {
+                    $request->session()->regenerate();
+                }
+                
+                return response()->json([
+                    'message' => 'Login successful',
+                    'user' => Auth::user(),
+                    'redirect' => '/dashboard'
+                ]);
+            }
+            
+            // For web requests with session
             $request->session()->regenerate();
-
+            
             return response()->json([
                 'message' => 'Login successful',
                 'user' => Auth::user(),

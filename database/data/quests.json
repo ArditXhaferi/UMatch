@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "title": "Visit five university websites",
+        "description": "Explore five different university profiles to discover their programs and opportunities.",
+        "xp_reward": 60,
+        "json_steps":null,
+        "season": 1,
+        "is_active": true
+    },
+
+    {
+        "id":3,
+        "title": "Send a message to two universities",
+        "description": "Reach out and ask questions to two different university representatives.",
+        "xp_reward": 70,
+        "json_steps":null,
+
+        "season": 1,
+        "is_active": true
+    },
+
+    {
+        "id":4,
+        "title": "Complete the university interest quiz",
+        "description": "Take a short quiz to discover which universities align best with your interests.",
+        "xp_reward": 80,
+        "json_steps":null,
+        "season": 1,
+        "is_active": true
+    },
+    {
+        "id":2,
+        "title": "Upload your LinkedIn profile",
+        "description": "Link your LinkedIn profile to showcase your professional background to universities.",
+        "xp_reward": 100,
+        "json_steps":null,
+        "season": 1,
+        "is_active": true
+    }
+
+]

@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ArchetypeSeeder::class,
             StudentProfileSeeder::class,
+            SchoolSeeder::class,
+            CareerSeeder::class,
+            SkillTreeSeeder::class,
         ]);
-
-
     }
 }

@@ -39,7 +39,7 @@ const IntroScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] transition-opacity duration-700 ${
+      className={`fixed inset-0 z-[9999] transition-opacity duration-700 bg-[#FAF8F6] ${
         isFadingOut ? "opacity-0 pointer-events-none" : ""
       }`}
     >

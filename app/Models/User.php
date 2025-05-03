@@ -53,4 +53,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(StudentProfile::class);
     }
+
+    /**
+     * Check if the user is a university administrator.
+     */
+    public function isUniversity(): bool
+    {
+        return $this->role === 'university_admin';
+    }
+
+    /**
+     * Get the university associated with the user.
+     */
+    public function university()
+    {
+        return $this->hasOne(University::class);
+    }
 }

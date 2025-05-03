@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             SkillTreeSeeder::class,
             QuestSeeder::class,
             UniversitySeeder::class,
+            CalendarEventSeeder::class,
         ]);
     }
 }

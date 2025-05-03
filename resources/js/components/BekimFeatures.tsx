@@ -5,13 +5,13 @@ import bekimImage from '../pages/assets/home/largebekim.png'; // Adjust path as 
 const BekimFeatures = () => {
   return (
     <section className="w-screen h-[350px] bg-[#9F262A] text-white flex items-center justify-center m-0 p-0">
-      <div className="w-full max-w-6xl px-4 flex flex-col md:flex-row items-center justify-around gap-10 md:gap-10">
+      <div className="w-full max-w-6xl px-4 flex flex-col md:flex-row items-center justify-around gap-2  md:gap-10">
         {/* Left: Bekim Image */}
         <div className="flex-shrink-0">
           <img
             src={bekimImage}
             alt="Bekim the Bear"
-            className="w-48 h-[400px] md:w-48 lg:w-52 bg-transparent -mt-24"
+            className="h-[150px] md:h-[400px] md:w-48 lg:w-52 bg-transparent -mt-24"
           />
         </div>
 

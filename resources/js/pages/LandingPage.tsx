@@ -24,52 +24,59 @@ enum Step {
   RESULTS,
 }
 
-// Login Modal Component
-const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) => {
+// Register Modal Component
+const RegisterModal = ({ 
+  isOpen, 
+  setIsOpen,
+  setIsLoginOpen 
+}: { 
+  isOpen: boolean; 
+  setIsOpen: (open: boolean) => void;
+  setIsLoginOpen: (open: boolean) => void;
+}) => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
     
     try {
-      // You can replace this with your actual API call
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
         },
-        body: JSON.stringify({ email, password, remember: rememberMe }),
+        credentials: 'include',
+        body: JSON.stringify({ 
+          name,
+          email, 
+          password,
+          password_confirmation: passwordConfirmation 
+        }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Login failed');
+        throw new Error(data.message || 'Registration failed');
       }
 
-      // If login is successful
-      // Successful login will include user data and token
-      await response.json();
+      // Close the modal on successful registration
+      setIsOpen(false);
       
-      // Redirect to dashboard
-      window.location.href = '/dashboard';
+      // Redirect to dashboard using the URL from the response
+      window.location.href = data.redirect || '/dashboard';
 
-    } catch {
-      // For demo purposes, let's just simulate a successful login
-      console.log('Login attempted with:', { email, password, rememberMe });
-      
-      // In a real implementation, you would uncomment this line and show the error:
-      // setError('Invalid credentials. Please try again.');
-      
-      // DEMO: After 1 second, redirect to dashboard
-      setTimeout(() => {
-        window.location.href = '/dashboard';
-      }, 1000);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'An error occurred during registration');
     } finally {
       setIsLoading(false);
     }
@@ -79,17 +86,17 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-md p-0 overflow-hidden bg-white rounded-xl">
         <DialogHeader className="bg-[#9F262A] relative text-white p-6">
-          <DialogTitle className="text-xl font-semibold">Welcome Back</DialogTitle>
+          <DialogTitle className="text-xl font-semibold">Create Account</DialogTitle>
           <button 
             onClick={() => setIsOpen(false)} 
             className="absolute right-5 top-5 text-white hover:text-gray-200"
           >
             <XMarkIcon className="w-5 h-5" />
           </button>
-          <p className="text-sm opacity-90 mt-1">Sign in to continue your educational journey</p>
+          <p className="text-sm opacity-90 mt-1">Join UMatch to start your educational journey</p>
         </DialogHeader>
         
-        <form onSubmit={handleLogin} className="p-6 space-y-5">
+        <form onSubmit={handleRegister} className="p-6 space-y-5">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm">
               {error}
@@ -98,7 +105,19 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
           
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label className="text-[#9F262A]" htmlFor="name">Full Name</Label>
+              <Input 
+                id="name" 
+                type="text" 
+                placeholder="John Doe" 
+                required 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-[#9F262A]" htmlFor="email">Email</Label>
               <Input 
                 id="email" 
                 type="email" 
@@ -110,10 +129,7 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
               />
             </div>
             <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <Label htmlFor="password">Password</Label>
-                <a href="#" className="text-xs text-[#9F262A] hover:underline text-black">Forgot password?</a>
-              </div>
+              <Label className="text-[#9F262A]" htmlFor="password">Password</Label>
               <Input 
                 id="password" 
                 type="password" 
@@ -123,17 +139,16 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
                 className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
               />
             </div>
-            <div className="flex items-center">
-              <input 
-                type="checkbox" 
-                id="remember" 
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-[#9F262A] focus:ring-[#D86D70]" 
+            <div className="space-y-2">
+              <Label className="text-[#9F262A]" htmlFor="password_confirmation">Confirm Password</Label>
+              <Input 
+                id="password_confirmation" 
+                type="password" 
+                required 
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
               />
-              <label htmlFor="remember" className="ml-2 block text-sm text-gray-700">
-                Remember me
-              </label>
             </div>
           </div>
           
@@ -149,21 +164,180 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Signing in...
+                  Creating account...
                 </div>
-              ) : 'Sign in'}
+              ) : 'Create Account'}
             </Button>
           </div>
           
           <div className="text-center text-sm text-gray-600 mt-6">
-            Don't have an account?{' '}
-            <a href="/register" className="text-[#9F262A] hover:underline">
-              Create an account
-            </a>
+            Already have an account?{' '}
+            <button 
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+                setIsLoginOpen(true);
+              }}
+              className="text-[#9F262A] hover:underline"
+            >
+              Sign in
+            </button>
           </div>
         </form>
       </DialogContent>
     </Dialog>
+  );
+};
+
+// Login Modal Component
+const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: boolean) => void }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState('');
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+    
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email, password, remember: rememberMe }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed');
+      }
+
+      // Close the modal on successful login
+      setIsOpen(false);
+      
+      // Redirect to dashboard using the URL from the response
+      window.location.href = data.redirect || '/dashboard';
+
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'An error occurred during login');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="sm:max-w-md p-0 overflow-hidden bg-white rounded-xl">
+          <DialogHeader className="bg-[#9F262A] relative text-white p-6">
+            <DialogTitle className="text-xl font-semibold">Welcome Back</DialogTitle>
+            <button 
+              onClick={() => setIsOpen(false)} 
+              className="absolute right-5 top-5 text-white hover:text-gray-200"
+            >
+              <XMarkIcon className="w-5 h-5" />
+            </button>
+            <p className="text-sm opacity-90 mt-1">Sign in to continue your educational journey</p>
+          </DialogHeader>
+          
+          <form onSubmit={handleLogin} className="p-6 space-y-5">
+            {error && (
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm">
+                {error}
+              </div>
+            )}
+            
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  placeholder="your.email@example.com" 
+                  required 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <Label htmlFor="password">Password</Label>
+                </div>
+                <Input 
+                  id="password" 
+                  type="password" 
+                  required 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="********"
+                  className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
+                />
+              </div>
+              <div className="flex items-center">
+                <input 
+                  type="checkbox" 
+                  id="remember" 
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="h-4 w-4 rounded border-gray-300 text-[#9F262A] focus:ring-[#D86D70]" 
+                />
+                <label htmlFor="remember" className="ml-2 block text-sm text-gray-700">
+                  Remember me
+                </label>
+              </div>
+            </div>
+            
+            <div className="pt-2">
+              <Button 
+                type="submit" 
+                className="w-full bg-[#9F262A] hover:bg-[#D86D70] text-white py-2"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Signing in...
+                  </div>
+                ) : 'Sign in'}
+              </Button>
+            </div>
+            
+            <div className="text-center text-sm text-gray-600 mt-6">
+              Don't have an account?{' '}
+              <button 
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsRegisterOpen(true);
+                }}
+                className="text-[#9F262A] hover:underline"
+              >
+                Create an account
+              </button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      <RegisterModal 
+        isOpen={isRegisterOpen} 
+        setIsOpen={setIsRegisterOpen} 
+        setIsLoginOpen={setIsOpen}
+      />
+    </>
   );
 };
 
@@ -172,7 +346,7 @@ const LandingPage = () => {
   // Both personalityResult and setPersonalityResult are used in the RESULTS section
   const [personalityResult, setPersonalityResult] = useState<PersonalityResult | null>(null);
   const [activeTab, setActiveTab] = useState<'universities' | 'careers'>('universities');
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   // Add login button to header functionality
@@ -448,7 +622,7 @@ const LandingPage = () => {
                   <a href="#" aria-label="Instagram" className="hover:scale-110 transition-transform">
                       {/* Instagram SVG */}
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-current text-white" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.309.975.975 1.247 2.242 1.309 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.309 3.608-.975.975-2.242 1.247-3.608 1.309-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.309-.975-.975-1.247-2.242-1.309-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.309-3.608.975-.975 2.242-1.247 3.608-1.309C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.13 4.602.405 3.635 1.372 2.668 2.339 2.393 3.512 2.335 4.789.013 8.332 0 8.741 0 12s.013 3.668.072 4.948c.058 1.277.333 2.45 1.3 3.417.967.967 2.14 1.242 3.417 1.3 1.28.059 1.689.072 4.948.072s3.668-.013 4.948-.072c1.277-.058 2.45-.333 3.417-1.3.967-.967 1.242-2.14 1.3-3.417.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.058-1.277-.333-2.45-1.3-3.417-.967-.967-2.14-1.242-3.417-1.3C15.668.013 15.259 0 12 0z"/>
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.309.975.975 1.247 2.242 1.309 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.309 3.608-.975.975-2.242 1.247-3.608 1.309-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.309-.975-.975-1.247-2.242-1.309-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.309-3.608.967-.967 2.14-1.242 3.417-1.3 1.28.059 1.689.072 4.948.072s3.668-.013 4.948-.072c1.277-.058 2.45-.333 3.417-1.3.967-.967 1.242-2.14 1.3-3.417.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.058-1.277-.333-2.45-1.3-3.417-.967-.967-2.14-1.242-3.417-1.3C15.668.013 15.259 0 12 0z"/>
                       <path d="M12 5.838A6.162 6.162 0 005.838 12 6.162 6.162 0 0012 18.162 6.162 6.162 0 0018.162 12 6.162 6.162 0 0012 5.838zm0 10.324A4.162 4.162 0 017.838 12 4.162 4.162 0 0112 7.838 4.162 4.162 0 0116.162 12 4.162 4.162 0 0112 16.162z"/>
                       <circle cx="18.406" cy="5.594" r="1.44"/>
                       </svg>

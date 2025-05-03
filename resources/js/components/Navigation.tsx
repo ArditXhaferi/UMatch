@@ -5,13 +5,14 @@ import { StarIcon } from '@heroicons/react/24/outline';
 // Avatar Dropdown Component
 interface AvatarDropdownProps {
     userName: string;
-    archetypeCode: string;
-    hexadType: string;
-    level: number;
-    hasXp: boolean;
+    archetypeCode?: string;
+    hexadType?: string;
+    level?: number;
+    hasXp?: boolean;
+    isUniversityAdmin?: boolean;
 }
 
-function AvatarDropdown({ userName, archetypeCode, hexadType, level, hasXp }: AvatarDropdownProps) {
+function AvatarDropdown({ userName, archetypeCode, hexadType, level, hasXp, isUniversityAdmin }: AvatarDropdownProps) {
     const [isOpen, setIsOpen] = React.useState(false);
     const dropdownRef = React.useRef<HTMLDivElement>(null);
     
@@ -43,12 +44,18 @@ function AvatarDropdown({ userName, archetypeCode, hexadType, level, hasXp }: Av
                     onClick={() => setIsOpen(!isOpen)}
                     type="button"
                 >
-                    <img 
-                        src={`/images/${archetypeCode}.png`}
-                        alt={`${hexadType} Character`}
-                        className="h-8 w-8 rounded-full object-cover border border-gray-200"
-                    />
-                    {hasXp && (
+                    {isUniversityAdmin ? (
+                        <div className="h-8 w-8 rounded-full bg-[#9A2D2D] flex items-center justify-center text-white font-bold">
+                            U
+                        </div>
+                    ) : (
+                        <img 
+                            src={`/images/${archetypeCode}.png`}
+                            alt={`${hexadType} Character`}
+                            className="h-8 w-8 rounded-full object-cover border border-gray-200"
+                        />
+                    )}
+                    {hasXp && !isUniversityAdmin && (
                         <div className="absolute -bottom-1 -right-1 bg-[#9A2D2D] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                             {level}
                         </div>
@@ -63,6 +70,11 @@ function AvatarDropdown({ userName, archetypeCode, hexadType, level, hasXp }: Av
                         <Link href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             Settings
                         </Link>
+                        {isUniversityAdmin && (
+                            <Link href="/university/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                University Profile
+                            </Link>
+                        )}
                         <button 
                             onClick={() => router.post('/logout')}
                             className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -92,12 +104,14 @@ interface NavigationProps {
         credits?: number;
         school?: string;
     } | null;
-    currentPage?: 'home' | 'universities' | 'careers' | 'other';
+    isUniversityAdmin?: boolean;
+    currentPage?: 'home' | 'universities' | 'careers' | 'university-dashboard' | 'university-applications' | 'university-events' | 'university-programs' | 'university-analytics' | 'other';
 }
 
 export default function Navigation({ 
     auth, 
     studentProfile, 
+    isUniversityAdmin = false,
     currentPage = 'other' 
 }: NavigationProps) {
     // Calculate current level based on XP
@@ -115,46 +129,83 @@ export default function Navigation({
                             </Link>
                         </div>
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            <Link 
-                                href="/dashboard" 
-                                className={`${currentPage === 'home' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                            >
-                                Home
-                            </Link>
-                            <Link 
-                                href="/universities" 
-                                className={`${currentPage === 'universities' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                            >
-                                Universities
-                            </Link>
-                            <Link 
-                                href="/careers" 
-                                className={`${currentPage === 'careers' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                            >
-                                Careers
-                            </Link>
+                            {isUniversityAdmin ? (
+                                <>
+                                    <Link 
+                                        href="/university/dashboard" 
+                                        className={`${currentPage === 'university-dashboard' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Dashboard
+                                    </Link>
+                                    <Link 
+                                        href="/university/applications" 
+                                        className={`${currentPage === 'university-applications' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Applications
+                                    </Link>
+                                    <Link 
+                                        href="/university/events" 
+                                        className={`${currentPage === 'university-events' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Events
+                                    </Link>
+                                    <Link 
+                                        href="/university/programs" 
+                                        className={`${currentPage === 'university-programs' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Programs
+                                    </Link>
+                                    <Link 
+                                        href="/university/analytics" 
+                                        className={`${currentPage === 'university-analytics' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Analytics
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <Link 
+                                        href="/dashboard" 
+                                        className={`${currentPage === 'home' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Home
+                                    </Link>
+                                    <Link 
+                                        href="/universities" 
+                                        className={`${currentPage === 'universities' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Universities
+                                    </Link>
+                                    <Link 
+                                        href="/careers" 
+                                        className={`${currentPage === 'careers' ? 'border-[#9A2D2D] text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                    >
+                                        Careers
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
-                    {studentProfile && (
-                        <div className="flex items-center space-x-4">
-                            {/* XP Display */}
+                    <div className="flex items-center space-x-4">
+                        {studentProfile && !isUniversityAdmin && (
                             <div className="flex items-center bg-[#9A2D2D] bg-opacity-10 px-3 py-1 rounded-full">
-                                <StarIcon className="h-5 w-5 text-[#9A2D2D] mr-1" />
-                                <span className="text-sm font-medium text-[#9A2D2D]">{currentXp} XP</span>
+                                <StarIcon className="h-5 w-5 text-white mr-1" />
+                                <span className="text-sm font-medium text-white">{currentXp} XP</span>
                             </div>
-                            
-                            {/* User Avatar with Dropdown */}
-                            <div className="ml-3 relative">
-                                <AvatarDropdown 
-                                    userName={auth.user.name}
-                                    archetypeCode={studentProfile.archetype_code}
-                                    hexadType={studentProfile.hexad_type}
-                                    level={currentLevel}
-                                    hasXp={currentXp > 0}
-                                />
-                            </div>
+                        )}
+                        
+                        {/* User Avatar with Dropdown */}
+                        <div className="ml-3 relative">
+                            <AvatarDropdown 
+                                userName={auth.user.name}
+                                archetypeCode={studentProfile?.archetype_code}
+                                hexadType={studentProfile?.hexad_type}
+                                level={currentLevel}
+                                hasXp={currentXp > 0}
+                                isUniversityAdmin={isUniversityAdmin}
+                            />
                         </div>
-                    )}
+                    </div>
                 </div>
             </div>
         </nav>

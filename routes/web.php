@@ -14,6 +14,13 @@ use App\Http\Controllers\UniversityDetailsPage;
 use App\Http\Controllers\ApplicationsController;
 use App\Models\University;
 use App\Http\Controllers\UniversityData;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UniversityDashboardController;
+use App\Http\Controllers\University\ApplicationController as UniversityApplicationController;
+use App\Http\Controllers\University\EventController as UniversityEventController;
+use App\Http\Controllers\University\ProgramController as UniversityProgramController;
+use App\Http\Controllers\University\AnalyticsController as UniversityAnalyticsController;
+use App\Http\Controllers\University\ProfileController as UniversityProfileController;
 
 // Route::get('/', function () {
 //     if (Auth::check()) {
@@ -424,7 +431,21 @@ Route::controller(ApplicationsController::class)->group(function(){
 });
 
 
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    // University Dashboard
+    Route::get('/university-dashboard', [UniversityDashboardController::class, 'index'])->name('university.dashboard');
+});
 
+// University Routes
+Route::middleware(['auth'])->prefix('university')->group(function () {
+    Route::get('/dashboard', [UniversityDashboardController::class, 'index'])->name('university.dashboard');
+    Route::get('/applications', [UniversityApplicationController::class, 'index'])->name('university.applications');
+    Route::get('/events', [UniversityEventController::class, 'index'])->name('university.events');
+    Route::get('/programs', [UniversityProgramController::class, 'index'])->name('university.programs');
+    Route::get('/analytics', [UniversityAnalyticsController::class, 'index'])->name('university.analytics');
+    Route::get('/profile/{university}', [UniversityProfileController::class, 'edit'])->name('university.profile.edit');
+    Route::put('/profile/{university}', [UniversityProfileController::class, 'update'])->name('university.profile.update');
+});
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

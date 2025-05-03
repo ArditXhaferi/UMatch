@@ -1,697 +1,757 @@
-[
- 
-      {
-        "id": 1,
-        "university_name": "University of Tirana",
-        "city": "Tirana",
-        "description": "The University of Tirana is the largest and most prestigious university in Albania, offering a wide range of programs across various disciplines. Founded in 1957, it has a rich history of academic excellence and is renowned for its contributions to research and innovation. The university is home to numerous faculties, including Law, Economics, Social Sciences, and Natural Sciences, and is committed to fostering a dynamic and inclusive learning environment.",
-        "website": "http://www.unitir.edu.al",
-        "logo": "https://unitir.edu.al/wp-content/uploads/2019/08/logo.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Sheshi Nënë Tereza, Tiranë, Albania",
-        "branches_offered": [
-          "Law",
-          "Economics",
-          "Social Sciences",
-          "Natural Sciences"
-        ],
-        "qualities_sought": [
-          "Academic excellence",
-          "Leadership skills",
-          "Community involvement"
-        ],
-        "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800026/0a62780cfd74f2903d0bbceac471d9a07b2fb4ce.jpg?s=640"
-      },
-      {
-        "id": 2,
-        "university_name": "Polytechnic University of Tirana",
-        "city": "Tirana",
-        "description": "The Polytechnic University of Tirana is a leading institution in engineering and technology, known for its cutting-edge research and innovative programs. Established in 1951, it offers a comprehensive range of degrees in Engineering, Architecture, and Information Technology. The university is dedicated to preparing students for the challenges of the modern world through hands-on learning and industry collaborations.",
-        "website": "http://www.upt.al",
-        "logo": "",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Sheshi Nënë Tereza, Tiranë, Albania",
-        "branches_offered": [
-          "Engineering",
-          "Architecture",
-          "Information Technology"
-        ],
-        "qualities_sought": [
-          "Innovation",
-          "Problem-solving skills",
-          "Technical proficiency"
-        ],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6K-ZxY2H_8CwOXXcRQjO9aw_FW9sU7DsNg&s"
-      },
-      {
-        "id": 3,
-        "university_name": "Agricultural University of Tirana",
-        "city": "Tirana",
-        "description": "The Agricultural University of Tirana is dedicated to advancing agricultural sciences and related fields. Founded in 1951, it offers programs in Agriculture, Forestry, and Veterinary Medicine. The university is committed to sustainable development and environmental conservation, providing students with practical skills and research opportunities to address global agricultural challenges.",
-        "website": "http://www.ubt.edu.al",
-        "logo": "https://www.ubt.edu.al/web/image/website/1/logo/Universiteti%20Bujq%C3%ABsor%20i%20Tiran%C3%ABs?unique=c1bb49c",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Koder Kamez, Tiranë, Albania",
-        "branches_offered": [
-          "Agriculture",
-          "Forestry",
-          "Veterinary Medicine"
-        ],
-        "qualities_sought": [
-          "Practical skills",
-          "Research aptitude",
-          "Environmental awareness"
-        ],
-        "image": "https://media.licdn.com/dms/image/v2/C4E1BAQFRQPbNUKXXbw/company-background_10000/company-background_10000/0/1605780768129/agriculture_university_of_tirana_cover?e=2147483647&v=beta&t=dNuyXfCpttcvJ62iENfcZT1fmtZH02vPs7oPylVihVI"
-      },
-      {
-        "id": 4,
-        "university_name": "University of Medicine, Tirana",
-        "city": "Tirana",
-        "description": "The University of Medicine, Tirana is a premier institution dedicated to medical sciences and healthcare education. Established in 1952, it offers comprehensive programs in Medicine, Dentistry, Pharmacy, and Public Health. The university is renowned for its rigorous academic standards, state-of-the-art facilities, and commitment to producing highly skilled healthcare professionals.",
-        "website": "http://umed.edu.al/",
-        "logo": "http://umed.edu.al/wp-content/uploads/2017/03/universiteti-i-mjekesise-logo-login-1.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Dibres, Tiranë, Albania",
-        "branches_offered": [
-          "Medicine",
-          "Dentistry",
-          "Pharmacy",
-          "Public Health"
-        ],
-        "qualities_sought": [
-          "Empathy",
-          "Scientific rigor",
-          "Clinical skills"
-        ],
-        "image": "https://i0.wp.com/mymedschool.org/wp-content/uploads/2021/08/university-of-medicine-of-tirana-faculty-of-medicine-2.jpg?fit=680%2C382&ssl=1&w=640"
-      },
-      {
-        "id": 5,
-        "university_name": "University of Arts, Tirana",
-        "city": "Tirana",
-        "description": "The University of Arts, Tirana is a hub for creativity and artistic expression, offering programs in Fine Arts, Music, Theatre, and Film. Established in 1966, the university fosters a vibrant community of artists, providing students with the tools and inspiration to excel in their chosen fields. The institution is known for its innovative approach to arts education and its contributions to Albania's cultural landscape.",
-        "website": "http://www.unitirana.edu.al",
-        "logo": "https://www.edarabia.com/wp-content/uploads/2018/03/university-arts-tirana-albania.jpg",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Bulevardi Dëshmorët e Kombit, Tiranë, Albania",
-        "branches_offered": [
-          "Fine Arts",
-          "Music",
-          "Theatre",
-          "Film"
-        ],
-        "qualities_sought": [
-          "Creativity",
-          "Artistic talent",
-          "Cultural awareness"
-        ],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiMun-6HHY-06pVULnFres7Lxbx9o2ervqjg&s"
-      },
-      {
-        "id": 6,
-        "university_name": "European University of Tirana",
-        "city": "Tirana",
-        "description": "The European University of Tirana is known for its international collaborations and modern curriculum. Established in 2006, it offers programs in Business, Law, Architecture, and Computer Science. The university is committed to providing a global education experience, with a focus on innovation, critical thinking, and preparing students for the challenges of the 21st century.",
-        "website": "http://www.uet.edu.al",
-        "logo": "https://uet.edu.al/wp-content/uploads/2022/12/Logo-pa-adrese.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Reshit Petrela, Tiranë, Albania",
-        "branches_offered": [
-          "Business",
-          "Law",
-          "Architecture",
-          "Computer Science"
-        ],
-        "qualities_sought": [
-          "Global mindset",
-          "Innovation",
-          "Critical thinking"
-        ],
-        "image": "https://images.app.goo.gl/yoMmxtEy9samfsrg9"
-      },
-      {
-        "id": 7,
-        "university_name": "Epoka University",
-        "city": "Tirana",
-        "description": "Epoka University is a private institution with a strong focus on research and international standards. Founded in 2007, it offers programs in Engineering, Architecture, Business, and Political Science. The university is dedicated to fostering a culture of academic excellence, ethical standards, and leadership, providing students with a comprehensive education that prepares them for global success.",
-        "website": "https://www.epoka.edu.al",
-        "logo": "https://epoka.edu.al/assets/images/logo1.svg",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Tiranë-Rinas, Km 12, Rinas, Albania",
-        "branches_offered": [
-          "Engineering",
-          "Architecture",
-          "Business",
-          "Political Science"
-        ],
-        "qualities_sought": [
-          "Research skills",
-          "Leadership",
-          "Ethical standards"
-        ],
-        "image": "https://images.app.goo.gl/15KLcQhxjcv6Znt68"
-      },
-      {
-        "id": 8,
-        "university_name": "Beder University",
-        "city": "Tirana",
-        "description": "Beder University offers a variety of programs with a focus on humanities and social sciences. Established in 2011, it provides education in Law, Economics, Communication, and Islamic Studies. The university is committed to promoting cultural sensitivity, analytical skills, and effective communication, preparing students to be responsible and informed global citizens.",
-        "website": "https://www.beder.edu.al",
-        "logo": "",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Bylis, Kashar, Tiranë, Albania",
-        "branches_offered": [
-          "Law",
-          "Economics",
-          "Communication",
-          "Islamic Studies"
-        ],
-        "qualities_sought": [
-          "Cultural sensitivity",
-          "Analytical skills",
-          "Communication skills"
-        ],
-        "image": "https://images.app.goo.gl/xLESLJDL5PtoN3is7"
-      },
-      {
-        "id": 9,
-        "university_name": "Aleksandër Moisiu University",
-        "city": "Durres",
-        "description": "Aleksandër Moisiu University, located in Durrës, offers a range of academic programs designed to meet the needs of a diverse student body. Established in 2005, it provides education in Business, Education, Information Technology, and Nursing. The university is dedicated to fostering professionalism, teamwork, and adaptability, ensuring that students are well-prepared for their future careers.",
-        "website": "https://uamd.edu.al/en/",
-        "logo": "https://uamd.edu.al/wp-content/uploads/2022/07/Universiteti_i_Durresit__Aleksander_Moisiu_.svg.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Lagjia Nr 3, Rruga Currila, Durrës, Albania",
-        "branches_offered": [
-          "Business",
-          "Education",
-          "Information Technology",
-          "Nursing"
-        ],
-        "qualities_sought": [
-          "Professionalism",
-          "Teamwork",
-          "Adaptability"
-        ],
-        "image": "https://images.app.goo.gl/5nUTtLSu5ACzL7aR7"
-      },
-      {
-        "id": 10,
-        "university_name": "University of Vlora",
-        "city": "Vlora",
-        "description": "The University of Vlora is renowned for its programs in marine sciences and environmental studies. Established in 1994, it offers degrees in Marine Sciences, Environmental Engineering, Economics, and Law. The university is committed to environmental consciousness, research, and problem-solving, providing students with the knowledge and skills to address global environmental challenges.",
-        "website": "https://univlora.edu.al/",
-        "logo": "https://univlora.edu.al/wp-content/uploads/2015/02/cropped-UV_LOGO2.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Skele, Vlorë, Albania",
-        "branches_offered": [
-          "Marine Sciences",
-          "Environmental Engineering",
-          "Economics",
-          "Law"
-        ],
-        "qualities_sought": [
-          "Environmental consciousness",
-          "Research skills",
-          "Problem-solving"
-        ],
-        "image": "https://r2.cdnimpuls.com/o.anabel.al/media3/5df488a0da2a9.jpg"
-      },
-      {
-        "id": 11,
-        "university_name": "Fan S. Noli University",
-        "city": "Korçë",
-        "description": "Fan S. Noli University in Korçë offers a variety of programs with a focus on regional development. Established in 1971, it provides education in Agriculture, Education, Nursing, and Tourism. The university is dedicated to community engagement, leadership, and innovation, preparing students to contribute to the development of their communities and the broader region.",
-        "website": "https://unkorce.edu.al/",
-        "logo": "https://unkorce.edu.al/wp-content/uploads/2024/08/Logo_e_Universitetit__Fan_Noli_-e1726660879862.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga e Elbasanit, Korçë, Albania",
-        "branches_offered": [
-          "Agriculture",
-          "Education",
-          "Nursing",
-          "Tourism"
-        ],
-        "qualities_sought": [
-          "Community engagement",
-          "Leadership",
-          "Innovation"
-        ],
-        "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800004/27f1b8832463bc2a470e922c0cccc2b357640c55.jpg?s=640"
-      },
-      {
-        "id": 12,
-        "university_name": "University of Shkodra",
-        "city": "Shkodra",
-        "description": "The University of Shkodra offers programs in various fields, including education and social sciences. Established in 1957, it provides a comprehensive education in Education, Social Sciences, Business, and History. The university is committed to fostering critical thinking, communication skills, and research aptitude, ensuring that students are well-equipped to tackle the challenges of the modern world.",
-        "website": "https://unishk.edu.al/",
-        "logo": "https://unishk.edu.al/fileadmin/template/images/logo/logo.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Studenti, Shkodër, Albania",
-        "branches_offered": [
-          "Education",
-          "Social Sciences",
-          "Business",
-          "History"
-        ],
-        "qualities_sought": [
-          "Critical thinking",
-          "Communication skills",
-          "Research aptitude"
-        ],
-        "image": "https://unishk.edu.al/fileadmin/_processed_/1/4/csm_fshn_71032e2390.jpg"
-      },
-      {
-        "id": 13,
-        "university_name": "Eqrem Çabej University",
-        "city": "Gjirokastër",
-        "description": "Eqrem Çabej University in Gjirokastër focuses on regional development and cultural studies. Established in 1968, it offers programs in Education, Business, Tourism, and Cultural Studies. The university is dedicated to promoting cultural awareness, leadership, and innovation, preparing students to contribute to the preservation and development of cultural heritage.",
-        "website": "https://uogj.edu.al/",
-        "logo": "https://uogj.edu.al/wp-content/uploads/2021/04/UNIVERSITEI_I_GJIROKASTRES1.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Eqrem Çabej, Gjirokastër, Albania",
-        "branches_offered": [
-          "Education",
-          "Business",
-          "Tourism",
-          "Cultural Studies"
-        ],
-        "qualities_sought": [
-          "Cultural awareness",
-          "Leadership",
-          "Innovation"
-        ],
-        "image": "https://argjiroja.net/wp-content/uploads/2018/12/Universiteti-gjirokastres.jpg"
-      },
-      {
-        "id": 14,
-        "university_name": "University of Elbasan",
-        "city": "Elbasan",
-        "description": "The University of Elbasan offers a range of programs with a focus on education and social sciences. Established in 1971, it provides comprehensive education in Education, Social Sciences, Business, and History. The university is committed to fostering critical thinking, communication skills, and research aptitude, ensuring that students are well-prepared for their future careers.",
-        "website": "https://uniel.edu.al/",
-        "logo": "https://uniel.edu.al/images/logo-uniel.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga e Parlamentit, Elbasan, Albania",
-        "branches_offered": [
-          "Education",
-          "Social Sciences",
-          "Business",
-          "History"
-        ],
-        "qualities_sought": [
-          "Critical thinking",
-          "Communication skills",
-          "Research aptitude"
-        ],
-        "image": "https://www.hashtag.al/wp-content/uploads/2024/11/1730644596_universitetiielbasanit.jpg"
-      },
-      {
-        "id": 15,
-        "university_name": "Luigj Gurakuqi University",
-        "city": "Shkodër",
-        "description": "Luigj Gurakuqi University in Shkodër offers programs in various fields, including education and social sciences. Established in 1957, it provides a comprehensive education in Education, Social Sciences, Business, and History. The university is committed to fostering critical thinking, communication skills, and research aptitude, ensuring that students are well-equipped to tackle the challenges of the modern world.",
-        "website": "https://unishk.edu.al/",
-        "logo": "https://unishk.edu.al/fileadmin/template/images/logo/logo.png",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga Studenti, Shkodër, Albania",
-        "branches_offered": [
-          "Education",
-          "Social Sciences",
-          "Business",
-          "History"
-        ],
-        "qualities_sought": [
-          "Critical thinking",
-          "Communication skills",
-          "Research aptitude"
-        ],
-        "image": "https://unishk.edu.al/fileadmin/_processed_/6/a/csm_universiteti_i_shkodres_luigj_gurakuqi_fakulteti_i_shkencave_te_edukimit__1__65300e29a1.jpg"
-      },
-      {
-        "id": 16,
-        "university_name": "Metropolitan University Tirana",
-        "city": "Tirana",
-        "description": "Metropolitan University Tirana is a private institution offering programs in business, law, and social sciences. Established in 2011, it is known for its innovative approach to education, focusing on leadership, innovation, and critical thinking. The university provides a dynamic learning environment that prepares students for the challenges of the 21st century.",
-        "website": "https://umt.edu.al/en/home/",
-        "logo": "https://umt.edu.al/wp-content/uploads/2024/11/Universiteti-Metropolitan-Tirana.webp",
-        "created_at": "2025-05-02T21:44:14.000000Z",
-        "updated_at": "2025-05-02T21:44:14.000000Z",
-        "address": "Rruga e Durrësit, Tiranë, Albania",
-        "branches_offered": [
-          "Business",
-          "Law",
-          "Social Sciences",
-          "Information Technology"
-        ],
-        "qualities_sought": [
-          "Leadership",
-          "Innovation",
-          "Critical thinking"
-        ],
-        "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800014/760ea6ac0deb2dfee5fe962e336c45888f309afb.jpg?s=640"
-      },
-      {
-        "id": 17,
-        "university_name": "University College Bedër",
-        "city": "Tirana",
-        "description": "University College Bedër offers a variety of programs with a focus on humanities and social sciences. Established in 2011, it provides education in Law, Economics, Communication, and Islamic Studies. The university is committed to promoting cultural sensitivity, analytical skills, and effective communication, preparing students to be responsible and informed global citizens.",
-        "website": "https://www.beder.edu.al/en",
-        "logo": "",
-        "created_at": "2025-05-02T21:49:07.000000Z",
-        "updated_at": "2025-05-02T21:49:07.000000Z",
-        "address": "Rruga Bylis, Kashar, Tiranë, Albania",
-        "branches_offered": [
-          "Law",
-          "Economics",
-          "Communication",
-          "Islamic Studies"
-        ],
-        "qualities_sought": [
-          "Cultural sensitivity",
-          "Analytical skills",
-          "Communication skills"
-        ],
-        "image": "https://bis.beder.edu.al/beder.jpg"
-      },
-      {
-        "id": 18,
-        "university_name": "University of New York Tirana",
-        "city": "Tirana",
-        "description": "The University of New York Tirana offers programs in business, law, and information technology. Established in 2002, it is known for its global mindset and innovative curriculum. The university provides a dynamic learning environment that fosters innovation, critical thinking, and prepares students for the challenges of the modern world.",
-        "website": "https://www.unyt.edu.al/",
-        "logo": "https://cdncloudcart.com/40816/logo/1_1280x1280.png?1710100003",
-        "created_at": "2025-05-02T21:49:07.000000Z",
-        "updated_at": "2025-05-02T21:49:07.000000Z",
-        "address": "Rruga e Durrësit, Tiranë, Albania",
-        "branches_offered": [
-          "Business",
-          "Law",
-          "Information Technology",
-          "Economics"
-        ],
-        "qualities_sought": [
-          "Global mindset",
-          "Innovation",
-          "Critical thinking"
-        ],
-        "image": "https://al.maarifschools.org/uploads/widget-1/original/167e2b1373770c.webp"
-      },
-      {
-        "id": 19,
-        "university_name": "Canadian Institute of Technology",
-        "city": "Tirana",
-        "description": "The Canadian Institute of Technology offers programs in engineering, business, and information technology. Established in 2011, it is known for its focus on innovation, problem-solving skills, and technical proficiency. The university provides a comprehensive education that prepares students for the challenges of the modern world.",
-        "website": "https://cit.edu.al/",
-        "logo": "https://cit.edu.al/wp-content/uploads/2022/08/CIT-Logo-white.webp",
-        "created_at": "2025-05-02T21:49:07.000000Z",
-        "updated_at": "2025-05-02T21:49:07.000000Z",
-        "address": "Rruga Durrës, Tiranë, Albania",
-        "branches_offered": [
-          "Engineering",
-          "Business",
-          "Information Technology",
-          "Economics"
-        ],
-        "qualities_sought": [
-          "Innovation",
-          "Problem-solving skills",
-          "Technical proficiency"
-        ],
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAyJyS9KZm2S5_pYkHQ_H-b_RnBkC48Ht15A&s"
-      },
-      {
-        "id": 20,
-        "university_name": "University of Durrës",
-        "city": "Durrës",
-        "description": "The University of Durrës offers programs in business, education, and social sciences. Established in 2019, it is known for its focus on critical thinking, communication skills, and research aptitude. The university provides a comprehensive education that prepares students for the challenges of the modern world.",
-        "website": "https://uamd.edu.al/en/",
-        "logo": "https://uamd.edu.al/wp-content/uploads/2022/07/Universiteti_i_Durresit__Aleksander_Moisiu_.svg.png",
-        "created_at": "2025-05-02T21:49:07.000000Z",
-        "updated_at": "2025-05-02T21:49:07.000000Z",
-        "address": "Rruga Currila, Durrës, Albania",
-        "branches_offered": [
-          "Business",
-          "Education",
-          "Social Sciences",
-          "History"
-        ],
-        "qualities_sought": [
-          "Critical thinking",
-          "Communication skills",
-          "Research aptitude"
-        ],
-        "image": "https://uamd.edu.al/wp-content/uploads/2022/07/01-2-scaled.jpg"
-      },
-      {
-        "id": 22,
-        "university_name": "University of Berat",
-        "city": "Berat",
-        "description": "The University of Berat offers programs in education, business, and social sciences. Established in 2019, it is known for its focus on critical thinking, communication skills, and research aptitude. The university provides a comprehensive education that prepares students for the challenges of the modern world.",
-        "website": "http://www.universitetiberat.edu.al",
-        "logo": "",
-        "created_at": "2025-05-02T21:49:07.000000Z",
-        "updated_at": "2025-05-02T21:49:07.000000Z",
-        "address": "Rruga e Shkollës, Berat, Albania",
-        "branches_offered": [
-          "Education",
-          "Business",
-          "Social Sciences",
-          "History"
-        ],
-        "qualities_sought": [
-          "Critical thinking",
-          "Communication skills",
-          "Research aptitude"
-        ],
-        "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Berat_university_Albania_2018.2.jpg"
-      },
-      {
-        "id": 23,
-        "university_name": "Tirana Business University (TBU)",
-        "city": "Tirana",
-        "description": "Tirana Business University is a private institution offering programs in business, economics, and management. Established in 2012, it is known for its focus on leadership, entrepreneurial skills, and analytical thinking. The university provides a dynamic learning environment that prepares students for the challenges of the modern business world.",
-        "website": "https://tbu.edu.al/en/home-en/",
-        "logo": "https://tbu.edu.al/wp-content/uploads/2024/07/logo-tbu-update.png",
-        "created_at": "2025-05-02T21:49:07.000000Z",
-        "updated_at": "2025-05-02T21:49:07.000000Z",
-        "address": "Rruga e Durrësit, Tiranë, Albania",
-        "branches_offered": [
-          "Business Administration",
-          "Economics",
-          "Management",
-          "Finance"
-        ],
-        "qualities_sought": [
-          "Leadership",
-          "Entrepreneurial skills",
-          "Analytical thinking"
-        ],
-        "image": "https://tbu.edu.al/wp-content/uploads/2024/06/GODINA-TBU-scaled.jpg"
-      },
-      {
-        "id": 24,
-        "university_name": "Faculty of Education, University of Prishtina",
-        "city": "Prishtina",
-        "description": "The Faculty of Education at the University of Prishtina focuses on preparing educators and specialists in the field of education. The faculty offers programs that emphasize pedagogical skills, curriculum development, and inclusive education.",
-        "website": "https://edukimi.uni-pr.edu/",
-        "logo": "https://edukimi.uni-pr.edu/images/edukimi-logo.png",
-        "created_at": "2025-05-02T22:28:34.000000Z",
-        "updated_at": "2025-05-02T22:28:34.000000Z",
-        "address": "Bregu i Diellit, Prishtina, Kosovo",
-        "branches_offered": [
-          "Preschool Education",
-          "Primary Education",
-          "Subject Teaching",
-          "Educational Sciences",
-          "Inclusive Education",
-          "Educational Leadership"
-        ],
-        "qualities_sought": [
-          "Pedagogical skills",
-          "Empathy",
-          "Innovative teaching methods"
-        ],
-        "image": "https://edukimi.uni-pr.edu/images/edukimi-building.jpg"
-      },
-      {
-        "id": 25,
-        "university_name": "Faculty of Economics, University of Prishtina",
-        "city": "Prishtina",
-        "description": "The Faculty of Economics at the University of Prishtina provides comprehensive education in economics and business disciplines. The faculty aims to equip students with the knowledge and skills necessary for the dynamic economic environment.",
-        "website": "https://ekonomiku.uni-pr.edu/",
-        "logo": "https://ekonomiku.uni-pr.edu/images/ekonomiku-logo.png",
-        "created_at": "2025-05-02T22:28:34.000000Z",
-        "updated_at": "2025-05-02T22:28:34.000000Z",
-        "address": "Bregu i Diellit, Prishtina, Kosovo",
-        "branches_offered": [
-          "Banking and Finance",
-          "Management",
-          "Marketing",
-          "Economics",
-          "Accounting",
-          "Applied Economics and Management"
-        ],
-        "qualities_sought": [
-          "Economic insight",
-          "Analytical skills",
-          "Business acumen"
-        ],
-        "image": "https://ekonomiku.uni-pr.edu/images/ekonomiku-building.jpg"
-      },
-      {
-        "id": 26,
-        "university_name": "Faculty of Philosophy, University of Prishtina",
-        "city": "Prishtina",
-        "description": "The Faculty of Philosophy at the University of Prishtina offers programs in social sciences and humanities, fostering critical thinking and analytical skills. The faculty is committed to academic excellence and contributes to the understanding of societal dynamics.",
-        "website": "https://filozofiku.uni-pr.edu/",
-        "logo": "https://filozofiku.uni-pr.edu/images/filozofiku-logo.png",
-        "created_at": "2025-05-02T22:28:34.000000Z",
-        "updated_at": "2025-05-02T22:28:34.000000Z",
-        "address": "Bregu i Diellit, Prishtina, Kosovo",
-        "branches_offered": [
-          "History",
-          "Philosophy",
-          "Sociology",
-          "Psychology",
-          "Political Science",
-          "Social Work",
-          "Anthropology"
-        ],
-        "qualities_sought": [
-          "Critical thinking",
-          "Analytical skills",
-          "Social awareness"
-        ],
-        "image": "https://filozofiku.uni-pr.edu/images/filozofiku-building.jpg"
-      },
-      {
-        "id": 27,
-        "university_name": "Faculty of Mathematical and Natural Sciences, University of Prishtina",
-        "city": "Prishtina",
-        "description": "The Faculty of Mathematical and Natural Sciences (FSHMN) at the University of Prishtina offers a diverse range of programs in mathematics, natural sciences, and related fields. The faculty emphasizes research and practical skills, preparing students for careers in science and technology.",
-        "website": "https://fshmn.uni-pr.edu/",
-        "logo": "https://fshmn.uni-pr.edu/images/fshmn-logo.png",
-        "created_at": "2025-05-02T22:28:34.000000Z",
-        "updated_at": "2025-05-02T22:28:34.000000Z",
-        "address": "Bregu i Diellit, Prishtina, Kosovo",
-        "branches_offered": [
-          "Mathematics",
-          "Physics",
-          "Chemistry",
-          "Biology",
-          "Computer Science",
-          "Geography",
-          "Ecology and Environmental Protection"
-        ],
-        "qualities_sought": [
-          "Analytical thinking",
-          "Research orientation",
-          "Scientific curiosity"
-        ],
-        "image": "https://fshmn.uni-pr.edu/images/fshmn-building.jpg"
-      },
-      {
-        "id": 28,
-        "university_name": "Faculty of Electrical and Computer Engineering, University of Prishtina",
-        "city": "Prishtina",
-        "description": "The Faculty of Electrical and Computer Engineering (FIEK) at the University of Prishtina offers comprehensive programs in engineering disciplines, focusing on modern technologies and practical applications. The faculty is dedicated to fostering innovation and preparing students for the evolving demands of the tech industry.",
-        "website": "https://fiek.uni-pr.edu/",
-        "logo": "https://fiek.uni-pr.edu/images/fiek-logo.png",
-        "created_at": "2025-05-02T22:28:34.000000Z",
-        "updated_at": "2025-05-02T22:28:34.000000Z",
-        "address": "Bregu i Diellit, Prishtina, Kosovo",
-        "branches_offered": [
-          "Computer and Software Engineering",
-          "Electronics, Automation and Robotics",
-          "Information and Communication Technologies",
-          "Power Systems"
-        ],
-        "qualities_sought": [
-          "Innovation",
-          "Technical proficiency",
-          "Problem-solving skills"
-        ],
-        "image": "https://fiek.uni-pr.edu/images/fiek-building.jpg"
-      },
-      {
-        "id": 29,
-        "university_name": "UBT College (University for Business and Technology)",
-        "city": "Prishtina",
-        "description": "Established in 2001, UBT College is a leading private institution in Kosovo, offering a wide range of programs across various disciplines. The college emphasizes innovation, practical skills, and international standards, preparing students for the global job market.",
-        "website": "https://www.ubt-uni.net/en/home/",
-        "logo": "https://www.ubt-uni.net/wp-content/uploads/2020/09/ubt-logo.png",
-        "created_at": "2025-05-02T22:31:10.000000Z",
-        "updated_at": "2025-05-02T22:31:10.000000Z",
-        "address": "Lagjja Kalabria, 10000 Prishtinë, Kosovo",
-        "branches_offered": [
-          "Management, Business and Economics",
-          "Computer Science and Engineering",
-          "Mechatronics Engineering",
-          "Information Systems",
-          "Architecture and Spatial Planning",
-          "Civil Engineering and Infrastructure",
-          "Law",
-          "Political Science",
-          "Media and Communication",
-          "Public Policy and Management",
-          "Energy Engineering",
-          "Nursing",
-          "Dentistry",
-          "Pharmacy",
-          "Integrated Design",
-          "Food Science and Biotechnology"
-        ],
-        "qualities_sought": [
-          "Innovation",
-          "Practical skills",
-          "Global perspective"
-        ],
-        "image": "https://www.ubt-uni.net/wp-content/uploads/2020/09/ubt-campus.jpg"
-      },
-      {
-        "id": 30,
-        "university_name": "AAB College",
-        "city": "Prishtina",
-        "description": "Founded in 2000, AAB College is the first non-public higher education institution in Kosovo. It offers a variety of programs and is known for its commitment to quality education, leadership, and success.",
-        "website": "https://aab-edu.net/en/",
-        "logo": "https://aab-edu.net/wp-content/uploads/2020/09/aab-logo.png",
-        "created_at": "2025-05-02T22:31:10.000000Z",
-        "updated_at": "2025-05-02T22:31:10.000000Z",
-        "address": "Rr. Elez Berisha, Nr.56 Zona Industriale Fushë Kosovë, 10000 Prishtinë, Kosovo",
-        "branches_offered": [
-          "English Language",
-          "German Language",
-          "Banking, Finance and Accounting",
-          "Mass Communication",
-          "Law",
-          "Economics",
-          "Health Sciences",
-          "Social Sciences",
-          "Computer Science",
-          "Architecture",
-          "Arts"
-        ],
-        "qualities_sought": [
-          "Academic excellence",
-          "Leadership",
-          "Innovation"
-        ],
-        "image": "https://aab-edu.net/wp-content/uploads/2020/09/aab-campus.jpg"
-      }
-    ]
+{
+  "success": true,
+  "universities": [
+    {
+      "id": 1,
+      "university_name": "University of Tirana",
+      "city": "Tirana",
+      "description": "The University of Tirana is the largest and most prestigious university in Albania, offering a wide range of programs across various disciplines. Founded in 1957, it has a rich history of academic excellence and is renowned for its contributions to research and innovation. The university is home to numerous faculties, including Law, Economics, Social Sciences, and Natural Sciences, and is committed to fostering a dynamic and inclusive learning environment.",
+      "website": "http://www.unitir.edu.al",
+      "logo": "https://unitir.edu.al/wp-content/uploads/2019/08/logo.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:54:03.000000Z",
+      "address": "Sheshi Nënë Tereza, Tiranë, Albania",
+      "branches_offered": [
+        "Law",
+        "Economics",
+        "Social Sciences",
+        "Natural Sciences"
+      ],
+      "qualities_sought": [
+        "Academic excellence",
+        "Leadership skills",
+        "Community involvement"
+      ],
+      "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800026/0a62780cfd74f2903d0bbceac471d9a07b2fb4ce.jpg?s=640",
+      "archetype_percentages": "{\"AN-EN\": \"40\", \"AN-VS\": \"40\", \"AR-DS\": \"40\", \"AR-FM\": \"40\", \"DI-CD\": \"50\", \"DI-CS\": \"50\", \"EX-BU\": \"60\", \"EX-PL\": \"60\", \"GL-DM\": \"60\", \"GL-TR\": \"60\", \"HE-BT\": \"40\", \"HE-MD\": \"40\", \"SO-ED\": \"80\", \"SO-ME\": \"70\", \"SP-AT\": \"50\", \"SP-EC\": \"70\"}",
+      "user_id": 2
+    },
+    {
+      "id": 2,
+      "university_name": "Polytechnic University of Tirana",
+      "city": "Tirana",
+      "description": "The Polytechnic University of Tirana is a leading institution in engineering and technology, known for its cutting-edge research and innovative programs. Established in 1951, it offers a comprehensive range of degrees in Engineering, Architecture, and Information Technology. The university is dedicated to preparing students for the challenges of the modern world through hands-on learning and industry collaborations.",
+      "website": "http://www.upt.al",
+      "logo": "",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:54:27.000000Z",
+      "address": "Sheshi Nënë Tereza, Tiranë, Albania",
+      "branches_offered": [
+        "Engineering",
+        "Architecture",
+        "Information Technology"
+      ],
+      "qualities_sought": [
+        "Innovation",
+        "Problem-solving skills",
+        "Technical proficiency"
+      ],
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6K-ZxY2H_8CwOXXcRQjO9aw_FW9sU7DsNg&s",
+      "archetype_percentages": "{\"AN-EN\": \"95\", \"AN-VS\": \"60\", \"AR-DS\": \"85\", \"AR-FM\": \"50\", \"DI-CD\": \"80\", \"DI-CS\": \"75\", \"EX-BU\": \"40\", \"EX-PL\": \"50\", \"GL-DM\": \"40\", \"GL-TR\": \"30\", \"HE-BT\": \"20\", \"HE-MD\": \"10\", \"SO-ED\": \"20\", \"SO-ME\": \"30\", \"SP-AT\": \"20\", \"SP-EC\": \"25\"}",
+      "user_id": null
+    },
+    {
+      "id": 3,
+      "university_name": "Agricultural University of Tirana",
+      "city": "Tirana",
+      "description": "The Agricultural University of Tirana is dedicated to advancing agricultural sciences and related fields. Founded in 1951, it offers programs in Agriculture, Forestry, and Veterinary Medicine. The university is committed to sustainable development and environmental conservation, providing students with practical skills and research opportunities to address global agricultural challenges.",
+      "website": "http://www.ubt.edu.al",
+      "logo": "https://www.ubt.edu.al/web/image/website/1/logo/Universiteti%20Bujq%C3%ABsor%20i%20Tiran%C3%ABs?unique=c1bb49c",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:54:44.000000Z",
+      "address": "Koder Kamez, Tiranë, Albania",
+      "branches_offered": [
+        "Agriculture",
+        "Forestry",
+        "Veterinary Medicine"
+      ],
+      "qualities_sought": [
+        "Practical skills",
+        "Research aptitude",
+        "Environmental awareness"
+      ],
+      "image": "https://media.licdn.com/dms/image/v2/C4E1BAQFRQPbNUKXXbw/company-background_10000/company-background_10000/0/1605780768129/agriculture_university_of_tirana_cover?e=2147483647&v=beta&t=dNuyXfCpttcvJ62iENfcZT1fmtZH02vPs7oPylVihVI",
+      "archetype_percentages": "{\"AN-EN\": \"10\", \"AN-VS\": \"20\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"30\", \"DI-CS\": \"20\", \"EX-BU\": \"10\", \"EX-PL\": \"20\", \"GL-DM\": \"60\", \"GL-TR\": \"40\", \"HE-BT\": \"40\", \"HE-MD\": \"30\", \"SO-ED\": \"90\", \"SO-ME\": \"40\", \"SP-AT\": \"20\", \"SP-EC\": \"30\"}",
+      "user_id": null
+    },
+    {
+      "id": 4,
+      "university_name": "University of Medicine, Tirana",
+      "city": "Tirana",
+      "description": "The University of Medicine, Tirana is a premier institution dedicated to medical sciences and healthcare education. Established in 1952, it offers comprehensive programs in Medicine, Dentistry, Pharmacy, and Public Health. The university is renowned for its rigorous academic standards, state-of-the-art facilities, and commitment to producing highly skilled healthcare professionals.",
+      "website": "http://umed.edu.al/",
+      "logo": "http://umed.edu.al/wp-content/uploads/2017/03/universiteti-i-mjekesise-logo-login-1.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:54:57.000000Z",
+      "address": "Rruga Dibres, Tiranë, Albania",
+      "branches_offered": [
+        "Medicine",
+        "Dentistry",
+        "Pharmacy",
+        "Public Health"
+      ],
+      "qualities_sought": [
+        "Empathy",
+        "Scientific rigor",
+        "Clinical skills"
+      ],
+      "image": "https://i0.wp.com/mymedschool.org/wp-content/uploads/2021/08/university-of-medicine-of-tirana-faculty-of-medicine-2.jpg?fit=680%2C382&ssl=1&w=640",
+      "archetype_percentages": "{\"AN-EN\": \"0\", \"AN-VS\": \"0\", \"AR-DS\": \"0\", \"AR-FM\": \"0\", \"DI-CD\": \"0\", \"DI-CS\": \"0\", \"EX-BU\": \"0\", \"EX-PL\": \"0\", \"GL-DM\": \"0\", \"GL-TR\": \"0\", \"HE-BT\": \"60\", \"HE-MD\": \"100\", \"SO-ED\": \"0\", \"SO-ME\": \"15\", \"SP-AT\": \"0\", \"SP-EC\": \"0\"}",
+      "user_id": null
+    },
+    {
+      "id": 5,
+      "university_name": "University of Arts, Tirana",
+      "city": "Tirana",
+      "description": "The University of Arts, Tirana is a hub for creativity and artistic expression, offering programs in Fine Arts, Music, Theatre, and Film. Established in 1966, the university fosters a vibrant community of artists, providing students with the tools and inspiration to excel in their chosen fields. The institution is known for its innovative approach to arts education and its contributions to Albania's cultural landscape.",
+      "website": "http://www.unitirana.edu.al",
+      "logo": "https://www.edarabia.com/wp-content/uploads/2018/03/university-arts-tirana-albania.jpg",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:55:10.000000Z",
+      "address": "Bulevardi Dëshmorët e Kombit, Tiranë, Albania",
+      "branches_offered": [
+        "Fine Arts",
+        "Music",
+        "Theatre",
+        "Film"
+      ],
+      "qualities_sought": [
+        "Creativity",
+        "Artistic talent",
+        "Cultural awareness"
+      ],
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiMun-6HHY-06pVULnFres7Lxbx9o2ervqjg&s",
+      "archetype_percentages": "{\"AN-EN\": \"15\", \"AN-VS\": \"10\", \"AR-DS\": \"95\", \"AR-FM\": \"80\", \"DI-CD\": \"20\", \"DI-CS\": \"10\", \"EX-BU\": \"5\", \"EX-PL\": \"5\", \"GL-DM\": \"10\", \"GL-TR\": \"5\", \"HE-BT\": \"0\", \"HE-MD\": \"0\", \"SO-ED\": \"10\", \"SO-ME\": \"20\", \"SP-AT\": \"5\", \"SP-EC\": \"5\"}",
+      "user_id": null
+    },
+    {
+      "id": 6,
+      "university_name": "European University of Tirana",
+      "city": "Tirana",
+      "description": "The European University of Tirana is known for its international collaborations and modern curriculum. Established in 2006, it offers programs in Business, Law, Architecture, and Computer Science. The university is committed to providing a global education experience, with a focus on innovation, critical thinking, and preparing students for the challenges of the 21st century.",
+      "website": "http://www.uet.edu.al",
+      "logo": "https://uet.edu.al/wp-content/uploads/2022/12/Logo-pa-adrese.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:55:29.000000Z",
+      "address": "Rruga Reshit Petrela, Tiranë, Albania",
+      "branches_offered": [
+        "Business",
+        "Law",
+        "Architecture",
+        "Computer Science"
+      ],
+      "qualities_sought": [
+        "Global mindset",
+        "Innovation",
+        "Critical thinking"
+      ],
+      "image": "https://images.app.goo.gl/yoMmxtEy9samfsrg9",
+      "archetype_percentages": "{\"AN-EN\": \"40\", \"AN-VS\": \"40\", \"AR-DS\": \"60\", \"AR-FM\": \"50\", \"DI-CD\": \"50\", \"DI-CS\": \"60\", \"EX-BU\": \"80\", \"EX-PL\": \"70\", \"GL-DM\": \"90\", \"GL-TR\": \"80\", \"HE-BT\": \"20\", \"HE-MD\": \"20\", \"SO-ED\": \"60\", \"SO-ME\": \"50\", \"SP-AT\": \"40\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 7,
+      "university_name": "Epoka University",
+      "city": "Tirana",
+      "description": "Epoka University is a private institution with a strong focus on research and international standards. Founded in 2007, it offers programs in Engineering, Architecture, Business, and Political Science. The university is dedicated to fostering a culture of academic excellence, ethical standards, and leadership, providing students with a comprehensive education that prepares them for global success.",
+      "website": "https://www.epoka.edu.al",
+      "logo": "https://epoka.edu.al/assets/images/logo1.svg",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:55:43.000000Z",
+      "address": "Rruga Tiranë-Rinas, Km 12, Rinas, Albania",
+      "branches_offered": [
+        "Engineering",
+        "Architecture",
+        "Business",
+        "Political Science"
+      ],
+      "qualities_sought": [
+        "Research skills",
+        "Leadership",
+        "Ethical standards"
+      ],
+      "image": "https://images.app.goo.gl/15KLcQhxjcv6Znt68",
+      "archetype_percentages": "{\"AN-EN\": \"30\", \"AN-VS\": \"20\", \"AR-DS\": \"70\", \"AR-FM\": \"60\", \"DI-CD\": \"40\", \"DI-CS\": \"40\", \"EX-BU\": \"80\", \"EX-PL\": \"70\", \"GL-DM\": \"50\", \"GL-TR\": \"60\", \"HE-BT\": \"30\", \"HE-MD\": \"20\", \"SO-ED\": \"60\", \"SO-ME\": \"50\", \"SP-AT\": \"40\", \"SP-EC\": \"50\"}",
+      "user_id": null
+    },
+    {
+      "id": 8,
+      "university_name": "Beder University",
+      "city": "Tirana",
+      "description": "Beder University offers a variety of programs with a focus on humanities and social sciences. Established in 2011, it provides education in Law, Economics, Communication, and Islamic Studies. The university is committed to promoting cultural sensitivity, analytical skills, and effective communication, preparing students to be responsible and informed global citizens.",
+      "website": "https://www.beder.edu.al",
+      "logo": "",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:55:58.000000Z",
+      "address": "Rruga Bylis, Kashar, Tiranë, Albania",
+      "branches_offered": [
+        "Law",
+        "Economics",
+        "Communication",
+        "Islamic Studies"
+      ],
+      "qualities_sought": [
+        "Cultural sensitivity",
+        "Analytical skills",
+        "Communication skills"
+      ],
+      "image": "https://images.app.goo.gl/xLESLJDL5PtoN3is7",
+      "archetype_percentages": "{\"AN-EN\": \"70\", \"AN-VS\": \"20\", \"AR-DS\": \"40\", \"AR-FM\": \"30\", \"DI-CD\": \"30\", \"DI-CS\": \"40\", \"EX-BU\": \"50\", \"EX-PL\": \"60\", \"GL-DM\": \"70\", \"GL-TR\": \"80\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"90\", \"SO-ME\": \"80\", \"SP-AT\": \"20\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 9,
+      "university_name": "Aleksandër Moisiu University",
+      "city": "Durres",
+      "description": "Aleksandër Moisiu University, located in Durrës, offers a range of academic programs designed to meet the needs of a diverse student body. Established in 2005, it provides education in Business, Education, Information Technology, and Nursing. The university is dedicated to fostering professionalism, teamwork, and adaptability, ensuring that students are well-prepared for their future careers.",
+      "website": "https://uamd.edu.al/en/",
+      "logo": "https://uamd.edu.al/wp-content/uploads/2022/07/Universiteti_i_Durresit__Aleksander_Moisiu_.svg.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:56:18.000000Z",
+      "address": "Lagjia Nr 3, Rruga Currila, Durrës, Albania",
+      "branches_offered": [
+        "Business",
+        "Education",
+        "Information Technology",
+        "Nursing"
+      ],
+      "qualities_sought": [
+        "Professionalism",
+        "Teamwork",
+        "Adaptability"
+      ],
+      "image": "https://images.app.goo.gl/5nUTtLSu5ACzL7aR7",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"10\", \"AR-DS\": \"15\", \"AR-FM\": \"10\", \"DI-CD\": \"25\", \"DI-CS\": \"20\", \"EX-BU\": \"90\", \"EX-PL\": \"75\", \"GL-DM\": \"50\", \"GL-TR\": \"60\", \"HE-BT\": \"30\", \"HE-MD\": \"30\", \"SO-ED\": \"70\", \"SO-ME\": \"40\", \"SP-AT\": \"20\", \"SP-EC\": \"25\"}",
+      "user_id": null
+    },
+    {
+      "id": 10,
+      "university_name": "University of Vlora",
+      "city": "Vlora",
+      "description": "The University of Vlora is renowned for its programs in marine sciences and environmental studies. Established in 1994, it offers degrees in Marine Sciences, Environmental Engineering, Economics, and Law. The university is committed to environmental consciousness, research, and problem-solving, providing students with the knowledge and skills to address global environmental challenges.",
+      "website": "https://univlora.edu.al/",
+      "logo": "https://univlora.edu.al/wp-content/uploads/2015/02/cropped-UV_LOGO2.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:56:36.000000Z",
+      "address": "Rruga Skele, Vlorë, Albania",
+      "branches_offered": [
+        "Marine Sciences",
+        "Environmental Engineering",
+        "Economics",
+        "Law"
+      ],
+      "qualities_sought": [
+        "Environmental consciousness",
+        "Research skills",
+        "Problem-solving"
+      ],
+      "image": "https://r2.cdnimpuls.com/o.anabel.al/media3/5df488a0da2a9.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"95\", \"AN-VS\": \"30\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"30\", \"DI-CS\": \"30\", \"EX-BU\": \"40\", \"EX-PL\": \"40\", \"GL-DM\": \"60\", \"GL-TR\": \"50\", \"HE-BT\": \"20\", \"HE-MD\": \"10\", \"SO-ED\": \"50\", \"SO-ME\": \"20\", \"SP-AT\": \"10\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 11,
+      "university_name": "Fan S. Noli University",
+      "city": "Korçë",
+      "description": "Fan S. Noli University in Korçë offers a variety of programs with a focus on regional development. Established in 1971, it provides education in Agriculture, Education, Nursing, and Tourism. The university is dedicated to community engagement, leadership, and innovation, preparing students to contribute to the development of their communities and the broader region.",
+      "website": "https://unkorce.edu.al/",
+      "logo": "https://unkorce.edu.al/wp-content/uploads/2024/08/Logo_e_Universitetit__Fan_Noli_-e1726660879862.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:56:48.000000Z",
+      "address": "Rruga e Elbasanit, Korçë, Albania",
+      "branches_offered": [
+        "Agriculture",
+        "Education",
+        "Nursing",
+        "Tourism"
+      ],
+      "qualities_sought": [
+        "Community engagement",
+        "Leadership",
+        "Innovation"
+      ],
+      "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800004/27f1b8832463bc2a470e922c0cccc2b357640c55.jpg?s=640",
+      "archetype_percentages": "{\"AN-EN\": \"10\", \"AN-VS\": \"10\", \"AR-DS\": \"20\", \"AR-FM\": \"20\", \"DI-CD\": \"15\", \"DI-CS\": \"15\", \"EX-BU\": \"20\", \"EX-PL\": \"20\", \"GL-DM\": \"25\", \"GL-TR\": \"60\", \"HE-BT\": \"30\", \"HE-MD\": \"40\", \"SO-ED\": \"85\", \"SO-ME\": \"60\", \"SP-AT\": \"10\", \"SP-EC\": \"10\"}",
+      "user_id": null
+    },
+    {
+      "id": 12,
+      "university_name": "University of Shkodra",
+      "city": "Shkodra",
+      "description": "The University of Shkodra offers programs in various fields, including education and social sciences. Established in 1957, it provides a comprehensive education in Education, Social Sciences, Business, and History. The university is committed to fostering critical thinking, communication skills, and research aptitude, ensuring that students are well-equipped to tackle the challenges of the modern world.",
+      "website": "https://unishk.edu.al/",
+      "logo": "https://unishk.edu.al/fileadmin/template/images/logo/logo.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:57:02.000000Z",
+      "address": "Rruga Studenti, Shkodër, Albania",
+      "branches_offered": [
+        "Education",
+        "Social Sciences",
+        "Business",
+        "History"
+      ],
+      "qualities_sought": [
+        "Critical thinking",
+        "Communication skills",
+        "Research aptitude"
+      ],
+      "image": "https://unishk.edu.al/fileadmin/_processed_/1/4/csm_fshn_71032e2390.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"10\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"10\", \"DI-CS\": \"10\", \"EX-BU\": \"30\", \"EX-PL\": \"20\", \"GL-DM\": \"15\", \"GL-TR\": \"15\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"90\", \"SO-ME\": \"40\", \"SP-AT\": \"5\", \"SP-EC\": \"10\"}",
+      "user_id": null
+    },
+    {
+      "id": 13,
+      "university_name": "Eqrem Çabej University",
+      "city": "Gjirokastër",
+      "description": "Eqrem Çabej University in Gjirokastër focuses on regional development and cultural studies. Established in 1968, it offers programs in Education, Business, Tourism, and Cultural Studies. The university is dedicated to promoting cultural awareness, leadership, and innovation, preparing students to contribute to the preservation and development of cultural heritage.",
+      "website": "https://uogj.edu.al/",
+      "logo": "https://uogj.edu.al/wp-content/uploads/2021/04/UNIVERSITEI_I_GJIROKASTRES1.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:57:22.000000Z",
+      "address": "Rruga Eqrem Çabej, Gjirokastër, Albania",
+      "branches_offered": [
+        "Education",
+        "Business",
+        "Tourism",
+        "Cultural Studies"
+      ],
+      "qualities_sought": [
+        "Cultural awareness",
+        "Leadership",
+        "Innovation"
+      ],
+      "image": "https://argjiroja.net/wp-content/uploads/2018/12/Universiteti-gjirokastres.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"20\", \"AR-DS\": \"40\", \"AR-FM\": \"40\", \"DI-CD\": \"30\", \"DI-CS\": \"30\", \"EX-BU\": \"60\", \"EX-PL\": \"50\", \"GL-DM\": \"70\", \"GL-TR\": \"90\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"60\", \"SO-ME\": \"40\", \"SP-AT\": \"30\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 14,
+      "university_name": "University of Elbasan",
+      "city": "Elbasan",
+      "description": "The University of Elbasan offers a range of programs with a focus on education and social sciences. Established in 1971, it provides comprehensive education in Education, Social Sciences, Business, and History. The university is committed to fostering critical thinking, communication skills, and research aptitude, ensuring that students are well-prepared for their future careers.",
+      "website": "https://uniel.edu.al/",
+      "logo": "https://uniel.edu.al/images/logo-uniel.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:57:34.000000Z",
+      "address": "Rruga e Parlamentit, Elbasan, Albania",
+      "branches_offered": [
+        "Education",
+        "Social Sciences",
+        "Business",
+        "History"
+      ],
+      "qualities_sought": [
+        "Critical thinking",
+        "Communication skills",
+        "Research aptitude"
+      ],
+      "image": "https://www.hashtag.al/wp-content/uploads/2024/11/1730644596_universitetiielbasanit.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"10\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"15\", \"DI-CS\": \"15\", \"EX-BU\": \"30\", \"EX-PL\": \"20\", \"GL-DM\": \"20\", \"GL-TR\": \"20\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"80\", \"SO-ME\": \"50\", \"SP-AT\": \"10\", \"SP-EC\": \"10\"}",
+      "user_id": null
+    },
+    {
+      "id": 15,
+      "university_name": "Luigj Gurakuqi University",
+      "city": "Shkodër",
+      "description": "Luigj Gurakuqi University in Shkodër offers programs in various fields, including education and social sciences. Established in 1957, it provides a comprehensive education in Education, Social Sciences, Business, and History. The university is committed to fostering critical thinking, communication skills, and research aptitude, ensuring that students are well-equipped to tackle the challenges of the modern world.",
+      "website": "https://unishk.edu.al/",
+      "logo": "https://unishk.edu.al/fileadmin/template/images/logo/logo.png",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:57:47.000000Z",
+      "address": "Rruga Studenti, Shkodër, Albania",
+      "branches_offered": [
+        "Education",
+        "Social Sciences",
+        "Business",
+        "History"
+      ],
+      "qualities_sought": [
+        "Critical thinking",
+        "Communication skills",
+        "Research aptitude"
+      ],
+      "image": "https://unishk.edu.al/fileadmin/_processed_/6/a/csm_universiteti_i_shkodres_luigj_gurakuqi_fakulteti_i_shkencave_te_edukimit__1__65300e29a1.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"20\", \"AR-DS\": \"20\", \"AR-FM\": \"20\", \"DI-CD\": \"30\", \"DI-CS\": \"30\", \"EX-BU\": \"60\", \"EX-PL\": \"50\", \"GL-DM\": \"40\", \"GL-TR\": \"40\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"90\", \"SO-ME\": \"70\", \"SP-AT\": \"10\", \"SP-EC\": \"20\"}",
+      "user_id": null
+    },
+    {
+      "id": 16,
+      "university_name": "Metropolitan University Tirana",
+      "city": "Tirana",
+      "description": "Metropolitan University Tirana is a private institution offering programs in business, law, and social sciences. Established in 2011, it is known for its innovative approach to education, focusing on leadership, innovation, and critical thinking. The university provides a dynamic learning environment that prepares students for the challenges of the 21st century.",
+      "website": "https://umt.edu.al/en/home/",
+      "logo": "https://umt.edu.al/wp-content/uploads/2024/11/Universiteti-Metropolitan-Tirana.webp",
+      "created_at": "2025-05-02T21:44:14.000000Z",
+      "updated_at": "2025-05-03T06:58:02.000000Z",
+      "address": "Rruga e Durrësit, Tiranë, Albania",
+      "branches_offered": [
+        "Business",
+        "Law",
+        "Social Sciences",
+        "Information Technology"
+      ],
+      "qualities_sought": [
+        "Leadership",
+        "Innovation",
+        "Critical thinking"
+      ],
+      "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800014/760ea6ac0deb2dfee5fe962e336c45888f309afb.jpg?s=640",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"20\", \"AR-DS\": \"30\", \"AR-FM\": \"30\", \"DI-CD\": \"40\", \"DI-CS\": \"40\", \"EX-BU\": \"90\", \"EX-PL\": \"70\", \"GL-DM\": \"50\", \"GL-TR\": \"50\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"50\", \"SO-ME\": \"60\", \"SP-AT\": \"40\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 17,
+      "university_name": "University College Bedër",
+      "city": "Tirana",
+      "description": "University College Bedër offers a variety of programs with a focus on humanities and social sciences. Established in 2011, it provides education in Law, Economics, Communication, and Islamic Studies. The university is committed to promoting cultural sensitivity, analytical skills, and effective communication, preparing students to be responsible and informed global citizens.",
+      "website": "https://www.beder.edu.al/en",
+      "logo": "",
+      "created_at": "2025-05-02T21:49:07.000000Z",
+      "updated_at": "2025-05-03T06:58:17.000000Z",
+      "address": "Rruga Bylis, Kashar, Tiranë, Albania",
+      "branches_offered": [
+        "Law",
+        "Economics",
+        "Communication",
+        "Islamic Studies"
+      ],
+      "qualities_sought": [
+        "Cultural sensitivity",
+        "Analytical skills",
+        "Communication skills"
+      ],
+      "image": "https://bis.beder.edu.al/beder.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"30\", \"AN-VS\": \"20\", \"AR-DS\": \"20\", \"AR-FM\": \"20\", \"DI-CD\": \"25\", \"DI-CS\": \"25\", \"EX-BU\": \"40\", \"EX-PL\": \"45\", \"GL-DM\": \"40\", \"GL-TR\": \"50\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"85\", \"SO-ME\": \"60\", \"SP-AT\": \"15\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 18,
+      "university_name": "University of New York Tirana",
+      "city": "Tirana",
+      "description": "The University of New York Tirana offers programs in business, law, and information technology. Established in 2002, it is known for its global mindset and innovative curriculum. The university provides a dynamic learning environment that fosters innovation, critical thinking, and prepares students for the challenges of the modern world.",
+      "website": "https://www.unyt.edu.al/",
+      "logo": "https://cdncloudcart.com/40816/logo/1_1280x1280.png?1710100003",
+      "created_at": "2025-05-02T21:49:07.000000Z",
+      "updated_at": "2025-05-03T06:58:35.000000Z",
+      "address": "Rruga e Durrësit, Tiranë, Albania",
+      "branches_offered": [
+        "Business",
+        "Law",
+        "Information Technology",
+        "Economics"
+      ],
+      "qualities_sought": [
+        "Global mindset",
+        "Innovation",
+        "Critical thinking"
+      ],
+      "image": "https://al.maarifschools.org/uploads/widget-1/original/167e2b1373770c.webp",
+      "archetype_percentages": "{\"AN-EN\": \"25\", \"AN-VS\": \"20\", \"AR-DS\": \"25\", \"AR-FM\": \"20\", \"DI-CD\": \"30\", \"DI-CS\": \"30\", \"EX-BU\": \"65\", \"EX-PL\": \"60\", \"GL-DM\": \"85\", \"GL-TR\": \"80\", \"HE-BT\": \"15\", \"HE-MD\": \"10\", \"SO-ED\": \"35\", \"SO-ME\": \"40\", \"SP-AT\": \"50\", \"SP-EC\": \"55\"}",
+      "user_id": null
+    },
+    {
+      "id": 19,
+      "university_name": "Canadian Institute of Technology",
+      "city": "Tirana",
+      "description": "The Canadian Institute of Technology offers programs in engineering, business, and information technology. Established in 2011, it is known for its focus on innovation, problem-solving skills, and technical proficiency. The university provides a comprehensive education that prepares students for the challenges of the modern world.",
+      "website": "https://cit.edu.al/",
+      "logo": "https://cit.edu.al/wp-content/uploads/2022/08/CIT-Logo-white.webp",
+      "created_at": "2025-05-02T21:49:07.000000Z",
+      "updated_at": "2025-05-03T06:58:50.000000Z",
+      "address": "Rruga Durrës, Tiranë, Albania",
+      "branches_offered": [
+        "Engineering",
+        "Business",
+        "Information Technology",
+        "Economics"
+      ],
+      "qualities_sought": [
+        "Innovation",
+        "Problem-solving skills",
+        "Technical proficiency"
+      ],
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAyJyS9KZm2S5_pYkHQ_H-b_RnBkC48Ht15A&s",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"20\", \"AR-DS\": \"30\", \"AR-FM\": \"20\", \"DI-CD\": \"90\", \"DI-CS\": \"85\", \"EX-BU\": \"80\", \"EX-PL\": \"75\", \"GL-DM\": \"40\", \"GL-TR\": \"30\", \"HE-BT\": \"15\", \"HE-MD\": \"10\", \"SO-ED\": \"20\", \"SO-ME\": \"30\", \"SP-AT\": \"25\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    },
+    {
+      "id": 20,
+      "university_name": "University of Durrës",
+      "city": "Durrës",
+      "description": "The University of Durrës offers programs in business, education, and social sciences. Established in 2019, it is known for its focus on critical thinking, communication skills, and research aptitude. The university provides a comprehensive education that prepares students for the challenges of the modern world.",
+      "website": "https://uamd.edu.al/en/",
+      "logo": "https://uamd.edu.al/wp-content/uploads/2022/07/Universiteti_i_Durresit__Aleksander_Moisiu_.svg.png",
+      "created_at": "2025-05-02T21:49:07.000000Z",
+      "updated_at": "2025-05-03T06:59:03.000000Z",
+      "address": "Rruga Currila, Durrës, Albania",
+      "branches_offered": [
+        "Business",
+        "Education",
+        "Social Sciences",
+        "History"
+      ],
+      "qualities_sought": [
+        "Critical thinking",
+        "Communication skills",
+        "Research aptitude"
+      ],
+      "image": "https://uamd.edu.al/wp-content/uploads/2022/07/01-2-scaled.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"70\", \"AN-VS\": \"60\", \"AR-DS\": \"50\", \"AR-FM\": \"50\", \"DI-CD\": \"50\", \"DI-CS\": \"50\", \"EX-BU\": \"80\", \"EX-PL\": \"70\", \"GL-DM\": \"60\", \"GL-TR\": \"60\", \"HE-BT\": \"40\", \"HE-MD\": \"40\", \"SO-ED\": \"90\", \"SO-ME\": \"75\", \"SP-AT\": \"30\", \"SP-EC\": \"30\"}",
+      "user_id": null
+    },
+    {
+      "id": 22,
+      "university_name": "University of Berat",
+      "city": "Berat",
+      "description": "The University of Berat offers programs in education, business, and social sciences. Established in 2019, it is known for its focus on critical thinking, communication skills, and research aptitude. The university provides a comprehensive education that prepares students for the challenges of the modern world.",
+      "website": "http://www.universitetiberat.edu.al",
+      "logo": "",
+      "created_at": "2025-05-02T21:49:07.000000Z",
+      "updated_at": "2025-05-03T06:59:17.000000Z",
+      "address": "Rruga e Shkollës, Berat, Albania",
+      "branches_offered": [
+        "Education",
+        "Business",
+        "Social Sciences",
+        "History"
+      ],
+      "qualities_sought": [
+        "Critical thinking",
+        "Communication skills",
+        "Research aptitude"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Berat_university_Albania_2018.2.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"60\", \"AN-VS\": \"20\", \"AR-DS\": \"20\", \"AR-FM\": \"10\", \"DI-CD\": \"40\", \"DI-CS\": \"50\", \"EX-BU\": \"70\", \"EX-PL\": \"50\", \"GL-DM\": \"40\", \"GL-TR\": \"30\", \"HE-BT\": \"30\", \"HE-MD\": \"20\", \"SO-ED\": \"90\", \"SO-ME\": \"60\", \"SP-AT\": \"20\", \"SP-EC\": \"50\"}",
+      "user_id": null
+    },
+    {
+      "id": 23,
+      "university_name": "Tirana Business University (TBU)",
+      "city": "Tirana",
+      "description": "Tirana Business University is a private institution offering programs in business, economics, and management. Established in 2012, it is known for its focus on leadership, entrepreneurial skills, and analytical thinking. The university provides a dynamic learning environment that prepares students for the challenges of the modern business world.",
+      "website": "https://tbu.edu.al/en/home-en/",
+      "logo": "https://tbu.edu.al/wp-content/uploads/2024/07/logo-tbu-update.png",
+      "created_at": "2025-05-02T21:49:07.000000Z",
+      "updated_at": "2025-05-03T06:59:34.000000Z",
+      "address": "Rruga e Durrësit, Tiranë, Albania",
+      "branches_offered": [
+        "Business Administration",
+        "Economics",
+        "Management",
+        "Finance"
+      ],
+      "qualities_sought": [
+        "Leadership",
+        "Entrepreneurial skills",
+        "Analytical thinking"
+      ],
+      "image": "https://tbu.edu.al/wp-content/uploads/2024/06/GODINA-TBU-scaled.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"10\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"10\", \"DI-CS\": \"10\", \"EX-BU\": \"90\", \"EX-PL\": \"75\", \"GL-DM\": \"50\", \"GL-TR\": \"40\", \"HE-BT\": \"5\", \"HE-MD\": \"5\", \"SO-ED\": \"20\", \"SO-ME\": \"30\", \"SP-AT\": \"20\", \"SP-EC\": \"30\"}",
+      "user_id": null
+    },
+    {
+      "id": 24,
+      "university_name": "Faculty of Education, University of Prishtina",
+      "city": "Prishtina",
+      "description": "The Faculty of Education at the University of Prishtina focuses on preparing educators and specialists in the field of education. The faculty offers programs that emphasize pedagogical skills, curriculum development, and inclusive education.",
+      "website": "https://edukimi.uni-pr.edu/",
+      "logo": "https://edukimi.uni-pr.edu/images/edukimi-logo.png",
+      "created_at": "2025-05-02T22:28:34.000000Z",
+      "updated_at": "2025-05-03T06:59:52.000000Z",
+      "address": "Bregu i Diellit, Prishtina, Kosovo",
+      "branches_offered": [
+        "Preschool Education",
+        "Primary Education",
+        "Subject Teaching",
+        "Educational Sciences",
+        "Inclusive Education",
+        "Educational Leadership"
+      ],
+      "qualities_sought": [
+        "Pedagogical skills",
+        "Empathy",
+        "Innovative teaching methods"
+      ],
+      "image": "https://edukimi.uni-pr.edu/images/edukimi-building.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"10\", \"AR-DS\": \"20\", \"AR-FM\": \"10\", \"DI-CD\": \"30\", \"DI-CS\": \"40\", \"EX-BU\": \"10\", \"EX-PL\": \"20\", \"GL-DM\": \"30\", \"GL-TR\": \"20\", \"HE-BT\": \"10\", \"HE-MD\": \"15\", \"SO-ED\": \"90\", \"SO-ME\": \"60\", \"SP-AT\": \"10\", \"SP-EC\": \"15\"}",
+      "user_id": null
+    },
+    {
+      "id": 25,
+      "university_name": "Faculty of Economics, University of Prishtina",
+      "city": "Prishtina",
+      "description": "The Faculty of Economics at the University of Prishtina provides comprehensive education in economics and business disciplines. The faculty aims to equip students with the knowledge and skills necessary for the dynamic economic environment.",
+      "website": "https://ekonomiku.uni-pr.edu/",
+      "logo": "https://ekonomiku.uni-pr.edu/images/ekonomiku-logo.png",
+      "created_at": "2025-05-02T22:28:34.000000Z",
+      "updated_at": "2025-05-03T07:00:07.000000Z",
+      "address": "Bregu i Diellit, Prishtina, Kosovo",
+      "branches_offered": [
+        "Banking and Finance",
+        "Management",
+        "Marketing",
+        "Economics",
+        "Accounting",
+        "Applied Economics and Management"
+      ],
+      "qualities_sought": [
+        "Economic insight",
+        "Analytical skills",
+        "Business acumen"
+      ],
+      "image": "https://ekonomiku.uni-pr.edu/images/ekonomiku-building.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"30\", \"AN-VS\": \"20\", \"AR-DS\": \"5\", \"AR-FM\": \"5\", \"DI-CD\": \"10\", \"DI-CS\": \"15\", \"EX-BU\": \"50\", \"EX-PL\": \"40\", \"GL-DM\": \"25\", \"GL-TR\": \"20\", \"HE-BT\": \"0\", \"HE-MD\": \"0\", \"SO-ED\": \"20\", \"SO-ME\": \"10\", \"SP-AT\": \"0\", \"SP-EC\": \"80\"}",
+      "user_id": null
+    },
+    {
+      "id": 26,
+      "university_name": "Faculty of Philosophy, University of Prishtina",
+      "city": "Prishtina",
+      "description": "The Faculty of Philosophy at the University of Prishtina offers programs in social sciences and humanities, fostering critical thinking and analytical skills. The faculty is committed to academic excellence and contributes to the understanding of societal dynamics.",
+      "website": "https://filozofiku.uni-pr.edu/",
+      "logo": "https://filozofiku.uni-pr.edu/images/filozofiku-logo.png",
+      "created_at": "2025-05-02T22:28:34.000000Z",
+      "updated_at": "2025-05-03T07:00:28.000000Z",
+      "address": "Bregu i Diellit, Prishtina, Kosovo",
+      "branches_offered": [
+        "History",
+        "Philosophy",
+        "Sociology",
+        "Psychology",
+        "Political Science",
+        "Social Work",
+        "Anthropology"
+      ],
+      "qualities_sought": [
+        "Critical thinking",
+        "Analytical skills",
+        "Social awareness"
+      ],
+      "image": "https://filozofiku.uni-pr.edu/images/filozofiku-building.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"35\", \"AN-VS\": \"30\", \"AR-DS\": \"40\", \"AR-FM\": \"25\", \"DI-CD\": \"20\", \"DI-CS\": \"25\", \"EX-BU\": \"10\", \"EX-PL\": \"15\", \"GL-DM\": \"50\", \"GL-TR\": \"45\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"90\", \"SO-ME\": \"75\", \"SP-AT\": \"5\", \"SP-EC\": \"20\"}",
+      "user_id": null
+    },
+    {
+      "id": 27,
+      "university_name": "Faculty of Mathematical and Natural Sciences, University of Prishtina",
+      "city": "Prishtina",
+      "description": "The Faculty of Mathematical and Natural Sciences (FSHMN) at the University of Prishtina offers a diverse range of programs in mathematics, natural sciences, and related fields. The faculty emphasizes research and practical skills, preparing students for careers in science and technology.",
+      "website": "https://fshmn.uni-pr.edu/",
+      "logo": "https://fshmn.uni-pr.edu/images/fshmn-logo.png",
+      "created_at": "2025-05-02T22:28:34.000000Z",
+      "updated_at": "2025-05-03T07:00:48.000000Z",
+      "address": "Bregu i Diellit, Prishtina, Kosovo",
+      "branches_offered": [
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Computer Science",
+        "Geography",
+        "Ecology and Environmental Protection"
+      ],
+      "qualities_sought": [
+        "Analytical thinking",
+        "Research orientation",
+        "Scientific curiosity"
+      ],
+      "image": "https://fshmn.uni-pr.edu/images/fshmn-building.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"80\", \"AN-VS\": \"95\", \"AR-DS\": \"20\", \"AR-FM\": \"10\", \"DI-CD\": \"50\", \"DI-CS\": \"50\", \"EX-BU\": \"20\", \"EX-PL\": \"30\", \"GL-DM\": \"30\", \"GL-TR\": \"20\", \"HE-BT\": \"60\", \"HE-MD\": \"50\", \"SO-ED\": \"40\", \"SO-ME\": \"40\", \"SP-AT\": \"10\", \"SP-EC\": \"15\"}",
+      "user_id": null
+    },
+    {
+      "id": 28,
+      "university_name": "Faculty of Electrical and Computer Engineering, University of Prishtina",
+      "city": "Prishtina",
+      "description": "The Faculty of Electrical and Computer Engineering (FIEK) at the University of Prishtina offers comprehensive programs in engineering disciplines, focusing on modern technologies and practical applications. The faculty is dedicated to fostering innovation and preparing students for the evolving demands of the tech industry.",
+      "website": "https://fiek.uni-pr.edu/",
+      "logo": "https://fiek.uni-pr.edu/images/fiek-logo.png",
+      "created_at": "2025-05-02T22:28:34.000000Z",
+      "updated_at": "2025-05-03T07:01:13.000000Z",
+      "address": "Bregu i Diellit, Prishtina, Kosovo",
+      "branches_offered": [
+        "Computer and Software Engineering",
+        "Electronics, Automation and Robotics",
+        "Information and Communication Technologies",
+        "Power Systems"
+      ],
+      "qualities_sought": [
+        "Innovation",
+        "Technical proficiency",
+        "Problem-solving skills"
+      ],
+      "image": "https://fiek.uni-pr.edu/images/fiek-building.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"15\", \"AN-VS\": \"10\", \"AR-DS\": \"20\", \"AR-FM\": \"10\", \"DI-CD\": \"70\", \"DI-CS\": \"90\", \"EX-BU\": \"20\", \"EX-PL\": \"10\", \"GL-DM\": \"30\", \"GL-TR\": \"20\", \"HE-BT\": \"5\", \"HE-MD\": \"0\", \"SO-ED\": \"10\", \"SO-ME\": \"5\", \"SP-AT\": \"5\", \"SP-EC\": \"10\"}",
+      "user_id": null
+    },
+    {
+      "id": 29,
+      "university_name": "UBT College (University for Business and Technology)",
+      "city": "Prishtina",
+      "description": "Established in 2001, UBT College is a leading private institution in Kosovo, offering a wide range of programs across various disciplines. The college emphasizes innovation, practical skills, and international standards, preparing students for the global job market.",
+      "website": "https://www.ubt-uni.net/en/home/",
+      "logo": "https://www.ubt-uni.net/wp-content/uploads/2020/09/ubt-logo.png",
+      "created_at": "2025-05-02T22:31:10.000000Z",
+      "updated_at": "2025-05-03T07:01:36.000000Z",
+      "address": "Lagjja Kalabria, 10000 Prishtinë, Kosovo",
+      "branches_offered": [
+        "Management, Business and Economics",
+        "Computer Science and Engineering",
+        "Mechatronics Engineering",
+        "Information Systems",
+        "Architecture and Spatial Planning",
+        "Civil Engineering and Infrastructure",
+        "Law",
+        "Political Science",
+        "Media and Communication",
+        "Public Policy and Management",
+        "Energy Engineering",
+        "Nursing",
+        "Dentistry",
+        "Pharmacy",
+        "Integrated Design",
+        "Food Science and Biotechnology"
+      ],
+      "qualities_sought": [
+        "Innovation",
+        "Practical skills",
+        "Global perspective"
+      ],
+      "image": "https://www.ubt-uni.net/wp-content/uploads/2020/09/ubt-campus.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"40\", \"AN-VS\": \"30\", \"AR-DS\": \"70\", \"AR-FM\": \"50\", \"DI-CD\": \"85\", \"DI-CS\": \"75\", \"EX-BU\": \"80\", \"EX-PL\": \"60\", \"GL-DM\": \"75\", \"GL-TR\": \"70\", \"HE-BT\": \"60\", \"HE-MD\": \"55\", \"SO-ED\": \"50\", \"SO-ME\": \"65\", \"SP-AT\": \"40\", \"SP-EC\": \"45\"}",
+      "user_id": null
+    },
+    {
+      "id": 30,
+      "university_name": "AAB College",
+      "city": "Prishtina",
+      "description": "Founded in 2000, AAB College is the first non-public higher education institution in Kosovo. It offers a variety of programs and is known for its commitment to quality education, leadership, and success.",
+      "website": "https://aab-edu.net/en/",
+      "logo": "https://aab-edu.net/wp-content/uploads/2020/09/aab-logo.png",
+      "created_at": "2025-05-02T22:31:10.000000Z",
+      "updated_at": "2025-05-03T07:01:52.000000Z",
+      "address": "Rr. Elez Berisha, Nr.56 Zona Industriale Fushë Kosovë, 10000 Prishtinë, Kosovo",
+      "branches_offered": [
+        "English Language",
+        "German Language",
+        "Banking, Finance and Accounting",
+        "Mass Communication",
+        "Law",
+        "Economics",
+        "Health Sciences",
+        "Social Sciences",
+        "Computer Science",
+        "Architecture",
+        "Arts"
+      ],
+      "qualities_sought": [
+        "Academic excellence",
+        "Leadership",
+        "Innovation"
+      ],
+      "image": "https://aab-edu.net/wp-content/uploads/2020/09/aab-campus.jpg",
+      "archetype_percentages": "{\"AN-EN\": \"40\", \"AN-VS\": \"30\", \"AR-DS\": \"60\", \"AR-FM\": \"40\", \"DI-CD\": \"70\", \"DI-CS\": \"85\", \"EX-BU\": \"60\", \"EX-PL\": \"50\", \"GL-DM\": \"45\", \"GL-TR\": \"50\", \"HE-BT\": \"50\", \"HE-MD\": \"55\", \"SO-ED\": \"65\", \"SO-ME\": \"75\", \"SP-AT\": \"30\", \"SP-EC\": \"40\"}",
+      "user_id": null
+    }
+  ]
+}

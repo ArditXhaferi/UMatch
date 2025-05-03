@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Updated career images with full details
 const careerImages = [
@@ -119,24 +119,66 @@ const careerImages = [
 const Photos: React.FC = () => {
   const [selected, setSelected] = useState<typeof careerImages[0] | null>(null);
   const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   
   // Debounce timer for smoother hover experience
   let hoverTimer: NodeJS.Timeout | null = null;
 
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      // Check both window width and touch capability
+      const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth < 768;
+      setIsMobile(hasTouchScreen || isSmallScreen);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleMouseEnter = (index: number) => {
     if (hoverTimer) clearTimeout(hoverTimer);
-    setHoveredCardIndex(index);
+    if (!isMobile) {
+      setHoveredCardIndex(index);
+    }
   };
 
   const handleMouseLeave = () => {
-    // Add a small delay before flipping back to prevent rapid flipping when moving mouse
-    hoverTimer = setTimeout(() => {
-      setHoveredCardIndex(null);
-    }, 100);
+    if (!isMobile) {
+      // Add a small delay before flipping back to prevent rapid flipping when moving mouse
+      hoverTimer = setTimeout(() => {
+        setHoveredCardIndex(null);
+      }, 100);
+    }
+  };
+
+  const handleCardClick = (index: number, archetype: typeof careerImages[0]) => {
+    if (isMobile) {
+      // Toggle the flipped state for the clicked card
+      setFlippedCards(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(index)) {
+          newSet.delete(index);
+        } else {
+          newSet.add(index);
+        }
+        return newSet;
+      });
+    } else {
+      setSelected(archetype);
+    }
   };
 
   return (
-    <section className="w-full py-12">
+    <section className="w-full py-12 px-4 md:px-0">
       <h2 className="text-3xl md:text-4xl font-bold text-[#2F2F2F] mb-10 text-center">
         Get Your <span className="text-[#9F262A]">Career Insights</span>
       </h2>
@@ -155,14 +197,18 @@ const Photos: React.FC = () => {
           {careerImages.map((archetype, index) => (
             <div key={index} className="perspective">
               <div 
-                className={`relative h-60 w-60 transition-all duration-500 preserve-3d cursor-pointer ${hoveredCardIndex === index ? 'rotate-y-180' : ''}`}
+                className={`relative h-60 w-60 transition-all duration-500 preserve-3d cursor-pointer ${
+                  isMobile 
+                    ? flippedCards.has(index) ? 'rotate-y-180' : ''
+                    : hoveredCardIndex === index ? 'rotate-y-180' : ''
+                }`}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
+                onClick={() => handleCardClick(index, archetype)}
               >
                 {/* Front of card */}
                 <div 
                   className="absolute w-full h-full backface-hidden bg-white rounded-xl shadow-md overflow-hidden"
-                  onClick={() => setSelected(archetype)}
                 >
                   <img 
                     src={archetype.src} 
@@ -177,7 +223,6 @@ const Photos: React.FC = () => {
                 {/* Back of card */}
                 <div 
                   className="absolute w-full h-full backface-hidden rotate-y-180 bg-white rounded-xl shadow-md p-4 flex flex-col"
-                  onClick={() => setSelected(archetype)}
                 >
                   <h4 className="text-sm font-medium text-gray-800 mb-2 text-center"></h4>
                   <p className="text-xs text-gray-700 mb-2 font-semibold">{archetype.university}</p>
@@ -202,10 +247,10 @@ const Photos: React.FC = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      {selected && (
+      {/* Modal - Only show on desktop */}
+      {selected && !isMobile && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
           onClick={() => setSelected(null)}
         >
           <div

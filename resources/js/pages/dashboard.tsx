@@ -15,7 +15,7 @@ import {
     XMarkIcon,
     DocumentIcon
 } from '@heroicons/react/24/outline';
-import { FireIcon as FireIconSolid, CheckCircleIcon } from '@heroicons/react/24/solid';
+import { FireIcon as FireIconSolid } from '@heroicons/react/24/solid';
 import Navigation from '@/components/Navigation';
 
 interface QuestType {
@@ -449,6 +449,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                 auth={auth} 
                 studentProfile={studentProfile} 
                 currentPage="home" 
+                isAdmin={false}
             />
 
             <Head title="Dashboard" />
@@ -537,11 +538,6 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                 <div className="bg-[#9A2D2D] bg-opacity-10 px-3 py-1 rounded-full flex items-center justify-center">
                                                     <span className="text-xs font-medium text-[#9A2D2D] text-white">{currentXp} Total XP</span>
                                                 </div>
-                                                {studentProfile.credits !== undefined && (
-                                                    <div className="bg-blue-100 px-3 py-1 rounded-full">
-                                                        <span className="text-xs font-medium text-blue-800">{studentProfile.credits} Credits</span>
-                                                    </div>
-                                                )}
                                             </div>
                                             
                                             <div className="mt-4">
@@ -733,10 +729,14 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                                     className={`w-2 h-2 rounded-full ${
                                                                         event.type === 'application' ? 'bg-red-500' : 
                                                                         event.type === 'event' ? 'bg-blue-500' : 
-                                                                        event.type === 'assignment' ? 'bg-green-500' : 
+                                                                        event.type === 'workshop' ? 'bg-purple-500' :
+                                                                        event.type === 'interview' ? 'bg-yellow-500' :
+                                                                        event.type === 'exam' ? 'bg-green-500' :
+                                                                        event.type === 'scholarship' ? 'bg-indigo-500' :
+                                                                        event.type === 'meeting' ? 'bg-pink-500' :
                                                                         'bg-gray-500'
                                                                     }`}
-                                                                    title={event.title}
+                                                                    title={`${event.title} (${event.type})`}
                                                                 />
                                                             ))}
                                                             {dayEvents.length > 2 && (
@@ -753,15 +753,31 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                     <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-600">
                                         <div className="flex items-center">
                                             <div className="w-3 h-3 rounded-full bg-red-500 mr-1"></div>
-                                            <span>Application Deadline</span>
+                                            <span>Application</span>
                                         </div>
                                         <div className="flex items-center">
                                             <div className="w-3 h-3 rounded-full bg-blue-500 mr-1"></div>
                                             <span>Event</span>
                                         </div>
                                         <div className="flex items-center">
+                                            <div className="w-3 h-3 rounded-full bg-purple-500 mr-1"></div>
+                                            <span>Workshop</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-3 h-3 rounded-full bg-yellow-500 mr-1"></div>
+                                            <span>Interview</span>
+                                        </div>
+                                        <div className="flex items-center">
                                             <div className="w-3 h-3 rounded-full bg-green-500 mr-1"></div>
-                                            <span>Assignment</span>
+                                            <span>Exam</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-3 h-3 rounded-full bg-indigo-500 mr-1"></div>
+                                            <span>Scholarship</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-3 h-3 rounded-full bg-pink-500 mr-1"></div>
+                                            <span>Meeting</span>
                                         </div>
                                     </div>
                                 </div>
@@ -847,11 +863,11 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                 <div className="px-6 py-5">
                                     <div className="flex justify-around">
                                         <div className="text-center">
-                                            <div className="text-3xl font-bold text-[#9A2D2D]">{daysStreak}</div>
+                                            <div className="text-3xl font-bold text-[#9A2D2D]">0</div>
                                             <div className="text-xs text-gray-500">Current Streak</div>
                                         </div>
                                         <div className="text-center">
-                                            <div className="text-3xl font-bold text-[#9A2D2D]">12</div>
+                                            <div className="text-3xl font-bold text-[#9A2D2D]">0</div>
                                             <div className="text-xs text-gray-500">Longest Streak</div>
                                         </div>
                                     </div>

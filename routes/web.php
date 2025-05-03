@@ -11,6 +11,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\LandingPageController;
 use App\Models\University;
+use App\Http\Controllers\UniversityData;
 
 // Route::get('/', function () {
 //     if (Auth::check()) {
@@ -325,44 +326,68 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Get quests data if available
         $quests = [];
         if ($studentProfile) {
-            $questProgresses = $studentProfile->questProgresses()
-                ->with('quest')
+            $quests = \App\Models\Quest::orderBy('created_at', 'desc')
+                ->take(5)
                 ->get();
-
-            $quests = $questProgresses->map(function($progress) {
-                return [
-                    'id' => $progress->quest->id,
-                    'title' => $progress->quest->title,
-                    'description' => $progress->quest->description,
-                    'xp_reward' => $progress->quest->xp_reward,
-                    'progress' => $progress->progress_percentage,
-                    'is_complete' => $progress->is_complete
-                ];
-            });
         }
 
-        // Get XP activity data
+        // Get XP activity data if available
         $xpActivity = [];
         if ($studentProfile) {
-            $xpLogs = $studentProfile->xPLogs()
-                ->select(DB::raw('DATE(created_at) as date'), DB::raw('SUM(xp) as daily_xp'))
-                ->groupBy('date')
-                ->orderBy('date', 'desc')
-                ->limit(14)
+            $xpActivity = \App\Models\XpLog::where('student_profile_id', $studentProfile->id)
+                ->orderBy('created_at', 'desc')
+                ->take(5)
                 ->get();
-
-            $xpActivity = $xpLogs->map(function($log) {
-                return [
-                    'date' => $log->date,
-                    'xp' => $log->daily_xp
-                ];
-            });
         }
+
+        // Get university matches if student profile exists
+        $universityMatches = [];
+
+        if ($studentProfile && $studentProfile->analysis) {
+            \Illuminate\Support\Facades\Log::info('Fetching university matches for student profile', [
+                'profile_id' => $studentProfile->id,
+                'has_analysis' => !is_null($studentProfile->analysis),
+                'analysis_type' => gettype($studentProfile->analysis),
+                'analysis_data' => $studentProfile->analysis
+            ]);
+
+            $universityData = new \App\Http\Controllers\UniversityData();
+            $response = $universityData->matchUsersWithUniversity(request());
+
+            $responseData = $response->getData();
+            
+            \Illuminate\Support\Facades\Log::info('University matches response', [
+                'success' => $responseData->success,
+                'matches_count' => isset($responseData->matches) ? count($responseData->matches) : 0,
+                'response_data' => $responseData
+            ]);
+
+            if ($responseData->success && isset($responseData->matches)) {
+                $universityMatches = json_decode(json_encode($responseData->matches), true);
+                
+                \Illuminate\Support\Facades\Log::info('University matches data', [
+                    'matches' => array_map(function($match) {
+                        return [
+                            'id' => $match['id'],
+                            'university_name' => $match['university_name'],
+                            'match_percentage' => $match['match_percentage']
+                        ];
+                    }, $universityMatches)
+                ]);
+            }
+        }
+
+        \Illuminate\Support\Facades\Log::info('Rendering dashboard', [
+            'has_student_profile' => !is_null($studentProfile),
+            'has_university_matches' => !empty($universityMatches),
+            'university_matches_count' => count($universityMatches)
+        ]);
 
         return Inertia::render('dashboard', [
             'studentProfile' => $studentProfile,
             'quests' => $quests,
-            'xp_activity' => $xpActivity
+            'xpActivity' => $xpActivity,
+            'universityMatches' => $universityMatches
         ]);
     })->name('dashboard');
 });

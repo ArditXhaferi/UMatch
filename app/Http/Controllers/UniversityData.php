@@ -17,42 +17,135 @@ class UniversityData extends Controller
 
  
     public function matchUsersWithUniversity(Request $request) {
-        try{
-            $all_instances = University::all();
+        try {
+            $user = $request->user();
+            $studentProfile = $user->studentProfile;
 
-            $the_user_profile = StudentProfile::where("user_id",2)->first();
-
-            $the_user_profile = $the_user_profile ? $the_user_profile->toArray() : [];
-
-            $the_user_archetypes = $this->sort_archetypes($the_user_profile['analysis']);
-
-            foreach($all_instances as $university_instance) {
-                $the_university_archetypes = $university_instance->archetype_percentages;
-
-                $the_sorted_uni = $this->sort_archetypes($the_university_archetypes);
-
-
-                $the_percentage = $this->calculateMatchingPercentage($the_user_archetypes,$the_sorted_uni);
-
-                $the_percentage = $this->fixed_percentage($the_percentage);
-                $the_university_percentage = [
-                    'university_id' => $university_instance->id,
-                    'percentage'=> $the_percentage
-                ];
-
-                if(!array_key_exists("matching",$the_user_profile)) {
-                    $the_user_profile["matching"] = [$the_university_percentage];
-                } else {
-                    $the_user_profile["matching"][] = $the_university_percentage;
-                }
-
+            if (!$studentProfile || !$studentProfile->analysis) {
+                \Illuminate\Support\Facades\Log::info('No student profile or analysis data found', [
+                    'user_id' => $user->id,
+                    'has_profile' => !is_null($studentProfile),
+                    'has_analysis' => $studentProfile ? !is_null($studentProfile->analysis) : false
+                ]);
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No student profile or analysis data found'
+                ]);
             }
 
-            return response()->json(['success'=>true,'user_profile'=>$the_user_profile]);
+            \Illuminate\Support\Facades\Log::info('Student profile analysis data', [
+                'profile_id' => $studentProfile->id,
+                'archetype_code' => $studentProfile->archetype_code,
+                'analysis' => $studentProfile->analysis
+            ]);
+
+            $universities = University::all();
+            $matches = [];
+
+            foreach ($universities as $university) {
+                $matchPercentage = $this->calculateMatchPercentage(
+                    $studentProfile->analysis['archetype_scores'],
+                    $university->archetype_percentages
+                );
+
+                \Illuminate\Support\Facades\Log::info('University match calculation', [
+                    'university_id' => $university->id,
+                    'university_name' => $university->university_name,
+                    'match_percentage' => $matchPercentage,
+                    'student_archetypes' => $studentProfile->analysis['archetype_scores'],
+                    'university_archetypes' => $university->archetype_percentages
+                ]);
+
+                $matches[] = [
+                    'id' => $university->id,
+                    'university_name' => $university->university_name,
+                    'city' => $university->city,
+                    'description' => $university->description,
+                    'website' => $university->website,
+                    'logo' => $university->logo,
+                    'image' => $university->image,
+                    'branches_offered' => $university->branches_offered,
+                    'qualities_sought' => $university->qualities_sought,
+                    'match_percentage' => $matchPercentage
+                ];
+            }
+
+            // Sort matches by percentage in descending order
+            usort($matches, function($a, $b) {
+                return $b['match_percentage'] - $a['match_percentage'];
+            });
+
+            \Illuminate\Support\Facades\Log::info('Final university matches', [
+                'total_matches' => count($matches),
+                'top_matches' => array_slice($matches, 0, 3)
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'matches' => array_values($matches) // Ensure we return a JSON array, not an object
+            ]);
 
         } catch(Exception $e) {
-            return response()->json(["success"=>false,"details"=>$e->getMessage()]);
+            \Illuminate\Support\Facades\Log::error('Error in matchUsersWithUniversity', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
         }
+    }
+
+    protected function calculateMatchPercentage($studentArchetypes, $universityArchetypes) {
+        if (!$studentArchetypes || !$universityArchetypes) {
+            \Illuminate\Support\Facades\Log::info('Missing archetype data', [
+                'has_student_archetypes' => !is_null($studentArchetypes),
+                'has_university_archetypes' => !is_null($universityArchetypes)
+            ]);
+            return 0;
+        }
+
+        \Illuminate\Support\Facades\Log::info('Calculating match percentage', [
+            'student_archetypes' => $studentArchetypes,
+            'university_archetypes' => $universityArchetypes
+        ]);
+
+        $totalScore = 0;
+        $maxScore = 0;
+        $matchCount = 0;
+
+        foreach ($studentArchetypes as $archetype => $studentScore) {
+            if (isset($universityArchetypes[$archetype])) {
+                $universityScore = $universityArchetypes[$archetype];
+                
+                // Calculate similarity between student and university scores
+                $similarity = 100 - abs($studentScore - $universityScore);
+                
+                // Weight higher scores more heavily
+                $weight = ($studentScore >= 70 || $universityScore >= 70) ? 1.5 : 1.0;
+                
+                $totalScore += $similarity * $weight;
+                $maxScore += 100 * $weight;
+                $matchCount++;
+            }
+        }
+
+        if ($maxScore === 0 || $matchCount === 0) {
+            \Illuminate\Support\Facades\Log::info('No matching archetypes found');
+            return 0;
+        }
+
+        $matchPercentage = round(($totalScore / $maxScore) * 100);
+
+        \Illuminate\Support\Facades\Log::info('Match percentage calculated', [
+            'total_score' => $totalScore,
+            'max_score' => $maxScore,
+            'match_count' => $matchCount,
+            'match_percentage' => $matchPercentage
+        ]);
+
+        return $matchPercentage;
     }
 
     public function sort_archetypes($university_archetypes) {

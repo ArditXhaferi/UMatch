@@ -60,9 +60,6 @@ function AvatarDropdown({ userName, archetypeCode, hexadType, level, hasXp }: Av
                     <div 
                         className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-10"
                     >
-                        <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            Your Profile
-                        </Link>
                         <Link href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             Settings
                         </Link>

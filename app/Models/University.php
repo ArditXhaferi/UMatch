@@ -25,7 +25,8 @@ class University extends Model
         'logo',
         'branches_offered',
         'qualities_sought',
-        'address'
+        'address',
+        'archetype_percentages'
     ];
 
     /**
@@ -38,7 +39,8 @@ class University extends Model
         return [
             'id' => 'integer',
             'branches_offered' => 'array',
-            'qualities_sought' => 'array'
+            'qualities_sought' => 'array',
+            'archetype_percentages' => 'array'
         ];
     }
 

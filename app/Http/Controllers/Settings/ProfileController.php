@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\ProfileUpdateRequest;
+use App\Models\StudentProfile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,9 +19,12 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        $studentProfile = StudentProfile::where('user_id', $request->user()->id)->first();
+
         return Inertia::render('settings/profile', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => $request->session()->get('status'),
+            'studentProfile' => $studentProfile,
         ]);
     }
 
@@ -29,15 +33,23 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
-        return to_route('profile.edit');
+        // Update student profile if it exists
+        if ($studentProfile = StudentProfile::where('user_id', $user->id)->first()) {
+            $studentProfile->update([
+                'school' => $request->input('school'),
+            ]);
+        }
+
+        return to_route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -50,6 +62,11 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+
+        // Delete associated student profile if it exists
+        if ($studentProfile = StudentProfile::where('user_id', $user->id)->first()) {
+            $studentProfile->delete();
+        }
 
         Auth::logout();
 

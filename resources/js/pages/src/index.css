@@ -1,0 +1,99 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: ; /* Light purple background */
+    --foreground: 222 84% 5%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 5%;
+
+    --primary: 260 84% 60%; /* Vivid purple */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 260 40% 85%;
+    --secondary-foreground: 260 50% 30%;
+
+    --muted: 260 30% 92%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 280 84% 60%; /* Magenta accent */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 30% 86%;
+    --input: 214 32% 91%;
+    --ring: 260 84% 60%;
+
+    --radius: 0.75rem;
+  }
+}
+
+body{
+  background-color: rgb(255, 247, 239);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl sm:text-2xl;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-r from-future-primary via-future-secondary to-future-accent;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .avatar-container {
+    @apply relative overflow-hidden rounded-full border-4 border-future-light shadow-lg;
+  }
+  
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium;
+  }
+  
+  .badge-personality {
+    @apply badge bg-future-light text-future-tertiary;
+  }
+  
+  .badge-match {
+    @apply badge bg-gradient-to-r from-future-primary to-future-accent text-white;
+  }
+}

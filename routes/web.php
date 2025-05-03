@@ -9,13 +9,17 @@ use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\LandingPageController;
+use App\Models\University;
 
-Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('dashboard');
-    }
-    return Inertia::render('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     if (Auth::check()) {
+//         return redirect()->route('dashboard');
+//     }
+//     return Inertia::render('welcome');
+// })->name('welcome');
+
+Route::get('/',[LandingPageController::class,'landing_page']);
 
 Route::middleware(['auth'])->group(function () {
     // File Upload Routes
@@ -375,6 +379,8 @@ Route::controller(UniversityController::class)->group(function () {
     Route::post('/applications/reject', 'reject_application');
     Route::post('/applications/review', 'set_application_to_review');
 });
+
+
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

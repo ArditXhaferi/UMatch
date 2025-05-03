@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>UMatch Mascot</title>
+    <g id="mascot" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Bear Body -->
+        <circle cx="100" cy="110" r="70" fill="#FFBB33" />
+        
+        <!-- Face -->
+        <circle cx="100" cy="100" r="55" fill="#FFCC66" />
+        
+        <!-- Ears -->
+        <circle cx="55" cy="55" r="15" fill="#FFBB33" />
+        <circle cx="145" cy="55" r="15" fill="#FFBB33" />
+        <circle cx="55" cy="55" r="8" fill="#CC8833" />
+        <circle cx="145" cy="55" r="8" fill="#CC8833" />
+        
+        <!-- Eyes -->
+        <circle cx="80" cy="90" r="8" fill="#333333" />
+        <circle cx="120" cy="90" r="8" fill="#333333" />
+        <circle cx="83" cy="87" r="3" fill="#FFFFFF" />
+        <circle cx="123" cy="87" r="3" fill="#FFFFFF" />
+        
+        <!-- Nose -->
+        <circle cx="100" cy="105" r="10" fill="#CC8833" />
+        
+        <!-- Mouth -->
+        <path d="M85,120 Q100,130 115,120" stroke="#333333" stroke-width="3" fill="none" />
+        
+        <!-- Graduation Cap -->
+        <rect x="60" y="35" width="80" height="10" fill="#b22234" />
+        <polygon points="100,10 135,35 65,35" fill="#b22234" />
+        <rect x="95" y="10" width="10" height="20" fill="#b22234" />
+        <circle cx="100" cy="5" r="5" fill="#b22234" />
+        
+        <!-- Tassel -->
+        <path d="M100,10 Q110,25 120,40" stroke="#F3D02F" stroke-width="3" fill="none" />
+        <circle cx="120" cy="40" r="5" fill="#F3D02F" />
+        
+        <!-- UMatch Text -->
+        <text x="100" y="175" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#b22234">UMatch</text>
+    </g>
+</svg> 

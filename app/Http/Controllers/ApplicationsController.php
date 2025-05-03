@@ -21,6 +21,7 @@ class ApplicationsController extends Controller
 
     public function make_application(Request $request) {
         $validated_data = Validator::make($request->all(),[
+            "university_id" => "required",
             "programme_id" => "required",
             "pdf_path" => "required"
         ]);
@@ -34,6 +35,7 @@ class ApplicationsController extends Controller
 
             $the_new_application_instance = Application::create([
                 'student_profile_id' => $student_profile->id,
+                'university_id' => $request->university_id,
                 'programme_id' => $request->programme_id,
                 'submitted_at' => Carbon::now(),
                 'pdf_path' => $request->pdf_path

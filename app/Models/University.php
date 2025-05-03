@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use App\Models\Application;
+use App\Models\User;
 class University extends Model
 {
     use HasFactory;
@@ -16,6 +17,7 @@ class University extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'university_name',
         'city',
         'description',
@@ -48,5 +50,13 @@ class University extends Model
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function applications() {
+        return $this->hasMany(Application::class);
+    }
+
+    public function university_owner() {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

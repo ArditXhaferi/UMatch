@@ -8,6 +8,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\UniversityController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -366,6 +367,13 @@ Route::middleware('auth:sanctum')->controller(ApplicationController::class)->gro
     Route::get('/applications/view', 'view_applications');
     Route::post('/applications/cancel', 'cancel_application');
     Route::post('/applications/create','make_application');
+});
+
+Route::controller(UniversityController::class)->group(function () {
+    Route::get('/applications/view', 'view_applications');
+    Route::post('/applications/accept', 'accept_application');
+    Route::post('/applications/reject', 'reject_application');
+    Route::post('/applications/review', 'set_application_to_review');
 });
 
 require __DIR__.'/settings.php';

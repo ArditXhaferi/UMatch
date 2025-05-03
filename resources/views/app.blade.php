@@ -26,7 +26,7 @@
         <meta name="twitter:title" content="UMatch — University Matchmaking & Exploration Platform">
         <meta name="twitter:description" content="UMatch is a playful, data-driven platform for students, parents, and universities to connect, explore, and find the perfect academic match. Discover your archetype and get personalized recommendations powered by AI.">
         <meta name="twitter:image" content="{{ public_path('social_media.png') }}">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
         <script>
             (function() {

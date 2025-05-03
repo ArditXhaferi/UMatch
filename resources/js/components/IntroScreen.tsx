@@ -1,7 +1,7 @@
 
-import React, { useEffect, useRef, useState } from "react";
-import logo from '../assets/navbar/umatch-logo.png';
-
+import  { useEffect, useRef, useState } from "react";
+import logo from '../pages/assets/navbar/umatch-logo.png';
+import intro from '../pages/assets/home/intro.mp4';
 const IntroScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
   const [showTyping, setShowTyping] = useState(false);
   const [showExtras, setShowExtras] = useState(false);
@@ -46,7 +46,7 @@ const IntroScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
       {/* Bear Video */}
       <video
         ref={videoRef}
-        src="/intro.mp4"
+        src={intro}
         autoPlay
         muted
         playsInline

@@ -14,6 +14,83 @@ import {
 } from '@heroicons/react/24/outline';
 import { FireIcon as FireIconSolid } from '@heroicons/react/24/solid';
 
+// Avatar Dropdown Component
+interface AvatarDropdownProps {
+    userName: string;
+    archetypeCode: string;
+    hexadType: string;
+    level: number;
+    hasXp: boolean;
+}
+
+function AvatarDropdown({ userName, archetypeCode, hexadType, level, hasXp }: AvatarDropdownProps) {
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = React.useRef<HTMLDivElement>(null);
+    
+    // Handle clicking outside of dropdown
+    React.useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        }
+        
+        // Add event listener when dropdown is open
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        
+        // Cleanup
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
+    
+    return (
+        <div className="flex items-center">
+            <span className="text-sm text-gray-700 mr-2">{userName}</span>
+            <div className="relative" ref={dropdownRef}>
+                <button 
+                    className="flex rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9A2D2D]" 
+                    onClick={() => setIsOpen(!isOpen)}
+                    type="button"
+                >
+                    <img 
+                        src={`/images/${archetypeCode}.png`}
+                        alt={`${hexadType} Character`}
+                        className="h-8 w-8 rounded-full object-cover border border-gray-200"
+                    />
+                    {hasXp && (
+                        <div className="absolute -bottom-1 -right-1 bg-[#9A2D2D] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                            {level}
+                        </div>
+                    )}
+                </button>
+                
+                {/* Dropdown Menu */}
+                {isOpen && (
+                    <div 
+                        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-10"
+                    >
+                        <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Your Profile
+                        </Link>
+                        <Link href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Settings
+                        </Link>
+                        <button 
+                            onClick={() => router.post('/logout')}
+                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                            Sign out
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
 interface QuestType {
     id: number;
     title: string;
@@ -102,52 +179,19 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                             <div className="flex items-center space-x-4">
                                 {/* XP Display */}
                                 <div className="flex items-center bg-[#9A2D2D] bg-opacity-10 px-3 py-1 rounded-full">
-                                    <StarIcon className="h-5 w-5 text-white mr-1" />
-                                    <span className="text-sm font-medium text-white">{currentXp} XP</span>
+                                    <StarIcon className="h-5 w-5 text-[#9A2D2D] mr-1" />
+                                    <span className="text-sm font-medium text-[#9A2D2D]">{currentXp} XP</span>
                                 </div>
                                 
                                 {/* User Avatar with Dropdown */}
                                 <div className="ml-3 relative">
-                                    <div className="flex items-center">
-                                        <span className="text-sm text-gray-700 mr-2">{auth.user.name}</span>
-                                        <div className="relative group">
-                                            <button 
-                                                className="flex rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9A2D2D]" 
-                                                type="button"
-                                            >
-                                                {studentProfile ? (
-                                                    <img 
-                                                        src={`/images/${studentProfile.archetype_code}.png`}
-                                                        alt={`${studentProfile.hexad_type} Character`}
-                                                        className="h-8 w-8 rounded-full object-cover border border-gray-200"
-                                                    />
-                                                ) : (
-                                                    <UserCircleIcon className="h-8 w-8 text-gray-500" />
-                                                )}
-                                                {currentXp > 0 && (
-                                                    <div className="absolute -bottom-1 -right-1 bg-[#9A2D2D] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                                                        {currentLevel}
-                                                    </div>
-                                                )}
-                                            </button>
-                                            
-                                            {/* Dropdown Menu */}
-                                            <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 invisible group-hover:visible focus:visible z-10">
-                                                <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                    Your Profile
-                                                </Link>
-                                                <Link href="/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                    Settings
-                                                </Link>
-                                                <button 
-                                                    onClick={() => router.post('/logout')}
-                                                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                                >
-                                                    Sign out
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <AvatarDropdown 
+                                        userName={auth.user.name}
+                                        archetypeCode={studentProfile.archetype_code}
+                                        hexadType={studentProfile.hexad_type}
+                                        level={currentLevel}
+                                        hasXp={currentXp > 0}
+                                    />
                                 </div>
                             </div>
                         )}

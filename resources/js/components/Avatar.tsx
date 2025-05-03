@@ -69,7 +69,7 @@ const Avatar: React.FC<AvatarProps> = ({ onContinue, className }) => {
 
       {/* Right: Text + Button slightly above bottom */}
       <div className="flex flex-col justify-end h-60 ml-6 -translate-y-2">
-        <div className="bg-white p-4 rounded-2xl shadow-md max-w-md mb-4 animate-slide-up">
+        <div className="bg-white p-4 rounded-2xl shadow-md max-w-md mb-4 animate-slide-up text-gray-900">
           <p className="text-lg">
             {message}
           </p>

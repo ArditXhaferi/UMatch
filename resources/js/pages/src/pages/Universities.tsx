@@ -1,11 +1,11 @@
-
 import React, { useState } from 'react';
-import Header from '@/components/Header';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+// Comment out components that don't exist yet
+// import Header from '@/components/Header';
+// import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+// import { Button } from '@/components/ui/button';
+// import { Badge } from '@/components/ui/badge';
+// import { Input } from '@/components/ui/input';
+// import { Search } from 'lucide-react';
 
 interface University {
   id: number;
@@ -107,21 +107,20 @@ const Universities: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Header />
+      {/* <Header /> */}
       
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-future-dark text-center mb-2">
-          Explore <span className="text-future-primary">Universities</span> in Albania
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2">
+          Explore Universities in Albania
         </h1>
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+        <p className="text-center mb-8 max-w-2xl mx-auto">
           Discover the best educational institutions and find the perfect match for your future studies
         </p>
         
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="relative flex-grow">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <Input 
-              className="pl-10" 
+            <input 
+              className="w-full p-2 border rounded" 
               placeholder="Search universities..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -130,88 +129,83 @@ const Universities: React.FC = () => {
           
           <div className="flex flex-wrap gap-2">
             {selectedSpecialty && (
-              <Badge 
-                variant="secondary"
-                className="cursor-pointer hover:bg-secondary/70"
+              <button 
+                className="px-3 py-1 bg-gray-200 rounded-full cursor-pointer"
                 onClick={() => setSelectedSpecialty(null)}
               >
                 {selectedSpecialty} ×
-              </Badge>
+              </button>
             )}
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {filteredUniversities.map((university) => (
-            <Card key={university.id} className="overflow-hidden card-hover">
+            <div key={university.id} className="border rounded-lg overflow-hidden">
               <div className="h-48 overflow-hidden">
                 <img 
                   src={university.imageUrl} 
                   alt={university.name} 
-                  className="w-full h-full object-cover transform transition duration-500 hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <CardHeader>
-                <CardTitle>{university.name}</CardTitle>
-                <CardDescription>{university.location} • Est. {university.established}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">{university.description}</p>
+              <div className="p-4">
+                <h3 className="text-xl font-bold">{university.name}</h3>
+                <p className="text-sm text-gray-600">{university.location} • Est. {university.established}</p>
+                <p className="text-sm my-4">{university.description}</p>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {university.specialties.map(specialty => (
-                    <Badge 
+                    <span 
                       key={specialty} 
-                      variant="outline" 
-                      className="bg-future-light text-future-tertiary border-0 cursor-pointer hover:bg-future-light/70"
+                      className="px-2 py-1 bg-gray-100 text-sm rounded cursor-pointer"
                       onClick={() => setSelectedSpecialty(specialty)}
                     >
                       {specialty}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
                 <p className="text-sm mt-4">
                   <span className="font-semibold">Fees:</span> {university.fees}
                 </p>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline" className="text-future-primary border-future-primary hover:bg-future-light">
+              </div>
+              <div className="p-4 flex justify-between border-t">
+                <button className="px-4 py-2 border rounded">
                   Learn More
-                </Button>
-                <Button className="bg-future-primary hover:bg-future-tertiary">
+                </button>
+                <button className="px-4 py-2 bg-red-700 text-white rounded">
                   Visit Website
-                </Button>
-              </CardFooter>
-            </Card>
+                </button>
+              </div>
+            </div>
           ))}
         </div>
         
-        <div className="bg-muted rounded-lg p-6 mb-6">
+        <div className="bg-gray-100 rounded-lg p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">Programs by Field</h2>
           <div className="flex flex-wrap gap-2">
             {allSpecialties.map(specialty => (
-              <Badge 
+              <span 
                 key={specialty}
-                variant={selectedSpecialty === specialty ? "default" : "outline"}
-                className={`cursor-pointer ${
+                className={`px-3 py-1 rounded-full cursor-pointer ${
                   selectedSpecialty === specialty 
-                    ? "bg-future-primary hover:bg-future-tertiary" 
-                    : "hover:bg-future-light"
+                    ? "bg-red-700 text-white" 
+                    : "bg-gray-200"
                 }`}
                 onClick={() => setSelectedSpecialty(specialty === selectedSpecialty ? null : specialty)}
               >
                 {specialty}
-              </Badge>
+              </span>
             ))}
           </div>
         </div>
       </main>
       
-      <footer className="bg-future-dark text-white py-6">
+      <footer className="bg-gray-800 text-white py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <span className="font-bold text-xl">
-                Match<span className="text-future-primary">Future</span>
+                UMatch
               </span>
               <p className="text-sm text-gray-400 mt-1">
                 Guiding Albanian students to their perfect future

@@ -1,0 +1,233 @@
+{
+    "success": true,
+    "universities": [
+      {
+        "id": 1,
+        "university_name": "University of Tirana",
+        "city": "Tirana",
+        "description": "The University of Tirana is the largest and most prestigious university in Albania, offering a wide range of programs across various disciplines. Founded in 1957, it has a rich history of academic excellence and is renowned for its contributions to research and innovation. The university is home to numerous faculties, including Law, Economics, Social Sciences, and Natural Sciences, and is committed to fostering a dynamic and inclusive learning environment.",
+        "website": "http://www.unitir.edu.al",
+        "logo": "https://unitir.edu.al/wp-content/uploads/2019/08/logo.png",
+        "address": "Sheshi Nënë Tereza, Tiranë, Albania",
+        "branches_offered": [
+          "Law",
+          "Economics",
+          "Social Sciences",
+          "Natural Sciences"
+        ],
+        "qualities_sought": [
+          "Academic excellence",
+          "Leadership skills",
+          "Community involvement"
+        ],
+        "image": "https://image.free-apply.com/gallery/l/uni/gallery/lg/1000800026/0a62780cfd74f2903d0bbceac471d9a07b2fb4ce.jpg?s=640",
+        "archetype_percentages": "{\"AN-EN\": \"40\", \"AN-VS\": \"40\", \"AR-DS\": \"40\", \"AR-FM\": \"40\", \"DI-CD\": \"50\", \"DI-CS\": \"50\", \"EX-BU\": \"60\", \"EX-PL\": \"60\", \"GL-DM\": \"60\", \"GL-TR\": \"60\", \"HE-BT\": \"40\", \"HE-MD\": \"40\", \"SO-ED\": \"80\", \"SO-ME\": \"70\", \"SP-AT\": \"50\", \"SP-EC\": \"70\"}",
+        "user_id": null
+      },
+      {
+        "id": 2,
+        "university_name": "Polytechnic University of Tirana",
+        "city": "Tirana",
+        "description": "The Polytechnic University of Tirana is a leading institution in engineering and technology, known for its cutting-edge research and innovative programs. Established in 1951, it offers a comprehensive range of degrees in Engineering, Architecture, and Information Technology. The university is dedicated to preparing students for the challenges of the modern world through hands-on learning and industry collaborations.",
+        "website": "http://www.upt.al",
+        "logo": "",
+        "address": "Sheshi Nënë Tereza, Tiranë, Albania",
+        "branches_offered": [
+          "Engineering",
+          "Architecture",
+          "Information Technology"
+        ],
+        "qualities_sought": [
+          "Innovation",
+          "Problem-solving skills",
+          "Technical proficiency"
+        ],
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL6K-ZxY2H_8CwOXXcRQjO9aw_FW9sU7DsNg&s",
+        "archetype_percentages": "{\"AN-EN\": \"95\", \"AN-VS\": \"60\", \"AR-DS\": \"85\", \"AR-FM\": \"50\", \"DI-CD\": \"80\", \"DI-CS\": \"75\", \"EX-BU\": \"40\", \"EX-PL\": \"50\", \"GL-DM\": \"40\", \"GL-TR\": \"30\", \"HE-BT\": \"20\", \"HE-MD\": \"10\", \"SO-ED\": \"20\", \"SO-ME\": \"30\", \"SP-AT\": \"20\", \"SP-EC\": \"25\"}",
+        "user_id": null
+      },
+      {
+        "id": 3,
+        "university_name": "Agricultural University of Tirana",
+        "city": "Tirana",
+        "description": "The Agricultural University of Tirana is dedicated to advancing agricultural sciences and related fields. Founded in 1951, it offers programs in Agriculture, Forestry, and Veterinary Medicine. The university is committed to sustainable development and environmental conservation, providing students with practical skills and research opportunities to address global agricultural challenges.",
+        "website": "http://www.ubt.edu.al",
+        "logo": "https://www.ubt.edu.al/web/image/website/1/logo/Universiteti%20Bujq%C3%ABsor%20i%20Tiran%C3%ABs?unique=c1bb49c",
+        "address": "Koder Kamez, Tiranë, Albania",
+        "branches_offered": [
+          "Agriculture",
+          "Forestry",
+          "Veterinary Medicine"
+        ],
+        "qualities_sought": [
+          "Practical skills",
+          "Research aptitude",
+          "Environmental awareness"
+        ],
+        "image": "https://media.licdn.com/dms/image/v2/C4E1BAQFRQPbNUKXXbw/company-background_10000/company-background_10000/0/1605780768129/agriculture_university_of_tirana_cover?e=2147483647&v=beta&t=dNuyXfCpttcvJ62iENfcZT1fmtZH02vPs7oPylVihVI",
+        "archetype_percentages": "{\"AN-EN\": \"10\", \"AN-VS\": \"20\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"30\", \"DI-CS\": \"20\", \"EX-BU\": \"10\", \"EX-PL\": \"20\", \"GL-DM\": \"60\", \"GL-TR\": \"40\", \"HE-BT\": \"40\", \"HE-MD\": \"30\", \"SO-ED\": \"90\", \"SO-ME\": \"40\", \"SP-AT\": \"20\", \"SP-EC\": \"30\"}",
+        "user_id": null
+      },
+      {
+        "id": 4,
+        "university_name": "University of Medicine, Tirana",
+        "city": "Tirana",
+        "description": "The University of Medicine, Tirana is a premier institution dedicated to medical sciences and healthcare education. Established in 1952, it offers comprehensive programs in Medicine, Dentistry, Pharmacy, and Public Health. The university is renowned for its rigorous academic standards, state-of-the-art facilities, and commitment to producing highly skilled healthcare professionals.",
+        "website": "http://umed.edu.al/",
+        "logo": "http://umed.edu.al/wp-content/uploads/2017/03/universiteti-i-mjekesise-logo-login-1.png",
+        "address": "Rruga Dibres, Tiranë, Albania",
+        "branches_offered": [
+          "Medicine",
+          "Dentistry",
+          "Pharmacy",
+          "Public Health"
+        ],
+        "qualities_sought": [
+          "Empathy",
+          "Scientific rigor",
+          "Clinical skills"
+        ],
+        "image": "https://i0.wp.com/mymedschool.org/wp-content/uploads/2021/08/university-of-medicine-of-tirana-faculty-of-medicine-2.jpg?fit=680%2C382&ssl=1&w=640",
+        "archetype_percentages": "{\"AN-EN\": \"0\", \"AN-VS\": \"0\", \"AR-DS\": \"0\", \"AR-FM\": \"0\", \"DI-CD\": \"0\", \"DI-CS\": \"0\", \"EX-BU\": \"0\", \"EX-PL\": \"0\", \"GL-DM\": \"0\", \"GL-TR\": \"0\", \"HE-BT\": \"60\", \"HE-MD\": \"100\", \"SO-ED\": \"0\", \"SO-ME\": \"15\", \"SP-AT\": \"0\", \"SP-EC\": \"0\"}",
+        "user_id": null
+      },
+      {
+        "id": 5,
+        "university_name": "University of Arts, Tirana",
+        "city": "Tirana",
+        "description": "The University of Arts, Tirana is a hub for creativity and artistic expression, offering programs in Fine Arts, Music, Theatre, and Film. Established in 1966, the university fosters a vibrant community of artists, providing students with the tools and inspiration to excel in their chosen fields. The institution is known for its innovative approach to arts education and its contributions to Albania's cultural landscape.",
+        "website": "http://www.unitirana.edu.al",
+        "logo": "https://www.edarabia.com/wp-content/uploads/2018/03/university-arts-tirana-albania.jpg",
+        "address": "Bulevardi Dëshmorët e Kombit, Tiranë, Albania",
+        "branches_offered": [
+          "Fine Arts",
+          "Music",
+          "Theatre",
+          "Film"
+        ],
+        "qualities_sought": [
+          "Creativity",
+          "Artistic talent",
+          "Cultural awareness"
+        ],
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiMun-6HHY-06pVULnFres7Lxbx9o2ervqjg&s",
+        "archetype_percentages": "{\"AN-EN\": \"15\", \"AN-VS\": \"10\", \"AR-DS\": \"95\", \"AR-FM\": \"80\", \"DI-CD\": \"20\", \"DI-CS\": \"10\", \"EX-BU\": \"5\", \"EX-PL\": \"5\", \"GL-DM\": \"10\", \"GL-TR\": \"5\", \"HE-BT\": \"0\", \"HE-MD\": \"0\", \"SO-ED\": \"10\", \"SO-ME\": \"20\", \"SP-AT\": \"5\", \"SP-EC\": \"5\"}",
+        "user_id": null
+      },
+      {
+        "id": 6,
+        "university_name": "European University of Tirana",
+        "city": "Tirana",
+        "description": "The European University of Tirana is known for its international collaborations and modern curriculum. Established in 2006, it offers programs in Business, Law, Architecture, and Computer Science. The university is committed to providing a global education experience, with a focus on innovation, critical thinking, and preparing students for the challenges of the 21st century.",
+        "website": "http://www.uet.edu.al",
+        "logo": "https://uet.edu.al/wp-content/uploads/2022/12/Logo-pa-adrese.png",
+        "address": "Rruga Reshit Petrela, Tiranë, Albania",
+        "branches_offered": [
+          "Business",
+          "Law",
+          "Architecture",
+          "Computer Science"
+        ],
+        "qualities_sought": [
+          "Global mindset",
+          "Innovation",
+          "Critical thinking"
+        ],
+        "image": "https://images.app.goo.gl/yoMmxtEy9samfsrg9",
+        "archetype_percentages": "{\"AN-EN\": \"40\", \"AN-VS\": \"40\", \"AR-DS\": \"60\", \"AR-FM\": \"50\", \"DI-CD\": \"50\", \"DI-CS\": \"60\", \"EX-BU\": \"80\", \"EX-PL\": \"70\", \"GL-DM\": \"90\", \"GL-TR\": \"80\", \"HE-BT\": \"20\", \"HE-MD\": \"20\", \"SO-ED\": \"60\", \"SO-ME\": \"50\", \"SP-AT\": \"40\", \"SP-EC\": \"40\"}",
+        "user_id": null
+      },
+      {
+        "id": 7,
+        "university_name": "Epoka University",
+        "city": "Tirana",
+        "description": "Epoka University is a private institution with a strong focus on research and international standards. Founded in 2007, it offers programs in Engineering, Architecture, Business, and Political Science. The university is dedicated to fostering a culture of academic excellence, ethical standards, and leadership, providing students with a comprehensive education that prepares them for global success.",
+        "website": "https://www.epoka.edu.al",
+        "logo": "https://epoka.edu.al/assets/images/logo1.svg",
+        "address": "Rruga Tiranë-Rinas, Km 12, Rinas, Albania",
+        "branches_offered": [
+          "Engineering",
+          "Architecture",
+          "Business",
+          "Political Science"
+        ],
+        "qualities_sought": [
+          "Research skills",
+          "Leadership",
+          "Ethical standards"
+        ],
+        "image": "https://images.app.goo.gl/15KLcQhxjcv6Znt68",
+        "archetype_percentages": "{\"AN-EN\": \"30\", \"AN-VS\": \"20\", \"AR-DS\": \"70\", \"AR-FM\": \"60\", \"DI-CD\": \"40\", \"DI-CS\": \"40\", \"EX-BU\": \"80\", \"EX-PL\": \"70\", \"GL-DM\": \"50\", \"GL-TR\": \"60\", \"HE-BT\": \"30\", \"HE-MD\": \"20\", \"SO-ED\": \"60\", \"SO-ME\": \"50\", \"SP-AT\": \"40\", \"SP-EC\": \"50\"}",
+        "user_id": null
+      },
+      {
+        "id": 8,
+        "university_name": "Beder University",
+        "city": "Tirana",
+        "description": "Beder University offers a variety of programs with a focus on humanities and social sciences. Established in 2011, it provides education in Law, Economics, Communication, and Islamic Studies. The university is committed to promoting cultural sensitivity, analytical skills, and effective communication, preparing students to be responsible and informed global citizens.",
+        "website": "https://www.beder.edu.al",
+        "logo": "",
+        "address": "Rruga Bylis, Kashar, Tiranë, Albania",
+        "branches_offered": [
+          "Law",
+          "Economics",
+          "Communication",
+          "Islamic Studies"
+        ],
+        "qualities_sought": [
+          "Cultural sensitivity",
+          "Analytical skills",
+          "Communication skills"
+        ],
+        "image": "https://images.app.goo.gl/xLESLJDL5PtoN3is7",
+        "archetype_percentages": "{\"AN-EN\": \"70\", \"AN-VS\": \"20\", \"AR-DS\": \"40\", \"AR-FM\": \"30\", \"DI-CD\": \"30\", \"DI-CS\": \"40\", \"EX-BU\": \"50\", \"EX-PL\": \"60\", \"GL-DM\": \"70\", \"GL-TR\": \"80\", \"HE-BT\": \"10\", \"HE-MD\": \"10\", \"SO-ED\": \"90\", \"SO-ME\": \"80\", \"SP-AT\": \"20\", \"SP-EC\": \"40\"}",
+        "user_id": null
+      },
+      {
+        "id": 9,
+        "university_name": "Aleksandër Moisiu University",
+        "city": "Durres",
+        "description": "Aleksandër Moisiu University, located in Durrës, offers a range of academic programs designed to meet the needs of a diverse student body. Established in 2005, it provides education in Business, Education, Information Technology, and Nursing. The university is dedicated to fostering professionalism, teamwork, and adaptability, ensuring that students are well-prepared for their future careers.",
+        "website": "https://uamd.edu.al/en/",
+        "logo": "https://uamd.edu.al/wp-content/uploads/2022/07/Universiteti_i_Durresit__Aleksander_Moisiu_.svg.png",
+        "address": "Lagjia Nr 3, Rruga Currila, Durrës, Albania",
+        "branches_offered": [
+          "Business",
+          "Education",
+          "Information Technology",
+          "Nursing"
+        ],
+        "qualities_sought": [
+          "Professionalism",
+          "Teamwork",
+          "Adaptability"
+        ],
+        "image": "https://images.app.goo.gl/5nUTtLSu5ACzL7aR7",
+        "archetype_percentages": "{\"AN-EN\": \"20\", \"AN-VS\": \"10\", \"AR-DS\": \"15\", \"AR-FM\": \"10\", \"DI-CD\": \"25\", \"DI-CS\": \"20\", \"EX-BU\": \"90\", \"EX-PL\": \"75\", \"GL-DM\": \"50\", \"GL-TR\": \"60\", \"HE-BT\": \"30\", \"HE-MD\": \"30\", \"SO-ED\": \"70\", \"SO-ME\": \"40\", \"SP-AT\": \"20\", \"SP-EC\": \"25\"}",
+        "user_id": null
+      },
+      {
+        "id": 10,
+        "university_name": "University of Vlora",
+        "city": "Vlora",
+        "description": "The University of Vlora is renowned for its programs in marine sciences and environmental studies. Established in 1994, it offers degrees in Marine Sciences, Environmental Engineering, Economics, and Law. The university is committed to environmental consciousness, research, and problem-solving, providing students with the knowledge and skills to address global environmental challenges.",
+        "website": "https://univlora.edu.al/",
+        "logo": "https://univlora.edu.al/wp-content/uploads/2015/02/cropped-UV_LOGO2.png",
+        "address": "Rruga Skele, Vlorë, Albania",
+        "branches_offered": [
+          "Marine Sciences",
+          "Environmental Engineering",
+          "Economics",
+          "Law"
+        ],
+        "qualities_sought": [
+          "Environmental consciousness",
+          "Research skills",
+          "Problem-solving"
+        ],
+        "image": "https://r2.cdnimpuls.com/o.anabel.al/media3/5df488a0da2a9.jpg",
+        "archetype_percentages": "{\"AN-EN\": \"95\", \"AN-VS\": \"30\", \"AR-DS\": \"10\", \"AR-FM\": \"10\", \"DI-CD\": \"30\", \"DI-CS\": \"30\", \"EX-BU\": \"40\", \"EX-PL\": \"40\", \"GL-DM\": \"60\", \"GL-TR\": \"50\", \"HE-BT\": \"20\", \"HE-MD\": \"10\", \"SO-ED\": \"50\", \"SO-ME\": \"20\", \"SP-AT\": \"10\", \"SP-EC\": \"40\"}",
+        "user_id": null
+      }
+    ]
+  } 

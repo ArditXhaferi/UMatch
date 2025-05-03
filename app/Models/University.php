@@ -26,7 +26,8 @@ class University extends Model
         'branches_offered',
         'qualities_sought',
         'address',
-        'archetype_percentages'
+        'archetype_percentages',
+        'image'
     ];
 
     /**

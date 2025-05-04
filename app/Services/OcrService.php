@@ -32,7 +32,7 @@ class OcrService
             
             // Extract relevant information
             $analysis = $this->analyzeText($text);
-            
+            Log::info('OCR Analysis: ', ['analysis' => $analysis, 'text' => $text]);
             return [
                 'success' => true,
                 'text' => $text,

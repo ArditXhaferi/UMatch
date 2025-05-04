@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\Quest;
-// use App\Models\XPLog;
 use App\Http\Controllers\UniversityData;
 use App\Models\CalendarEvent;
 use App\Providers\RouteServiceProvider;
@@ -35,15 +34,6 @@ class DashboardController extends Controller
             $quests = Quest::orderBy('created_at', 'desc')
                 ->take(5)
                 ->get();
-        }
-
-        // Get XP activity data if available
-        $xpActivity = [];
-        if ($studentProfile) {
-            // $xpActivity = XPLog::where('student_profile_id', $studentProfile->id)
-            //     ->orderBy('created_at', 'desc')
-            //     ->take(5)
-            //     ->get();
         }
 
         // Get university matches if student profile exists
@@ -78,7 +68,6 @@ class DashboardController extends Controller
             'studentProfile' => $studentProfile,
             'deadlines' => $calendarEvents,
             'quests' => $quests,
-            'xpActivity' => $xpActivity,
             'universityMatches' => $universityMatches
         ]);
     }

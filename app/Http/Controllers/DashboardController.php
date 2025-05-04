@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\Quest;
-use App\Models\XpLog;
+use App\Models\XPLog;
 use App\Http\Controllers\UniversityData;
 use App\Models\CalendarEvent;
 use App\Providers\RouteServiceProvider;
@@ -40,7 +40,7 @@ class DashboardController extends Controller
         // Get XP activity data if available
         $xpActivity = [];
         if ($studentProfile) {
-            $xpActivity = XpLog::where('student_profile_id', $studentProfile->id)
+            $xpActivity = XPLog::where('student_profile_id', $studentProfile->id)
                 ->orderBy('created_at', 'desc')
                 ->take(5)
                 ->get();

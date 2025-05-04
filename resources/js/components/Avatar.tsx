@@ -31,7 +31,7 @@ const Avatar: React.FC<AvatarProps> = ({ onContinue, className }) => {
   };
 
   return (
-    <div className={cn("flex flex-row items-end", className)}>
+    <div className={cn("flex md:flex-row md:items-end items-center flex-col", className)}>
 
       {/* Left: SVG video (clipped bottom) */}
       <div className="w-48 md:w-60 h-60 mb-6 relative animate-float">

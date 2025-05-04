@@ -378,7 +378,7 @@ const LandingPage = () => {
   // Both personalityResult and setPersonalityResult are used in the RESULTS section
   const [personalityResult, setPersonalityResult] = useState<PersonalityResult | null>(null);
   const [activeTab, setActiveTab] = useState<'universities' | 'careers'>('universities');
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const [isLoggedIn,setIsLoggedIn] = useState(false);

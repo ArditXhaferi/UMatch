@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import Internships from '@/components/Internships';
 
 enum Step {
   WELCOME,
@@ -614,6 +615,11 @@ const LandingPage = () => {
           </main>
 
           <Photos/>
+
+          <div className="w-full">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#2F2F2F] mb-10 text-center">Find <span className="text-[#9F262A]">Opportunites</span></h1>
+            <Internships/>
+          </div>
 
           <footer className="bg-[#9F262A] text-white py-12 mt-16">
           <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">

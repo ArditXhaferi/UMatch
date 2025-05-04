@@ -96,7 +96,7 @@ const RegisterModal = ({
           <p className="text-sm opacity-90 mt-1">Join UMatch to start your educational journey</p>
         </DialogHeader>
         
-        <form onSubmit={handleRegister} className="p-6 space-y-5">
+        <form onSubmit={handleRegister} className="p-6 space-y-5 text-black">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm">
               {error}
@@ -249,7 +249,7 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
             <p className="text-sm opacity-90 mt-1">Sign in to continue your educational journey</p>
           </DialogHeader>
           
-          <form onSubmit={handleLogin} className="p-6 space-y-5">
+          <form onSubmit={handleLogin} className="p-6 space-y-5 text-black">
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm">
                 {error}

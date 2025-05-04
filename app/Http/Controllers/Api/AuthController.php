@@ -61,20 +61,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Create student profile
-        $studentProfile = StudentProfile::create([
-            'user_id' => $user->id,
-            'status' => 'active',
-            'current_level' => 1,
-            'current_xp' => 0,
-            'total_xp' => 0,
-            'quests_completed' => 0,
-            'badges_earned' => 0,
-            'current_streak' => 0,
-            'longest_streak' => 0,
-            'last_activity_date' => now(),
-        ]);
-
         // Log in the user
         Auth::login($user);
 

@@ -168,7 +168,7 @@ class CareerController extends Controller
                             // Give double weight to the highest-scoring archetype
                             $weight = ($archetype === $highestScoreArchetype) ? 2.0 : 1.0;
                             $score = $archetypeScores[$archetype];
-                            $weightedScore = $score * $weight;
+                            $weightedScore = (float)$score * $weight;
                             
                             $totalScore += $weightedScore;
                             $scoreCount += $weight;

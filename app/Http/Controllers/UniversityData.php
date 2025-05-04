@@ -120,10 +120,10 @@ class UniversityData extends Controller
                 $universityScore = $universityArchetypes[$archetype];
                 
                 // Calculate similarity between student and university scores
-                $similarity = 100 - abs($studentScore - $universityScore);
+                $similarity = 100 - abs((float)$studentScore - (float)$universityScore);
                 
                 // Weight higher scores more heavily
-                $weight = ($studentScore >= 70 || $universityScore >= 70) ? 1.5 : 1.0;
+                $weight = ((float)$studentScore >= 70 || (float)$universityScore >= 70) ? 1.5 : 1.0;
                 
                 $totalScore += $similarity * $weight;
                 $maxScore += 100 * $weight;

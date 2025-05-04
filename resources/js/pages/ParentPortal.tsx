@@ -1,18 +1,15 @@
 import React,{useState} from 'react';
 import Header from '@/components/Header';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@headlessui/react';
 import { Button } from '@/components/ui/button';
 import logowhite from '../pages/assets/navbar/UMatch-white.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Accordion from 'react-bootstrap/Accordion';
-// import AccordionItem from '@/components/AccordionItem';
 import AccordionItem from '@/components/AccordionItem';
-import { ToastContainer,toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-
-const csrf_token = document.querySelector("meta[name='csrf-token']")?.getAttribute("content");
+const csrf_token = document.querySelector("meta[name='csrf-token']")?.getAttribute("content") || '';
 
 const faqs = [
     {
@@ -68,7 +65,7 @@ const ParentPortal = () => {
             method:"POST",
             headers:{
                 'Content-Type':'application/json',
-                'X-CSRF-TOKEN':csrf_token
+                'X-CSRF-TOKEN': csrf_token
             },
             body:JSON.stringify({
                 parent_message
@@ -113,16 +110,9 @@ const ParentPortal = () => {
         <h2 className="text-2xl font-bold text-[#2F2F2F] mb-6 text-center">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            // <Accordion key={index} type="single" collapsible>
-            //   <AccordionItem value={`faq-${index}`}>
-            //     <AccordionTrigger className="text-base text-[#2F2F2F]">{faq.question}</AccordionTrigger>
-            //     <AccordionContent className="text-sm text-[#6B7280]">{faq.answer}</AccordionContent>
-            //   </AccordionItem>
-            // </Accordion>
-            <AccordionItem title={faq.question}>
+            <AccordionItem key={index} title={faq.question}>
                 {faq.answer}
             </AccordionItem>
-
           ))}
         </div>
       </section>

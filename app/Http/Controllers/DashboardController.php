@@ -70,7 +70,7 @@ class DashboardController extends Controller
                     'type' => $event->type,
                 ];
             });
-
+        
         return Inertia::render('dashboard', [
             'auth' => [
                 'user' => $user,

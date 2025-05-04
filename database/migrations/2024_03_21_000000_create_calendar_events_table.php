@@ -27,7 +27,8 @@ return new class extends Migration
                 'interview',
                 'workshop',
                 'meeting',
-                'deadline'
+                'deadline',
+                'ai_prep_interview'
             ]);
             $table->timestamps();
         });

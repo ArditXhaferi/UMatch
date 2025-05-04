@@ -149,6 +149,40 @@ class CalendarEventSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+
+            // AI Prep Interviews
+            [
+                'title' => 'AI Interview Prep: Technical Skills',
+                'description' => 'Practice technical interview questions with AI feedback',
+                'date' => Carbon::now()->addDays(12)->format('Y-m-d'),
+                'type' => 'ai_prep_interview',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'AI Interview Prep: Behavioral Questions',
+                'description' => 'Practice behavioral interview questions with AI feedback',
+                'date' => Carbon::now()->addDays(15)->format('Y-m-d'),
+                'type' => 'ai_prep_interview',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'AI Interview Prep: Problem Solving',
+                'description' => 'Practice problem-solving scenarios with AI feedback',
+                'date' => Carbon::now()->addDays(18)->format('Y-m-d'),
+                'type' => 'ai_prep_interview',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'AI Interview Prep: Mock Interview',
+                'description' => 'Full mock interview simulation with AI feedback',
+                'date' => Carbon::now()->addDays(22)->format('Y-m-d'),
+                'type' => 'ai_prep_interview',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         // Insert the events into the database

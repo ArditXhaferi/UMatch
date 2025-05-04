@@ -31,7 +31,7 @@ interface DeadlineType {
     id: number;
     title: string;
     date: string;
-    type: 'application' | 'event' | 'assignment' | 'exam' | 'scholarship' | 'interview' | 'workshop' | 'meeting' | 'deadline';
+    type: 'application' | 'event' | 'assignment' | 'exam' | 'scholarship' | 'interview' | 'workshop' | 'meeting' | 'deadline' | 'ai_prep_interview';
 }
 
 interface UniversityMatch {
@@ -391,6 +391,56 @@ const FileUpload: React.FC = () => {
     );
 };
 
+interface EventPopupProps {
+    events: DeadlineType[];
+    position: { x: number; y: number };
+    onClose: () => void;
+}
+
+const EventPopup: React.FC<EventPopupProps> = ({ events, position, onClose }) => {
+    return (
+        <div 
+            className="fixed z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-4 min-w-[250px] max-w-[300px]"
+            style={{ 
+                left: position.x, 
+                top: position.y,
+                transform: 'translate(-50%, -100%)'
+            }}
+        >
+            <div className="flex justify-between items-start mb-2">
+                <h4 className="text-sm font-medium text-gray-900">Events</h4>
+                <button 
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-gray-500"
+                >
+                    <XMarkIcon className="h-4 w-4" />
+                </button>
+            </div>
+            <div className="space-y-2">
+                {events.map((event) => (
+                    <div key={event.id} className="flex items-start space-x-2">
+                        <div className={`w-2 h-2 rounded-full mt-1.5 ${
+                            event.type === 'application' ? 'bg-red-500' : 
+                            event.type === 'event' ? 'bg-blue-500' : 
+                            event.type === 'workshop' ? 'bg-purple-500' :
+                            event.type === 'interview' ? 'bg-yellow-500' :
+                            event.type === 'exam' ? 'bg-green-500' :
+                            event.type === 'scholarship' ? 'bg-indigo-500' :
+                            event.type === 'meeting' ? 'bg-pink-500' :
+                            event.type === 'ai_prep_interview' ? 'bg-orange-500' :
+                            'bg-gray-500'
+                        }`} />
+                        <div>
+                            <p className="text-sm font-medium text-gray-900">{event.title}</p>
+                            <p className="text-xs text-gray-500 capitalize">{event.type.replace(/_/g, ' ')}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
 export default function Dashboard({ auth, studentProfile, quests = [], deadlines = [], universityMatches = [] }: DashboardProps) {
     // Add debugging logs
     console.log('Dashboard Props:', {
@@ -431,9 +481,10 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
         { id: 3, title: 'Scholarship Essay Due', date: '2023-06-22', type: 'scholarship' },
         { id: 4, title: 'Midterm Exam', date: '2023-06-25', type: 'exam' },
         { id: 5, title: 'Interview with Admissions', date: '2023-06-28', type: 'interview' },
-        { id: 6, title: 'Study Skills Workshop', date: '2023-06-30', type: 'workshop' }
+        { id: 6, title: 'Study Skills Workshop', date: '2023-06-30', type: 'workshop' },
+        { id: 7, title: 'AI Interview Prep Session', date: '2023-06-20', type: 'ai_prep_interview' }
     ];
-    
+
     const displayDeadlines = deadlines.length > 0 ? deadlines : sampleDeadlines;
     
     // Calculate current level based on XP (just a simple calculation for demo)
@@ -441,6 +492,10 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
     const currentLevel = Math.floor(currentXp / 100) + 1;
     const xpProgress = currentXp > 0 ? (currentXp % 100) / 100 * 100 : 0; // Percentage to next level
     const daysStreak = 5; // Placeholder for streak data (should come from backend)
+
+    // Add these state variables inside the Dashboard component
+    const [popupPosition, setPopupPosition] = useState<{ x: number; y: number } | null>(null);
+    const [selectedEvents, setSelectedEvents] = useState<DeadlineType[]>([]);
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -717,6 +772,17 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                 <div 
                                                     key={day} 
                                                     className={`h-12 p-1 border rounded-md relative ${isToday ? 'bg-[#9A2D2D] bg-opacity-10 border-[#9A2D2D]' : 'border-gray-200'}`}
+                                                    onMouseEnter={(e) => {
+                                                        if (dayEvents.length > 0) {
+                                                            const rect = e.currentTarget.getBoundingClientRect();
+                                                            setPopupPosition({ x: rect.left + rect.width / 2, y: rect.top });
+                                                            setSelectedEvents(dayEvents);
+                                                        }
+                                                    }}
+                                                    onMouseLeave={() => {
+                                                        setPopupPosition(null);
+                                                        setSelectedEvents([]);
+                                                    }}
                                                 >
                                                     <div className="absolute top-1 left-1 text-xs font-medium">
                                                         {day}
@@ -734,6 +800,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                                         event.type === 'exam' ? 'bg-green-500' :
                                                                         event.type === 'scholarship' ? 'bg-indigo-500' :
                                                                         event.type === 'meeting' ? 'bg-pink-500' :
+                                                                        event.type === 'ai_prep_interview' ? 'bg-orange-500' :
                                                                         'bg-gray-500'
                                                                     }`}
                                                                     title={`${event.title} (${event.type})`}
@@ -778,6 +845,10 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                         <div className="flex items-center">
                                             <div className="w-3 h-3 rounded-full bg-pink-500 mr-1"></div>
                                             <span>Meeting</span>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="w-3 h-3 rounded-full bg-orange-500 mr-1"></div>
+                                            <span>AI Prep Interview</span>
                                         </div>
                                     </div>
                                 </div>
@@ -922,6 +993,18 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                     </div>
                 </div>
             </div>
+
+            {/* Add the EventPopup component */}
+            {popupPosition && selectedEvents.length > 0 && (
+                <EventPopup
+                    events={selectedEvents}
+                    position={popupPosition}
+                    onClose={() => {
+                        setPopupPosition(null);
+                        setSelectedEvents([]);
+                    }}
+                />
+            )}
         </div>
     );
 }

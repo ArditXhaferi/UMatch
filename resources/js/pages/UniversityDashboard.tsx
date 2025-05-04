@@ -1,54 +1,18 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { Head, Link, useForm } from '@inertiajs/react';
+import React, { useState } from 'react';
+import { Head, Link } from '@inertiajs/react';
 import { 
     UserCircleIcon, 
     BuildingLibraryIcon,
     FireIcon,
-    TrophyIcon,
     CalendarIcon,
-    UsersIcon,
-    DocumentTextIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
-    StarIcon,
-    DocumentArrowUpIcon,
     XMarkIcon,
-    DocumentIcon,
     AcademicCapIcon,
     ChartBarIcon,
     ClipboardDocumentListIcon
 } from '@heroicons/react/24/outline';
-import { FireIcon as FireIconSolid } from '@heroicons/react/24/solid';
 import Navigation from '@/components/Navigation';
-
-interface QuestType {
-    id: number;
-    title: string;
-    description: string;
-    xp_reward: number;
-    progress: number;
-    is_complete: boolean;
-}
-
-interface DeadlineType {
-    id: number;
-    title: string;
-    date: string;
-    type: 'application' | 'event' | 'assignment' | 'exam' | 'scholarship' | 'interview' | 'workshop' | 'meeting' | 'deadline';
-}
-
-interface UniversityMatch {
-    id: number;
-    university_name: string;
-    city: string;
-    description: string;
-    website: string;
-    logo: string;
-    image: string;
-    branches_offered: string[];
-    qualities_sought: string[];
-    match_percentage: number;
-}
 
 interface Application {
     id: number;
@@ -100,322 +64,6 @@ interface UniversityDashboardProps {
     upcoming_events: Event[];
 }
 
-interface LoadingPopupProps {
-    isOpen: boolean;
-    progress: number;
-    state: 'uploading' | 'processing' | 'success' | 'error';
-    onClose?: () => void;
-}
-
-const LoadingPopup: React.FC<LoadingPopupProps> = ({ isOpen, progress, state, onClose }) => {
-    const [loadingMessage, setLoadingMessage] = useState('');
-    const [currentVideo, setCurrentVideo] = useState(0);
-    const [videoError, setVideoError] = useState(false);
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-    const loadingMessages = [
-        "Bashkim is putting on his thinking cap... 🧢",
-        "Bashkim is analyzing your academic superpowers... 💪",
-        "Bashkim is searching for the perfect university match... 🏫",
-        "Bashkim is doing some bear-y important calculations... 🧮",
-        "Bashkim is checking his university database... 📚",
-        "Bashkim is making sure everything is just right... ✨",
-        "Bashkim is double-checking his bear-ometer... 📊",
-        "Bashkim is consulting with his academic advisors... 👨‍🏫",
-        "Bashkim is mapping out your future success... 🗺️",
-        "Bashkim is putting the finishing touches... 🎨"
-    ];
-
-    const videos = [
-        '/videos/cap-shirt.mp4',
-        '/videos/sad-shirt.mp4',
-        '/videos/waving shirt.mp4',
-        '/videos/celebrating.mp4'
-    ];
-
-    useEffect(() => {
-        let messageInterval: NodeJS.Timeout;
-        let videoInterval: NodeJS.Timeout;
-
-        if (isOpen && (state === 'uploading' || state === 'processing')) {
-            // Change message every 3 seconds
-            messageInterval = setInterval(() => {
-                setLoadingMessage(loadingMessages[Math.floor(Math.random() * loadingMessages.length)]);
-            }, 3000);
-
-            // Change video every 4 seconds
-            videoInterval = setInterval(() => {
-                setCurrentVideo((prev) => (prev + 1) % videos.length);
-                setIsVideoLoaded(false);
-            }, 4000);
-        }
-
-        return () => {
-            clearInterval(messageInterval);
-            clearInterval(videoInterval);
-        };
-    }, [isOpen, state]);
-
-    if (!isOpen) return null;
-
-    return (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="relative bg-white rounded-2xl p-8 max-w-md w-full mx-4 pt-28 overflow-visible">
-                {/* Video Circle - half above the popup */}
-                <div className="absolute left-1/2 -top-24 -translate-x-1/2 w-48 h-48 rounded-full overflow-hidden border-2 border-[#9A2D2D] shadow-lg z-10 bg-white">
-                    {!videoError ? (
-                        <>
-                            <video
-                                key={videos[currentVideo]}
-                                src={videos[currentVideo]}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                preload="auto"
-                                className={`w-full h-full object-cover transition-opacity duration-300 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                                onError={() => setVideoError(true)}
-                                onLoadedData={() => {
-                                    setIsVideoLoaded(true);
-                                    setVideoError(false);
-                                }}
-                            />
-                            {!isVideoLoaded && (
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-8 h-8 border-4 border-[#9A2D2D] border-t-transparent rounded-full animate-spin" />
-                                </div>
-                            )}
-                        </>
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                            <DocumentArrowUpIcon className="w-12 h-12 text-[#9A2D2D]" />
-                        </div>
-                    )}
-                </div>
-                <div className="text-center space-y-6">
-                    {/* Loading Message */}
-                    <div className="space-y-4">
-                        <p className="text-lg font-medium text-[#9A2D2D] animate-fade-in-out">
-                            {loadingMessage}
-                        </p>
-
-                        {/* Progress Bar */}
-                        <div className="relative pt-1">
-                            <div className="flex mb-2 items-center justify-between">
-                                <div>
-                                    <span className="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full text-white bg-[#9A2D2D] bg-opacity-10">
-                                        {state === 'uploading' ? 'Uploading...' : 'Processing...'}
-                                    </span>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-xs font-semibold inline-block text-[#9A2D2D]">
-                                        {Math.round(progress)}%
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-[#9A2D2D] bg-opacity-10">
-                                <div
-                                    style={{ width: `${progress}%` }}
-                                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#9A2D2D] transition-all duration-500 rounded-full"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Close Button */}
-                    {onClose && (
-                        <button
-                            onClick={onClose}
-                            className="mt-4 text-sm text-gray-500 hover:text-gray-700"
-                        >
-                            Close
-                        </button>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const FileUpload: React.FC = () => {
-    const [isDragging, setIsDragging] = useState(false);
-    const [uploadProgress, setUploadProgress] = useState(0);
-    const [processingState, setProcessingState] = useState<'idle' | 'uploading' | 'processing' | 'success' | 'error'>('idle');
-    const [errorMessage, setErrorMessage] = useState('');
-    const [showPopup, setShowPopup] = useState(false);
-
-    const { data, setData, post, processing } = useForm({
-        files: [] as File[],
-    });
-
-    const handleDragOver = useCallback((e: React.DragEvent) => {
-        e.preventDefault();
-        setIsDragging(true);
-    }, []);
-
-    const handleDragLeave = useCallback((e: React.DragEvent) => {
-        e.preventDefault();
-        setIsDragging(false);
-    }, []);
-
-    const handleDrop = useCallback((e: React.DragEvent) => {
-        e.preventDefault();
-        setIsDragging(false);
-        
-        const droppedFiles = Array.from(e.dataTransfer.files);
-        setData('files', [...data.files, ...droppedFiles]);
-    }, [data.files, setData]);
-
-    const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            const selectedFiles = Array.from(e.target.files);
-            setData('files', [...data.files, ...selectedFiles]);
-        }
-    }, [data.files, setData]);
-
-    const removeFile = useCallback((index: number) => {
-        const newFiles = [...data.files];
-        newFiles.splice(index, 1);
-        setData('files', newFiles);
-    }, [data.files, setData]);
-
-    const handleUpload = useCallback(() => {
-        setProcessingState('uploading');
-        setUploadProgress(0);
-        setErrorMessage('');
-        setShowPopup(true);
-
-        const formData = new FormData();
-        data.files.forEach((file) => {
-            formData.append('files[]', file);
-        });
-
-        post('/upload', {
-            onProgress: (progress) => {
-                if (progress?.percentage) {
-                    setUploadProgress(progress.percentage);
-                }
-            },
-            onSuccess: () => {
-                setProcessingState('success');
-                setTimeout(() => {
-                    setShowPopup(false);
-                }, 2000);
-            },
-            onError: (errors) => {
-                setProcessingState('error');
-                setErrorMessage(errors.message || 'Failed to upload files');
-                setShowPopup(false);
-            },
-        });
-    }, [data.files, post]);
-
-    return (
-        <>
-            <div className="space-y-6">
-                <div className="text-center">
-                    <div className="flex justify-center mb-4">
-                        <div className="w-16 h-16 bg-[#9A2D2D] bg-opacity-10 rounded-full flex items-center justify-center">
-                            <DocumentArrowUpIcon className="w-8 h-8 text-white" />
-                        </div>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900">Ready to Begin Your Journey?</h3>
-                    <p className="mt-2 text-sm text-gray-600">
-                        Drop your academic records and let's find your perfect match!
-                    </p>
-                </div>
-
-                <div
-                    className={`flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-xl transition-all duration-300 ${
-                        isDragging ? 'border-[#9A2D2D] bg-[#9A2D2D] bg-opacity-5' : 'border-gray-300'
-                    }`}
-                    onDragOver={handleDragOver}
-                    onDragLeave={handleDragLeave}
-                    onDrop={handleDrop}
-                >
-                    <div className="space-y-3 text-center">
-                        <div className="flex justify-center">
-                            <div className="w-12 h-12 bg-[#9A2D2D] bg-opacity-10 rounded-full flex items-center justify-center">
-                                <DocumentArrowUpIcon className="w-6 h-6 text-white" />
-                            </div>
-                        </div>
-                        <div className="flex text-sm text-gray-600">
-                            <label className="relative cursor-pointer bg-white rounded-md px-4 py-2 font-medium text-[#9A2D2D] hover:text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-[#9A2D2D] transition-all duration-300 hover:bg-[#9A2D2D] hover:bg-opacity-5">
-                                <span>Choose Files</span>
-                                <input
-                                    type="file"
-                                    className="sr-only"
-                                    multiple
-                                    accept=".pdf,.jpg,.jpeg,.png"
-                                    onChange={handleFileSelect}
-                                />
-                            </label>
-                            <p className="pl-3 self-center">or drag and drop</p>
-                        </div>
-                        <p className="text-xs text-gray-500">PDF, JPG, PNG up to 10MB</p>
-                    </div>
-                </div>
-
-                {data.files.length > 0 && (
-                    <div className="mt-4">
-                        <div className="space-y-2">
-                            {data.files.map((file, index) => (
-                                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                                    <div className="flex items-center space-x-3">
-                                        <div className="w-8 h-8 bg-[#9A2D2D] bg-opacity-10 rounded-full flex items-center justify-center">
-                                            <DocumentIcon className="w-5 h-5 text-[#9A2D2D]" />
-                                        </div>
-                                        <div>
-                                            <p className="text-sm font-medium text-gray-900">{file.name}</p>
-                                            <p className="text-xs text-gray-500">{Math.round(file.size / 1024)} KB</p>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => removeFile(index)}
-                                        className="text-gray-400 hover:text-red-500 transition-colors duration-200"
-                                    >
-                                        <XMarkIcon className="w-5 h-5" />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {errorMessage && (
-                    <div className="mt-4 p-4 bg-red-50 rounded-xl">
-                        <div className="flex">
-                            <div className="flex-shrink-0">
-                                <XMarkIcon className="h-5 w-5 text-red-400" />
-                            </div>
-                            <div className="ml-3">
-                                <p className="text-sm text-red-700">{errorMessage}</p>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {data.files.length > 0 && !processing && (
-                    <div className="mt-6">
-                        <button
-                            onClick={handleUpload}
-                            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#9A2D2D] hover:bg-[#822626] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9A2D2D] transition-all duration-300"
-                        >
-                            Let's Find Your Match! 🚀
-                        </button>
-                    </div>
-                )}
-            </div>
-            <LoadingPopup
-                isOpen={showPopup}
-                progress={uploadProgress}
-                state={processingState === 'idle' ? 'uploading' : processingState}
-                onClose={() => setShowPopup(false)}
-            />
-        </>
-    );
-};
-
 export default function UniversityDashboard({ auth, university, stats = {
     total_applications: 0,
     pending_applications: 0,
@@ -429,8 +77,143 @@ export default function UniversityDashboard({ auth, university, stats = {
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
     
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+    // Notification banner state
+    const [showNotification, setShowNotification] = useState(true);
+
+    // Hardcoded university data
+    const hardcodedUniversity = {
+        id: university.id || 1,
+        university_name: university.university_name || "Oxford University",
+        city: university.city || "Oxford, United Kingdom",
+        description: university.description || "Oxford University is one of the world's leading academic institutions, with a rich history dating back to the 12th century. We offer exceptional teaching, research, and innovation across a wide range of disciplines.",
+        website: university.website || "https://www.ox.ac.uk",
+        logo: university.logo || "https://upload.wikimedia.org/wikipedia/commons/f/ff/Oxford-University-Circlet.svg",
+        image: university.image || "https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/s3/field/field_image_main/UAS%20quad.jpg",
+        branches_offered: university.branches_offered?.length > 0 ? university.branches_offered : [
+            "Computer Science",
+            "Medicine",
+            "Law",
+            "Engineering",
+            "Business",
+            "Arts & Humanities",
+            "Social Sciences",
+            "Mathematics",
+            "Natural Sciences"
+        ],
+        qualities_sought: university.qualities_sought?.length > 0 ? university.qualities_sought : [
+            "Academic Excellence",
+            "Critical Thinking",
+            "Research Potential",
+            "Leadership",
+            "Community Engagement"
+        ]
+    };
+
+    // Hardcoded upcoming events data
+    const hardcodedEvents: Event[] = [
+        {
+            id: 1,
+            title: "Spring Open Day",
+            date: new Date(currentYear, currentMonth, currentDate.getDate() + 5).toISOString(),
+            type: "open_day",
+            status: "upcoming"
+        },
+        {
+            id: 2,
+            title: "Computer Science Workshop",
+            date: new Date(currentYear, currentMonth, currentDate.getDate() + 2).toISOString(),
+            type: "workshop",
+            status: "upcoming"
+        },
+        {
+            id: 3,
+            title: "STEM Faculty Interviews",
+            date: new Date(currentYear, currentMonth, currentDate.getDate() + 7).toISOString(),
+            type: "interview",
+            status: "upcoming"
+        },
+        {
+            id: 4,
+            title: "International Students Orientation",
+            date: new Date(currentYear, currentMonth, currentDate.getDate() + 10).toISOString(),
+            type: "open_day",
+            status: "upcoming"
+        },
+        {
+            id: 5,
+            title: "Scholarship Application Deadline",
+            date: new Date(currentYear, currentMonth, currentDate.getDate() + 15).toISOString(),
+            type: "deadline",
+            status: "upcoming"
+        },
+        {
+            id: 6,
+            title: "Summer Research Program Info Session",
+            date: new Date(currentYear, currentMonth, currentDate.getDate() + 8).toISOString(),
+            type: "workshop",
+            status: "upcoming"
+        }
+    ];
+
+    // Hardcoded recent applications data
+    const hardcodedApplications: Application[] = [
+        {
+            id: 1,
+            student_name: "Emma Johnson",
+            program: "Computer Science BSc",
+            status: "pending",
+            submitted_at: new Date(currentYear, currentMonth, currentDate.getDate() - 2).toISOString(),
+            match_percentage: 87
+        },
+        {
+            id: 2,
+            student_name: "Liam Garcia",
+            program: "Mechanical Engineering MSc",
+            status: "reviewed",
+            submitted_at: new Date(currentYear, currentMonth, currentDate.getDate() - 5).toISOString(),
+            match_percentage: 92
+        },
+        {
+            id: 3,
+            student_name: "Olivia Martinez",
+            program: "Business Administration MBA",
+            status: "accepted",
+            submitted_at: new Date(currentYear, currentMonth, currentDate.getDate() - 7).toISOString(),
+            match_percentage: 95
+        },
+        {
+            id: 4,
+            student_name: "Noah Rodriguez",
+            program: "Data Science MSc",
+            status: "rejected",
+            submitted_at: new Date(currentYear, currentMonth, currentDate.getDate() - 10).toISOString(),
+            match_percentage: 65
+        },
+        {
+            id: 5,
+            student_name: "Sophia Thompson",
+            program: "Architecture BSc",
+            status: "pending",
+            submitted_at: new Date(currentYear, currentMonth, currentDate.getDate() - 3).toISOString(),
+            match_percentage: 82
+        }
+    ];
+
+    // Hardcoded statistics data
+    const hardcodedStats: UniversityStats = {
+        total_applications: 432,
+        pending_applications: 85,
+        accepted_applications: 267,
+        rejected_applications: 80,
+        average_match_percentage: 78,
+        top_programs: ["Computer Science", "Business Administration", "Mechanical Engineering", "Psychology", "Medicine"]
+    };
+
+    // Use hardcoded data instead of the passed props
+    const displayUniversity = hardcodedUniversity;
+    const displayEvents = hardcodedEvents.length > 0 ? hardcodedEvents : upcoming_events;
+    const displayApplications = hardcodedApplications.length > 0 ? hardcodedApplications : recent_applications;
+    const displayStats = hardcodedStats.total_applications > 0 ? hardcodedStats : stats;
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -441,6 +224,43 @@ export default function UniversityDashboard({ auth, university, stats = {
             />
 
             <Head title="University Dashboard" />
+            
+            {/* Notification Banner */}
+            {showNotification && (
+                <div className="bg-[#9A2D2D] bg-opacity-10 py-3">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex items-center justify-between flex-wrap">
+                            <div className="w-0 flex-1 flex items-center">
+                                <span className="flex p-2 rounded-lg bg-[#9A2D2D] bg-opacity-20">
+                                    <FireIcon className="h-6 w-6 text-[#9A2D2D]" />
+                                </span>
+                                <p className="ml-3 font-medium text-[#9A2D2D] truncate">
+                                    <span className="md:hidden">You have 5 new applications to review!</span>
+                                    <span className="hidden md:inline">Important! You have 5 new student applications that require your review.</span>
+                                </p>
+                            </div>
+                            <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                                <Link
+                                    href="/university/applications"
+                                    className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#9A2D2D] hover:bg-[#822626]"
+                                >
+                                    View applications
+                                </Link>
+                            </div>
+                            <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowNotification(false)}
+                                    className="-mr-1 flex p-2 rounded-md hover:bg-[#9A2D2D] hover:bg-opacity-10 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+                                >
+                                    <span className="sr-only">Dismiss</span>
+                                    <XMarkIcon className="h-6 w-6 text-[#9A2D2D]" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="mb-6">
@@ -462,7 +282,7 @@ export default function UniversityDashboard({ auth, university, stats = {
                                     University Profile
                                 </h2>
                                 <Link 
-                                    href={`/university/profile/${university.id}`} 
+                                    href={`/university/profile/${displayUniversity.id}`} 
                                     className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9A2D2D]"
                                 >
                                     Edit Profile
@@ -472,21 +292,21 @@ export default function UniversityDashboard({ auth, university, stats = {
                                 <div className="flex flex-col md:flex-row md:items-center">
                                     <div className="flex-shrink-0 flex justify-center mb-4 md:mb-0">
                                         <img 
-                                            src={university.logo || university.image} 
-                                            alt={university.university_name}
+                                            src={displayUniversity.logo || displayUniversity.image} 
+                                            alt={displayUniversity.university_name}
                                             className="h-32 w-32 object-contain"
                                         />
                                     </div>
                                     <div className="md:ml-6 flex-1">
-                                        <h3 className="text-xl font-bold text-gray-900">{university.university_name}</h3>
+                                        <h3 className="text-xl font-bold text-gray-900">{displayUniversity.university_name}</h3>
                                         <div className="mt-1 flex items-center">
-                                            <span className="text-sm text-gray-500">{university.city}</span>
+                                            <span className="text-sm text-gray-500">{displayUniversity.city}</span>
                                         </div>
                                         <p className="mt-2 text-sm text-gray-600 line-clamp-2">
-                                            {university.description}
+                                            {displayUniversity.description}
                                         </p>
                                         <div className="mt-4 flex flex-wrap gap-2">
-                                            {university.branches_offered.map((branch, index) => (
+                                            {displayUniversity.branches_offered.map((branch, index) => (
                                                 <span 
                                                     key={index}
                                                     className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
@@ -511,26 +331,26 @@ export default function UniversityDashboard({ auth, university, stats = {
                             <div className="px-6 py-5">
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     <div className="bg-gray-50 rounded-lg p-4">
-                                        <div className="text-2xl font-bold text-[#9A2D2D]">{stats.total_applications}</div>
+                                        <div className="text-2xl font-bold text-[#9A2D2D]">{displayStats.total_applications}</div>
                                         <div className="text-sm text-gray-600">Total Applications</div>
                                     </div>
                                     <div className="bg-gray-50 rounded-lg p-4">
-                                        <div className="text-2xl font-bold text-yellow-600">{stats.pending_applications}</div>
+                                        <div className="text-2xl font-bold text-yellow-600">{displayStats.pending_applications}</div>
                                         <div className="text-sm text-gray-600">Pending Review</div>
                                     </div>
                                     <div className="bg-gray-50 rounded-lg p-4">
-                                        <div className="text-2xl font-bold text-green-600">{stats.accepted_applications}</div>
+                                        <div className="text-2xl font-bold text-green-600">{displayStats.accepted_applications}</div>
                                         <div className="text-sm text-gray-600">Accepted</div>
                                     </div>
                                     <div className="bg-gray-50 rounded-lg p-4">
-                                        <div className="text-2xl font-bold text-red-600">{stats.rejected_applications}</div>
+                                        <div className="text-2xl font-bold text-red-600">{displayStats.rejected_applications}</div>
                                         <div className="text-sm text-gray-600">Rejected</div>
                                     </div>
                                 </div>
                                 <div className="mt-6">
                                     <h3 className="text-sm font-medium text-gray-900 mb-2">Top Programs</h3>
                                     <div className="flex flex-wrap gap-2">
-                                        {stats?.top_programs?.map((program, index) => (
+                                        {displayStats?.top_programs?.map((program, index) => (
                                             <span 
                                                 key={index}
                                                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800"
@@ -559,7 +379,7 @@ export default function UniversityDashboard({ auth, university, stats = {
                             </div>
                             <div className="px-6 py-5">
                                 <div className="space-y-4">
-                                    {recent_applications.map((application) => (
+                                    {displayApplications.map((application) => (
                                         <div key={application.id} className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-lg border border-gray-100">
                                             <div className="flex items-center space-x-4">
                                                 <div className="flex-shrink-0">
@@ -624,7 +444,7 @@ export default function UniversityDashboard({ auth, university, stats = {
                             </div>
                             <div className="px-6 py-5">
                                 <div className="space-y-4">
-                                    {upcoming_events.map((event) => (
+                                    {displayEvents.map((event) => (
                                         <div key={event.id} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg border border-gray-100">
                                             <div>
                                                 <h3 className="text-sm font-medium text-gray-900">{event.title}</h3>
@@ -636,9 +456,10 @@ export default function UniversityDashboard({ auth, university, stats = {
                                                 event.type === 'open_day' ? 'bg-blue-100 text-blue-800' :
                                                 event.type === 'workshop' ? 'bg-purple-100 text-purple-800' :
                                                 event.type === 'interview' ? 'bg-yellow-100 text-yellow-800' :
+                                                event.type === 'deadline' ? 'bg-red-100 text-red-800' :
                                                 'bg-gray-100 text-gray-800'
                                             }`}>
-                                                {event.type.replace('_', ' ').charAt(0).toUpperCase() + event.type.slice(1)}
+                                                {event.type.replace('_', ' ').charAt(0).toUpperCase() + event.type.replace('_', ' ').slice(1)}
                                             </span>
                                         </div>
                                     ))}

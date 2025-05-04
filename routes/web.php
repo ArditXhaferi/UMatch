@@ -44,6 +44,7 @@ Route::get("/universityApplication",[UniversityDetailsPage::class,"university_ap
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // File Upload Routes
     Route::get('/upload', [FileUploadController::class, 'index'])->name('upload.index');
     Route::post('/upload', [FileUploadController::class, 'store'])->name('upload.store');
@@ -337,80 +338,6 @@ Route::middleware(['auth'])->group(function () {
 
         return response()->json($career);
     });
-});
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        $user = Auth::user();
-        $studentProfile = $user->studentProfile;
-
-        // Get quests data if available
-        $quests = [];
-        if ($studentProfile) {
-            $quests = \App\Models\Quest::orderBy('created_at', 'desc')
-                ->take(5)
-                ->get();
-        }
-
-        // Get XP activity data if available
-        $xpActivity = [];
-        if ($studentProfile) {
-            $xpActivity = \App\Models\XpLog::where('student_profile_id', $studentProfile->id)
-                ->orderBy('created_at', 'desc')
-                ->take(5)
-                ->get();
-        }
-
-        // Get university matches if student profile exists
-        $universityMatches = [];
-
-        if ($studentProfile && $studentProfile->analysis) {
-            \Illuminate\Support\Facades\Log::info('Fetching university matches for student profile', [
-                'profile_id' => $studentProfile->id,
-                'has_analysis' => !is_null($studentProfile->analysis),
-                'analysis_type' => gettype($studentProfile->analysis),
-                'analysis_data' => $studentProfile->analysis
-            ]);
-
-            $universityData = new \App\Http\Controllers\UniversityData();
-            $response = $universityData->matchUsersWithUniversity(request());
-
-            $responseData = $response->getData();
-
-            \Illuminate\Support\Facades\Log::info('University matches response', [
-                'success' => $responseData->success,
-                'matches_count' => isset($responseData->matches) ? count($responseData->matches) : 0,
-                'response_data' => $responseData
-            ]);
-
-            if ($responseData->success && isset($responseData->matches)) {
-                $universityMatches = json_decode(json_encode($responseData->matches), true);
-
-                \Illuminate\Support\Facades\Log::info('University matches data', [
-                    'matches' => array_map(function($match) {
-                        return [
-                            'id' => $match['id'],
-                            'university_name' => $match['university_name'],
-                            'match_percentage' => $match['match_percentage']
-                        ];
-                    }, $universityMatches)
-                ]);
-            }
-        }
-
-        \Illuminate\Support\Facades\Log::info('Rendering dashboard', [
-            'has_student_profile' => !is_null($studentProfile),
-            'has_university_matches' => !empty($universityMatches),
-            'university_matches_count' => count($universityMatches)
-        ]);
-
-        return Inertia::render('dashboard', [
-            'studentProfile' => $studentProfile,
-            'quests' => $quests,
-            'xpActivity' => $xpActivity,
-            'universityMatches' => $universityMatches
-        ]);
-    })->name('dashboard');
 });
 
 Route::middleware('auth:sanctum')->controller(ApplicationController::class)->group(function () {

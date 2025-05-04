@@ -50,8 +50,8 @@ const Avatar: React.FC<AvatarProps> = ({ onContinue, className }) => {
           </defs>
           <foreignObject width="240" height="340" clipPath="url(#bottomClip)">
             <div
-              xmlns="http://www.w3.org/1999/xhtml"
               className="w-full h-full"
+              style={{ transform: 'translateZ(0)' }}
             >
               <video
                 src={myVideo}

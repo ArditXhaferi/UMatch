@@ -21,6 +21,7 @@ use App\Http\Controllers\University\EventController as UniversityEventController
 use App\Http\Controllers\University\ProgramController as UniversityProgramController;
 use App\Http\Controllers\University\AnalyticsController as UniversityAnalyticsController;
 use App\Http\Controllers\University\ProfileController as UniversityProfileController;
+use App\Http\Controllers\ParentPortalController;
 
 // Route::get('/', function () {
 //     if (Auth::check()) {
@@ -41,6 +42,12 @@ Route::get('/',[LandingPageController::class,'landing_page']);
 Route::get('/universityDetails',[UniversityDetailsPage::class,'university_details_page']);
 
 Route::get("/universityApplication",[UniversityDetailsPage::class,"university_application"]);
+
+Route::get("/ParentPortal",[LandingPageController::class,'parent_portal']);
+
+Route::post("/add_message",[ParentPortalController::class,'add_message']);
+
+Route::get("/imLoggedIn",[LandingPageController::class,'imLoggedIn']);
 
 
 Route::middleware(['auth'])->group(function () {

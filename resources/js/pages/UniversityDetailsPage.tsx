@@ -11,7 +11,7 @@ interface UniversityDetailsPageProps  {
 const UniversityDetailsPage = ({university_id,university_name,image,university_logo,university_description,branches_offered,address,website}:UniversityDetailsPageProps) => {
   return (
     <>
-        <div className="w-full h-64 bg-[#9A2D2D] flex justify-center relative">
+        <div className="w-full h-[300px] bg-[#9A2D2D] flex justify-center relative">
         <div className="mt-10">
           <h1 className="text-2xl font-bold font-etna text-white">
             Welcome To {university_name}

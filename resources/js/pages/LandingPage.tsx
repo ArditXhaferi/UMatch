@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 // import Photos from '@/components/Photos';
 import Avatar from '@/components/Avatar';
 // import Header from '@/components/Header';
@@ -24,13 +24,38 @@ enum Step {
   RESULTS,
 }
 
+const csrf_token = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
+
+async function checkIsLoggedIn() {
+    const options = {
+        method:"GET",
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRF-TOKEN':csrf_token
+        }
+    }
+    try{
+        const response = await fetch("http://localhost:8001/imLoggedIn",options);
+
+        if(!response.ok) {
+            throw new Error("Something Went Wrong!");
+        }
+
+        const answer = await response.json();
+
+        return answer.success;
+    } catch(err) {
+        console.error(err);
+    }
+}
+
 // Register Modal Component
-const RegisterModal = ({ 
-  isOpen, 
+const RegisterModal = ({
+  isOpen,
   setIsOpen,
-  setIsLoginOpen 
-}: { 
-  isOpen: boolean; 
+  setIsLoginOpen
+}: {
+  isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   setIsLoginOpen: (open: boolean) => void;
 }) => {
@@ -45,7 +70,9 @@ const RegisterModal = ({
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+
+
+
     try {
       const response = await fetch('/api/auth/register', {
         method: 'POST',
@@ -55,11 +82,11 @@ const RegisterModal = ({
           'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
         },
         credentials: 'include',
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           name,
-          email, 
+          email,
           password,
-          password_confirmation: passwordConfirmation 
+          password_confirmation: passwordConfirmation
         }),
       });
 
@@ -71,7 +98,7 @@ const RegisterModal = ({
 
       // Close the modal on successful registration
       setIsOpen(false);
-      
+
       // Redirect to dashboard using the URL from the response
       window.location.href = data.redirect || '/dashboard';
 
@@ -82,35 +109,37 @@ const RegisterModal = ({
     }
   };
 
+
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-md p-0 overflow-hidden bg-white rounded-xl">
         <DialogHeader className="bg-[#9F262A] relative text-white p-6">
           <DialogTitle className="text-xl font-semibold">Create Account</DialogTitle>
-          <button 
-            onClick={() => setIsOpen(false)} 
+          <button
+            onClick={() => setIsOpen(false)}
             className="absolute right-5 top-5 text-white hover:text-gray-200"
           >
             <XMarkIcon className="w-5 h-5" />
           </button>
           <p className="text-sm opacity-90 mt-1">Join UMatch to start your educational journey</p>
         </DialogHeader>
-        
+
         <form onSubmit={handleRegister} className="p-6 space-y-5 text-black">
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm">
               {error}
             </div>
           )}
-          
+
           <div className="space-y-4">
             <div className="space-y-2">
               <Label className="text-[#9F262A]" htmlFor="name">Full Name</Label>
-              <Input 
-                id="name" 
-                type="text" 
-                placeholder="John Doe" 
-                required 
+              <Input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
@@ -118,11 +147,11 @@ const RegisterModal = ({
             </div>
             <div className="space-y-2">
               <Label className="text-[#9F262A]" htmlFor="email">Email</Label>
-              <Input 
-                id="email" 
-                type="email" 
-                placeholder="your.email@example.com" 
-                required 
+              <Input
+                id="email"
+                type="email"
+                placeholder="your.email@example.com"
+                required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
@@ -130,10 +159,10 @@ const RegisterModal = ({
             </div>
             <div className="space-y-2">
               <Label className="text-[#9F262A]" htmlFor="password">Password</Label>
-              <Input 
-                id="password" 
-                type="password" 
-                required 
+              <Input
+                id="password"
+                type="password"
+                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
@@ -141,20 +170,20 @@ const RegisterModal = ({
             </div>
             <div className="space-y-2">
               <Label className="text-[#9F262A]" htmlFor="password_confirmation">Confirm Password</Label>
-              <Input 
-                id="password_confirmation" 
-                type="password" 
-                required 
+              <Input
+                id="password_confirmation"
+                type="password"
+                required
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
               />
             </div>
           </div>
-          
+
           <div className="pt-2">
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full bg-[#9F262A] hover:bg-[#D86D70] text-white py-2"
               disabled={isLoading}
             >
@@ -169,12 +198,13 @@ const RegisterModal = ({
               ) : 'Create Account'}
             </Button>
           </div>
-          
+
           <div className="text-center text-sm text-gray-600 mt-6">
             Already have an account?{' '}
-            <button 
+            <button
               type="button"
               onClick={() => {
+
                 setIsOpen(false);
                 setIsLoginOpen(true);
               }}
@@ -198,11 +228,12 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
   const [error, setError] = useState('');
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -223,7 +254,7 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
 
       // Close the modal on successful login
       setIsOpen(false);
-      
+
       // Redirect to dashboard using the URL from the response
       window.location.href = data.redirect || '/dashboard';
 
@@ -240,30 +271,30 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
         <DialogContent className="sm:max-w-md p-0 overflow-hidden bg-white rounded-xl">
           <DialogHeader className="bg-[#9F262A] relative text-white p-6">
             <DialogTitle className="text-xl font-semibold">Welcome Back</DialogTitle>
-            <button 
-              onClick={() => setIsOpen(false)} 
+            <button
+              onClick={() => setIsOpen(false)}
               className="absolute right-5 top-5 text-white hover:text-gray-200"
             >
               <XMarkIcon className="w-5 h-5" />
             </button>
             <p className="text-sm opacity-90 mt-1">Sign in to continue your educational journey</p>
           </DialogHeader>
-          
+
           <form onSubmit={handleLogin} className="p-6 space-y-5 text-black">
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded text-sm">
                 {error}
               </div>
             )}
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="your.email@example.com" 
-                  required 
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="your.email@example.com"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="border-gray-300 focus:border-[#D86D70] focus:ring-[#D86D70] text-black"
@@ -273,10 +304,10 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
                 <div className="flex justify-between items-center">
                   <Label htmlFor="password">Password</Label>
                 </div>
-                <Input 
-                  id="password" 
-                  type="password" 
-                  required 
+                <Input
+                  id="password"
+                  type="password"
+                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="********"
@@ -284,22 +315,22 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
                 />
               </div>
               <div className="flex items-center">
-                <input 
-                  type="checkbox" 
-                  id="remember" 
+                <input
+                  type="checkbox"
+                  id="remember"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-[#9F262A] focus:ring-[#D86D70]" 
+                  className="h-4 w-4 rounded border-gray-300 text-[#9F262A] focus:ring-[#D86D70]"
                 />
                 <label htmlFor="remember" className="ml-2 block text-sm text-gray-700">
                   Remember me
                 </label>
               </div>
             </div>
-            
+
             <div className="pt-2">
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full bg-[#9F262A] hover:bg-[#D86D70] text-white py-2"
                 disabled={isLoading}
               >
@@ -314,10 +345,10 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
                 ) : 'Sign in'}
               </Button>
             </div>
-            
+
             <div className="text-center text-sm text-gray-600 mt-6">
               Don't have an account?{' '}
-              <button 
+              <button
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
@@ -332,9 +363,9 @@ const LoginModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: 
         </DialogContent>
       </Dialog>
 
-      <RegisterModal 
-        isOpen={isRegisterOpen} 
-        setIsOpen={setIsRegisterOpen} 
+      <RegisterModal
+        isOpen={isRegisterOpen}
+        setIsOpen={setIsRegisterOpen}
         setIsLoginOpen={setIsOpen}
       />
     </>
@@ -349,10 +380,20 @@ const LandingPage = () => {
   const [showIntro, setShowIntro] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
+  const [isLoggedIn,setIsLoggedIn] = useState(false);
+
+  useEffect(()=>{
+    checkIsLoggedIn().then(ans=>{
+        setIsLoggedIn(ans);
+    })
+  },[]);
+
   // Add login button to header functionality
   const handleLoginClick = () => {
     setIsLoginOpen(true);
   };
+
+
 
   // Function to simulate getting a personality result (this prevents the linter warning)
   const simulatePersonalityTest = () => {
@@ -363,7 +404,7 @@ const LandingPage = () => {
       strengths: ['Critical thinking', 'Analytical skills', 'Problem solving'],
       suggestedFields: ['Computer Science', 'Engineering', 'Mathematics']
     };
-    
+
     setPersonalityResult(sampleResult);
     setCurrentStep(Step.RESULTS);
   };
@@ -377,7 +418,7 @@ const LandingPage = () => {
           <LoginModal isOpen={isLoginOpen} setIsOpen={setIsLoginOpen} />
 
           <div className="absolute top-5 right-5 z-10">
-            <Button 
+            <Button
               onClick={handleLoginClick}
               className="bg-[#9F262A] hover:bg-[#D86D70] text-white rounded-full px-6"
             >
@@ -424,6 +465,12 @@ const LandingPage = () => {
                   type="file"
                   accept=".pdf,.jpg,.jpeg,.png"
                   className="hidden"
+                  onClick={(e) => {
+                    if(!isLoggedIn) {
+                        e.preventDefault();
+                        setIsLoginOpen(true);
+                    }
+                  }}
               />
               </div>
           </div>
@@ -469,7 +516,7 @@ const LandingPage = () => {
             <div className="container mx-auto px-4 py-8 text-center">
               <h2 className="text-2xl font-bold mb-6">Personality Quiz</h2>
               <p className="mb-8">Quiz interface will be implemented here.</p>
-              <Button 
+              <Button
                 onClick={simulatePersonalityTest}
                 className="bg-[#9F262A] hover:bg-[#D86D70] text-white"
               >
@@ -599,6 +646,7 @@ const LandingPage = () => {
                   <li><a href="#" className="hover:text-white transition">Student Stories</a></li>
                   <li><a href="#" className="hover:text-white transition">Help Center</a></li>
                   <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
+                  <li><a href="/ParentPortal" className="hover:text-white transition">Parent Portal</a></li>
               </ul>
               </div>
 

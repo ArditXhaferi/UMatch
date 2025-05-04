@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { 
-    UserCircleIcon, 
+import {
+    UserCircleIcon,
     BuildingLibraryIcon,
     FireIcon,
     TrophyIcon,
@@ -236,7 +236,7 @@ const FileUpload: React.FC = () => {
     const handleDrop = useCallback((e: React.DragEvent) => {
         e.preventDefault();
         setIsDragging(false);
-        
+
         const droppedFiles = Array.from(e.dataTransfer.files);
         setData('files', [...data.files, ...droppedFiles]);
     }, [data.files, setData]);
@@ -450,7 +450,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
         deadlines,
         universityMatches
     });
-    
+
     // Add debugging for university matches
     React.useEffect(() => {
         if (studentProfile && Array.isArray(universityMatches)) {
@@ -465,15 +465,15 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
             });
         }
     }, [studentProfile, universityMatches]);
-    
+
     // Calendar state and helpers
     const [currentDate, setCurrentDate] = useState(new Date());
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
-    
+
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
     const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-    
+
     // Mock deadlines if none provided
     const sampleDeadlines: DeadlineType[] = [
         { id: 1, title: 'University Application Deadline', date: '2023-06-15', type: 'application' },
@@ -486,7 +486,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
     ];
 
     const displayDeadlines = deadlines.length > 0 ? deadlines : sampleDeadlines;
-    
+
     // Calculate current level based on XP (just a simple calculation for demo)
     const currentXp = studentProfile?.xp || 0;
     const currentLevel = Math.floor(currentXp / 100) + 1;
@@ -500,15 +500,15 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Navigation Bar */}
-            <Navigation 
-                auth={auth} 
-                studentProfile={studentProfile} 
-                currentPage="home" 
+            <Navigation
+                auth={auth}
+                studentProfile={studentProfile}
+                currentPage="home"
                 isAdmin={false}
             />
 
             <Head title="Dashboard" />
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-gray-900">Welcome, {auth.user.name}!</h1>
@@ -529,8 +529,8 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                     Your Learning Profile
                                 </h2>
                                 {studentProfile && (
-                                    <Link 
-                                        href={`/profile/${studentProfile.id}`} 
+                                    <Link
+                                        href={`/profile/${studentProfile.id}`}
                                         className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9A2D2D]"
                                     >
                                         View Full Profile
@@ -541,7 +541,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                 {studentProfile ? (
                                     <div className="flex flex-col md:flex-row md:items-center">
                                         <div className="flex-shrink-0 flex justify-center mb-4 md:mb-0">
-                                            <img 
+                                            <img
                                                 src={`/images/${studentProfile.archetype_code}.png`}
                                                 alt={`${studentProfile.hexad_type} Character`}
                                                 className="h-32 w-32 object-contain"
@@ -560,7 +560,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                         </div>
                                                     )}
                                                 </div>
-                                                
+
                                                 {currentXp > 0 && (
                                                     <div className="mt-4 md:mt-0 flex flex-col items-center">
                                                         <div className="w-16 h-16 relative">
@@ -588,13 +588,13 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                     </div>
                                                 )}
                                             </div>
-                                            
+
                                             <div className="mt-4 flex flex-wrap gap-2">
                                                 <div className="bg-[#9A2D2D] bg-opacity-10 px-3 py-1 rounded-full flex items-center justify-center">
                                                     <span className="text-xs font-medium text-[#9A2D2D] text-white">{currentXp} Total XP</span>
                                                 </div>
                                             </div>
-                                            
+
                                             <div className="mt-4">
                                                 <p className="text-sm text-gray-700">
                                                     View your full profile to see your learning style, recommended majors, and personalized university matches.
@@ -616,8 +616,8 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                     Your University Matches
                                 </h2>
                                 {studentProfile && (
-                                    <Link 
-                                        href="/universities" 
+                                    <Link
+                                        href="/universities"
                                         className="text-sm font-medium text-[#9A2D2D] hover:text-[#822626]"
                                     >
                                         View All Matches
@@ -631,8 +631,8 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                             universityMatches.slice(0, 3).map((university) => (
                                                 <div key={university.id} className="flex items-start p-4 hover:bg-gray-50 rounded-lg cursor-pointer border border-gray-100">
                                                     <div className="flex-shrink-0 bg-[#9A2D2D] bg-opacity-10 rounded-full h-12 w-12 flex items-center justify-center">
-                                                        <img 
-                                                            src={university.logo || university.image} 
+                                                        <img
+                                                            src={university.logo || university.image}
                                                             alt={university.university_name}
                                                             className="h-8 w-8 object-contain"
                                                         />
@@ -646,8 +646,8 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                         </div>
                                                         <div className="mt-1 space-y-2">
                                                             <div className="w-full bg-gray-200 rounded-full h-1.5">
-                                                                <div 
-                                                                    className="bg-[#9A2D2D] h-1.5 rounded-full" 
+                                                                <div
+                                                                    className="bg-[#9A2D2D] h-1.5 rounded-full"
                                                                     style={{ width: `${university.match_percentage}%` }}
                                                                 ></div>
                                                             </div>
@@ -662,8 +662,8 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                                         'No branches specified'
                                                                     )}
                                                                 </span>
-                                                                <Link 
-                                                                    href={`/universities/${university.id}`} 
+                                                                <Link
+                                                                    href={`/universities/${university.id}`}
                                                                     className="text-xs font-medium text-[#9A2D2D]"
                                                                 >
                                                                     View Details
@@ -708,7 +708,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                         Important Dates
                                     </h2>
                                     <div className="flex space-x-2">
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 const newDate = new Date(currentDate);
                                                 newDate.setMonth(newDate.getMonth() - 1);
@@ -719,7 +719,7 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                         >
                                             <ChevronLeftIcon className="h-5 w-5 text-gray-600" />
                                         </button>
-                                        <button 
+                                        <button
                                             onClick={() => {
                                                 const newDate = new Date(currentDate);
                                                 newDate.setMonth(newDate.getMonth() + 1);
@@ -755,22 +755,22 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                         {Array.from({ length: firstDayOfMonth }).map((_, index) => (
                                             <div key={`empty-${index}`} className="h-12 p-1" />
                                         ))}
-                                        
+
                                         {/* Calendar days */}
                                         {Array.from({ length: daysInMonth }).map((_, index) => {
                                             const day = index + 1;
                                             const dateString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                                            
+
                                             // Find events for this day
-                                            const dayEvents = displayDeadlines.filter(event => 
+                                            const dayEvents = displayDeadlines.filter(event =>
                                                 new Date(event.date).toISOString().split('T')[0] === dateString
                                             );
-                                            
+
                                             const isToday = new Date().toISOString().split('T')[0] === dateString;
-                                            
+
                                             return (
-                                                <div 
-                                                    key={day} 
+                                                <div
+                                                    key={day}
                                                     className={`h-12 p-1 border rounded-md relative ${isToday ? 'bg-[#9A2D2D] bg-opacity-10 border-[#9A2D2D]' : 'border-gray-200'}`}
                                                     onMouseEnter={(e) => {
                                                         if (dayEvents.length > 0) {
@@ -790,11 +790,11 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                                     {dayEvents.length > 0 && (
                                                         <div className="absolute bottom-1 right-1 flex flex-col items-end space-y-1">
                                                             {dayEvents.slice(0, 2).map((event) => (
-                                                                <div 
-                                                                    key={event.id} 
+                                                                <div
+                                                                    key={event.id}
                                                                     className={`w-2 h-2 rounded-full ${
-                                                                        event.type === 'application' ? 'bg-red-500' : 
-                                                                        event.type === 'event' ? 'bg-blue-500' : 
+                                                                        event.type === 'application' ? 'bg-red-500' :
+                                                                        event.type === 'event' ? 'bg-blue-500' :
                                                                         event.type === 'workshop' ? 'bg-purple-500' :
                                                                         event.type === 'interview' ? 'bg-yellow-500' :
                                                                         event.type === 'exam' ? 'bg-green-500' :
@@ -866,8 +866,8 @@ export default function Dashboard({ auth, studentProfile, quests = [], deadlines
                                         <TrophyIcon className="h-5 w-5 mr-2 text-[#9A2D2D]" />
                                         Current Quests
                                     </h2>
-                                    <Link 
-                                        href="/quests" 
+                                    <Link
+                                        href="/quests"
                                         className="text-sm font-medium text-[#9A2D2D] hover:text-[#822626]"
                                     >
                                         View All

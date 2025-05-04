@@ -89,10 +89,10 @@ class StudentProfile extends Model
         return $this->hasMany(QuestProgress::class);
     }
 
-    public function xPLogs(): HasMany
-    {
-        return $this->hasMany(XPLog::class);
-    }
+    // public function xPLogs(): HasMany
+    // {
+    //     return $this->hasMany(XPLog::class);
+    // }
 
     public function documents(): HasMany
     {
